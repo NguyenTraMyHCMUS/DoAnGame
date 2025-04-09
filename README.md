@@ -3,7 +3,7 @@
 ## 📌 Đề xuất
 
 Dựa trên video hướng dẫn:  
-🎥 [Creating Tetris in C++ with raylib - Beginner Tutorial (OOP)](https://www.youtube.com/watch?v=wVYKG_ch4yM)
+🎥 [Let's make 16 games in C++: TETRIS](https://www.youtube.com/watch?v=zH_omFPqMO4)
 
 Nhóm đề xuất thực hiện một phiên bản trò chơi **Tetris** bằng **ngôn ngữ C++**, áp dụng kỹ thuật **lập trình hướng đối tượng (OOP)** và sử dụng thư viện đồ họa **raylib**. Mục tiêu là xây dựng một sản phẩm có thể vận hành được và có thể mở rộng thêm các chức năng như điểm số, giao diện đẹp và hiệu ứng trò chơi.
 
