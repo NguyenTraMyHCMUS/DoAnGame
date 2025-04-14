@@ -1,30 +1,27 @@
-# Báo cáo Tuần 01 (02/04 – 09/04)
+# 📊 Báo cáo Tuần 1 (02/04 – 09/04)
 
-## ✅ Công việc đã làm:
+## ✅ Công việc đã hoàn thành:
 
-- **Nguyễn Trà My (Trưởng nhóm)**  
-  - Thống nhất chọn game Tetris làm đề tài refactor.  
-  - Phân tích mã nguồn gốc theo video.  
-  - Tạo GitHub repo, phân quyền các thành viên.
+- **Nguyễn Trà My:**  
+  - Phân tích kiến trúc hiện tại của mã nguồn Tetris C.  
+  - Xây dựng timeline và phân công công việc cho 8 tuần.
 
-- **Mã Tuyết Ngân**  
-  - Ghi chú logic vận hành game ban đầu (rơi, xoay, xóa hàng).  
-  - Lập danh sách lớp tiềm năng sau khi refactor.
+- **Mã Tuyết Ngân:**  
+  - Xem lại logic game gốc.  
+  - Ghi chú các vấn đề, từ đó đề xuất các class có thể refactor.
 
-- **Nguyễn Khả Như**  
-  - Nghiên cứu kiến trúc Layered Architecture.  
-  - Gợi ý áp dụng design pattern phù hợp (Factory, State, Observer).
+- **Nguyễn Khả Như:**  
+  - Tìm hiểu nguyên tắc SOLID, cách áp dụng vào Tetris.  
+  - Nghiên cứu các design pattern như Factory, Observer.
 
-## 📌 Kế hoạch tuần sau:
-- Hoàn thành sơ đồ class diagram ban đầu.
-- Thiết kế cấu trúc thư mục dự án.
-- Setup công cụ (CMake, SDL2, test framework).
+## 📌 Kế hoạch tuần tiếp theo (Tuần 2):
+- Thiết kế sơ đồ class diagram.
+- Xác định các interface cần tạo.
+- Viết mô tả kiến trúc phần mềm.
 
-## ⚠️ Vấn đề gặp phải:
-- Mã gốc không có tài liệu, khó bóc tách lớp.
 ## 📊 Tỉ lệ đóng góp:
 | Thành viên         | Tỉ lệ (%) |
 |--------------------|-----------|
-| Nguyễn Trà My      | 35%       |
-| Mã Tuyết Ngân      | 35%       |
+| Nguyễn Trà My      | 40%       |
+| Mã Tuyết Ngân      | 30%       |
 | Nguyễn Khả Như     | 30%       |
