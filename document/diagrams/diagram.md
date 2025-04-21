@@ -1,4 +1,4 @@
-```
+```mermaid
 classDiagram
         IBlock --|> Block
         JBlock --|> Block
@@ -77,24 +77,80 @@ classDiagram
         }
         class IBlock{
             + IBlock()
+            + id: int                         
+            + cells: map<int, vector<Position>>   
+            + Block()      
+            + Draw(offsetX, offsetY)         
+            + Move(rows, cols)               
+            + GetCellPositions()             
+            + Rotate()                       
+            + UndoRotation() 
         }
         class JBlock{
             + JBlock()
+            + id: int                         
+            + cells: map<int, vector<Position>>   
+            + Block()      
+            + Draw(offsetX, offsetY)         
+            + Move(rows, cols)               
+            + GetCellPositions()             
+            + Rotate()                       
+            + UndoRotation() 
         }   
         class LBlock{
             + LBlock()
+            + id: int                         
+            + cells: map<int, vector<Position>>   
+            + Block()      
+            + Draw(offsetX, offsetY)         
+            + Move(rows, cols)               
+            + GetCellPositions()             
+            + Rotate()                       
+            + UndoRotation() 
         }
         class OBlock{
             + OBlock()
+            + id: int                         
+            + cells: map<int, vector<Position>>   
+            + Block()      
+            + Draw(offsetX, offsetY)         
+            + Move(rows, cols)               
+            + GetCellPositions()             
+            + Rotate()                       
+            + UndoRotation() 
         }
         class SBlock{
             + SBlock()
+            + id: int                         
+            + cells: map<int, vector<Position>>   
+            + Block()      
+            + Draw(offsetX, offsetY)         
+            + Move(rows, cols)               
+            + GetCellPositions()             
+            + Rotate()                       
+            + UndoRotation() 
         }
         class TBlock{
             + TBlock()
+            + id: int                         
+            + cells: map<int, vector<Position>>   
+            + Block()      
+            + Draw(offsetX, offsetY)         
+            + Move(rows, cols)               
+            + GetCellPositions()             
+            + Rotate()                       
+            + UndoRotation() 
         }
         class ZBlock{
             + ZBlock()
+            + id: int                         
+            + cells: map<int, vector<Position>>   
+            + Block()      
+            + Draw(offsetX, offsetY)         
+            + Move(rows, cols)               
+            + GetCellPositions()             
+            + Rotate()                       
+            + UndoRotation() 
         }
       
 ```
