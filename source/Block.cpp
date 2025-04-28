@@ -1,50 +1,32 @@
-#include "Block.h"
-#include "Grid.h"
-#include <cstdlib>
+#ifndef BLOCK_H
+#define BLOCK_H
 
-const int Block::shapes[7][4] = {
-    {1, 3, 5, 7}, // I
-    {2, 4, 5, 7}, // Z
-    {3, 5, 4, 6}, // S
-    {3, 5, 4, 7}, // T
-    {2, 3, 5, 7}, // L
-    {3, 5, 7, 6}, // J
-    {2, 3, 4, 5}  // O
+#include <map>
+#include <vector>
+#include <SFML/Graphics.hpp>
+#include <memory>
+#include "Point.h"
+
+class Block {
+protected:
+    int cellSize; // kích thước của mỗi ô trong khối
+    int rotationState; // vị trí hiện tại của khối (0-3 cho 4 trạng thái xoay)
+    int color; // màu sắc của khối
+    int rowOffset; // vị trí hàng hiện tại của khối
+    int columnOffset; // vị trí cột hiện tại của khối
+
+public:
+    int id;
+    std::map<int, std::vector<Point>> cells;
+
+    Block();
+    //virtual ~Block() = default; 
+    virtual void Draw(int offsetX, int offsetY, sf::RenderWindow& window, sf::Sprite& sprite) = 0;
+
+    void Move(int rows, int cols);
+    std::vector<Point> GetCellPositions();
+    void Rotate();
+    void UndoRotation();
 };
 
-Block::Block(int shapeIndex) {
-    if (shapeIndex < 0 || shapeIndex >= 7) {
-        shapeIndex = rand() % 7;
-    }
-    color = 1 + rand() % 7;
-
-    for (int i = 0; i < 4; i++) {
-        shape[i].x = shapes[shapeIndex][i] % 2 + Grid::N / 2 - 1; // Dịch khối vào giữa
-        shape[i].y = shapes[shapeIndex][i] / 2;
-    }
-}
-
-void Block::move(int dx, int dy) {
-    for (auto& p : shape) {
-        p.x += dx;
-        p.y += dy;
-    }
-}
-
-void Block::rotate() {
-    Point center = shape[1];
-    for (auto& p : shape) {
-        int x = p.y - center.y;
-        int y = p.x - center.x;
-        p.x = center.x - x;
-        p.y = center.y + y;
-    }
-}
-
-const std::array<Point, 4>& Block::getShape() const {
-    return shape;
-}
-
-int Block::getColor() const {
-    return color;
-}
+#endif 
