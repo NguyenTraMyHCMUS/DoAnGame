@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <array>
-
+// he 
 struct Point {
     int x, y;
 };
