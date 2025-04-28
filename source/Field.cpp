@@ -28,17 +28,23 @@ int Field::getCell(int x, int y) const {
     return 0;
 }
 
-void Field::clearLines() {
+int Field::clearLines() {
     int k = M - 1;
+    int linesCleared = 0;
     for (int i = M - 1; i >= 0; i--) {
         int count = 0;
         for (int j = 0; j < N; j++) {
             if (grid[i][j]) count++;
             grid[k][j] = grid[i][j];
         }
-        if (count < N) k--;
+        if (count < N)
+            k--;
+        else
+            linesCleared++; // Đếm số dòng đã xóa
     }
+    return linesCleared;
 }
+
 
 void Field::draw(RenderWindow& window, Sprite& sprite) {
     for (int i = 0; i < M; i++) {
@@ -50,5 +56,14 @@ void Field::draw(RenderWindow& window, Sprite& sprite) {
             window.draw(sprite);
         }
     }
+}
+
+bool Field::isTopReached() const {
+    for (int j = 0; j < N; j++) {
+        if (grid[0][j] != 0) { // Nếu có ô nào trên dòng 0 đã bị chiếm
+            return true;
+        }
+    }
+    return false;
 }
 
