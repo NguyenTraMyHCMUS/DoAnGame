@@ -13,13 +13,13 @@ private:
 public:
     Field();
 
+    bool isTopReached() const;
     bool isInside(int x, int y) const;
     bool isOccupied(int x, int y) const;
     void setCell(int x, int y, int color);
     int getCell(int x, int y) const;
-    void clearLines();
+    int clearLines();
     void draw(sf::RenderWindow& window, sf::Sprite& sprite);
 };
 
 #endif
-
