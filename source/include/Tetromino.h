@@ -4,6 +4,7 @@
 #include "Field.h"
 #include <SFML/Graphics.hpp>
 
+
 struct Point {
     int _x; // Tọa độ x của ô trong lưới
     int _y; // Tọa độ y của ô trong lưới
@@ -19,14 +20,15 @@ protected:
 
 public:
     Tetromino(); // Constructor khởi tạo khối Tetris
-    virtual ~Tetromino() = default; // Destructor ảo để giải phóng bộ nhớ
 
+    virtual ~Tetromino() = default; // Destructor ảo để giải phóng bộ nhớ
     virtual void initializeShape() = 0; // Khởi tạo hình dạng khối Tetris
+    virtual void rotate(); // Xoay khối: O không xoay, I xoay ngang và dọc, {Z, T, S} xoay theo chiều kim đồng hồ, {L, J} ngược chiều kim đồng hồ
+
     void setCellSize(int size); // Thay đổi kích thước ô trong khối
     void backupState(); // Lưu trạng thái hiện tại của khối
     void restoreState(); // Khôi phục trạng thái từ backup
     void move(int dx); // Di chuyển khối theo chiều ngang
-    void rotate(); // Xoay khối
     void fall(); // Di chuyển khối xuống dưới
     bool isValid(const Field &field) const; // Kiểm tra vị trí hợp lệ
     void lock(Field &field) const; // Cố định khối vào lưới
