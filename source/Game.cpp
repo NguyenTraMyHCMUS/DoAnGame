@@ -1,12 +1,11 @@
-#include "Game.h"
 #include <iostream>
 #include "Game.h"
 #include "TetrominoFactory.h"
 using namespace sf;
 Game::Game() : window(VideoMode(320, 480), "Tetris") {
-   t1.loadFromFile("source/images/tiles.png");
-    t2.loadFromFile("source/images/background.png");
-    t3.loadFromFile("source/images/frame.png");
+   t1.loadFromFile("assets/images/tiles.png");
+    t2.loadFromFile("assets/images/background.png");
+    t3.loadFromFile("assets/images/frame.png");
     s.setTexture(t1);
     background.setTexture(t2);
     frame.setTexture(t3);
@@ -96,8 +95,8 @@ void Game::draw() {
 
     // Hiển thị cấp độ
     sf::Font font;
-    if (!font.loadFromFile("fonts/arial.ttf")) {
-        std::cerr << "Failed to load font \"fonts/arial.ttf\". Please ensure the file exists." << std::endl;
+    if (!font.loadFromFile("assets/fonts/arial.ttf")) {
+        std::cerr << "Failed to load font \"assets/fonts/arial.ttf\". Please ensure the file exists." << std::endl;
         window.close();
         return;
     }
