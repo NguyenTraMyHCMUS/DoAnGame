@@ -1,4 +1,4 @@
-#include "include/ZTetromino.h"
+#include "ZTetromino.h"
 
 ZTetromino::ZTetromino() {
     _color = 2; // Màu sắc cho khối Z
@@ -11,4 +11,8 @@ void ZTetromino::initializeShape() {
         _blocks[i]._x = figures[i] % 2;
         _blocks[i]._y = figures[i] / 2;
     }
+}
+
+void ZTetromino::rotate(){
+    Tetromino::rotate(); // Gọi hàm xoay của lớp cha
 }
