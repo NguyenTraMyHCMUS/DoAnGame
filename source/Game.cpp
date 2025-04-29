@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Game.h"
 #include "TetrominoFactory.h"
-
 using namespace sf;
 
 Game::Game() : window(VideoMode(320, 480), "Tetris") {
@@ -14,27 +13,20 @@ Game::Game() : window(VideoMode(320, 480), "Tetris") {
     tetromino = TetrominoFactory::createRandomTetromino();
 
     // Tải hình ảnh menu
-    if (!menuBackgroundTexture.loadFromFile("assets/images/menu3.jpg")) {
+    if (!menuBackgroundTexture.loadFromFile("assets/images/menu.jpg")) {
         std::cerr << "Failed to load menu background image!" << std::endl;
-    }
-    else {
-        std::cout << "Menu background image loaded successfully!" << std::endl;
     }
 
     menuBackgroundSprite.setTexture(menuBackgroundTexture);
     menuBackgroundSprite.setPosition(0, 0); // Đặt vị trí hình ảnh menu
 
     // Tải hình ảnh Game Over
-    if (!gameOverTexture.loadFromFile("assets/images/end1.jpg")) {
+    if (!gameOverTexture.loadFromFile("assets/images/end.jpg")) {
         std::cerr << "Failed to load Game Over image!" << std::endl;
-    }
-    else {
-        std::cout << "Game Over image loaded successfully!" << std::endl;
     }
 
     gameOverSprite.setTexture(gameOverTexture);
     gameOverSprite.setPosition(0, 0); // Đặt vị trí hình ảnh Game Over
-
 }
 
 void Game::handleInput() {
