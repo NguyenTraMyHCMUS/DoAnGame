@@ -8,6 +8,7 @@ public:
     JTetromino(); // Constructor khởi tạo khối J
     ~JTetromino() override = default; // Destructor ảo để giải phóng bộ nhớ
     void initializeShape() override; // Khởi tạo hình dạng khối
+    void rotate() override; // Xoay khối J (ngược chiều kim đồng hồ)
 };
 
 #endif
