@@ -1,4 +1,4 @@
-#include "STetromino.h"
+#include "include/STetromino.h"
 
 STetromino::STetromino() {
     _color = 3; // Màu sắc cho khối S
