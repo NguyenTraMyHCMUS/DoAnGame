@@ -1,4 +1,4 @@
-#include "include/ITetromino.h"
+#include "ITetromino.h"
 
 ITetromino::ITetromino() {
     _color = 1; // Màu sắc cho khối I
