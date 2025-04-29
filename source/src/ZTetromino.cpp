@@ -1,7 +1,7 @@
 #include "ZTetromino.h"
 
 ZTetromino::ZTetromino() {
-    _color = 2; // Màu sắc cho khối Z
+    _color = 7; // Màu sắc cho khối Z
     initializeShape(); // Khởi tạo hình dạng khối
 }
 
