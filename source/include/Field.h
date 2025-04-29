@@ -2,7 +2,7 @@
 #define FIELD_H
 
 #include <SFML/Graphics.hpp>
-
+using namespace sf;
 const int M = 20;
 const int N = 10;
 
