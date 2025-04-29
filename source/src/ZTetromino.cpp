@@ -1,4 +1,4 @@
-#include "ZTetromino.h"
+#include "include/ZTetromino.h"
 
 ZTetromino::ZTetromino() {
     _color = 2; // Màu sắc cho khối Z
