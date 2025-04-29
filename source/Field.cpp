@@ -3,6 +3,7 @@
 using namespace sf;
 
 Field::Field() {
+    clear(); // Khởi tạo lưới bằng cách xóa toàn bộ
     for (int i = 0; i < M; i++)
         for (int j = 0; j < N; j++)
             grid[i][j] = 0;
@@ -65,4 +66,12 @@ bool Field::isTopReached() const {
         }
     }
     return false;
+}
+
+void Field::clear() {
+    for (int y = 0; y < M; ++y) { // Sử dụng M thay cho height
+        for (int x = 0; x < N; ++x) { // Sử dụng N thay cho width
+            grid[y][x] = 0; // Đặt tất cả các ô trong lưới về giá trị 0
+        }
+    }
 }
