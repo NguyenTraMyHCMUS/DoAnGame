@@ -1,4 +1,4 @@
-#include "include/LTetromino.h"
+#include "LTetromino.h"
 
 LTetromino::LTetromino() {
     _color = 5; // Màu sắc cho khối L
@@ -10,5 +10,15 @@ void LTetromino::initializeShape() {
     for (int i = 0; i < 4; i++) {
         _blocks[i]._x = figures[i] % 2;
         _blocks[i]._y = figures[i] / 2;
+    }
+}
+
+void LTetromino::rotate() {
+    Point center = _blocks[1]; 
+    for (int i = 0; i < 4; i++) {
+        int x = _blocks[i]._y - center._y;
+        int y = _blocks[i]._x - center._x;
+        _blocks[i]._x = center._x + x;
+        _blocks[i]._y = center._y - y;
     }
 }
