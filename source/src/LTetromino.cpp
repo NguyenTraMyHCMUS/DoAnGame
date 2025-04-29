@@ -1,4 +1,4 @@
-#include "LTetromino.h"
+#include "include/LTetromino.h"
 
 LTetromino::LTetromino() {
     _color = 5; // Màu sắc cho khối L
