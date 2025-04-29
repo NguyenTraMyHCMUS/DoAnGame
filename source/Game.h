@@ -3,8 +3,7 @@
 
 #include "Field.h"
 #include "TetrominoFactory.h"
-#include "Tetromino.h"
-#include "ScoreManager"
+
 using namespace sf;
 
 class Game {
