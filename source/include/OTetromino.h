@@ -8,6 +8,7 @@ public:
     OTetromino(); // Constructor khởi tạo khối O
     ~OTetromino() override = default; // Destructor ảo để giải phóng bộ nhớ
     void initializeShape() override; // Khởi tạo hình dạng khối O
+    void rotate() override; // Xoay khối O (không làm gì cả)
 };
 
 #endif
