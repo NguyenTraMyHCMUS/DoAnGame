@@ -1,4 +1,4 @@
-#include "include/Tetromino.h"
+#include "Tetromino.h"
 
 // Constructor
 Tetromino::Tetromino() {
