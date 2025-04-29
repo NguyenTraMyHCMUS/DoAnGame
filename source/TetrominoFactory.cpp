@@ -1,4 +1,4 @@
-#include "include/TetrominoFactory.h"
+#include "TetrominoFactory.h"
 
 std::unique_ptr<Tetromino> TetrominoFactory::createRandomTetromino() {
     int type = rand() % 7; // Chọn ngẫu nhiên một loại khối
