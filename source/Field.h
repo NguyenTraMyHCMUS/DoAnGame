@@ -20,6 +20,7 @@ public:
     int getCell(int x, int y) const;
     int clearLines();
     void draw(sf::RenderWindow& window, sf::Sprite& sprite);
+    void clear(); 
 };
 
 #endif
