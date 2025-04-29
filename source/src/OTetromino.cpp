@@ -1,4 +1,4 @@
-#include "OTetromino.h"
+#include "include/OTetromino.h"
 
 OTetromino::OTetromino() {
     _color = 6; // Màu sắc cho khối O
