@@ -1,4 +1,4 @@
-#include "include/TTetromino.h"
+#include "TTetromino.h"
 
 TTetromino::TTetromino() {
     _color = 4; // Màu sắc cho khối T
@@ -11,4 +11,8 @@ void TTetromino::initializeShape() {
         _blocks[i]._x = figures[i] % 2;
         _blocks[i]._y = figures[i] / 2;
     }
+}
+
+void TTetromino::rotate(){
+    Tetromino::rotate(); // Gọi hàm xoay của lớp cha
 }
