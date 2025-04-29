@@ -1,4 +1,4 @@
-#include "include/STetromino.h"
+#include "STetromino.h"
 
 STetromino::STetromino() {
     _color = 3; // Màu sắc cho khối S
@@ -11,4 +11,8 @@ void STetromino::initializeShape() {
         _blocks[i]._x = figures[i] % 2;
         _blocks[i]._y = figures[i] / 2;
     }
+}
+
+void STetromino::rotate(){
+    Tetromino::rotate(); // Gọi hàm xoay của lớp cha
 }
