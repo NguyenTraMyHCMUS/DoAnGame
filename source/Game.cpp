@@ -4,10 +4,9 @@
 #include "TetrominoFactory.h"
 using namespace sf;
 Game::Game() : window(VideoMode(320, 480), "Tetris") {
-    t1.loadFromFile("images/tiles.png");
-    t2.loadFromFile("images/background.png");
-    t3.loadFromFile("images/frame.png");
-
+   t1.loadFromFile("source/images/tiles.png");
+    t2.loadFromFile("source/images/background.png");
+    t3.loadFromFile("source/images/frame.png");
     s.setTexture(t1);
     background.setTexture(t2);
     frame.setTexture(t3);
