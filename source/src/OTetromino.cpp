@@ -1,4 +1,4 @@
-#include "include/OTetromino.h"
+#include "OTetromino.h"
 
 OTetromino::OTetromino() {
     _color = 6; // Màu sắc cho khối O
@@ -12,3 +12,7 @@ void OTetromino::initializeShape() {
         _blocks[i]._y = figures[i] / 2;
     }
 }
+
+void OTetromino::rotate() {
+    // Không làm gì cả vì khối O không thay đổi hình dạng khi xoay
+}   
