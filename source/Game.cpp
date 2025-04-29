@@ -1,7 +1,9 @@
 #include <iostream>
 #include "Game.h"
 #include "TetrominoFactory.h"
+
 using namespace sf;
+
 Game::Game() : window(VideoMode(320, 480), "Tetris") {
    t1.loadFromFile("assets/images/tiles.png");
     t2.loadFromFile("assets/images/background.png");
@@ -10,6 +12,29 @@ Game::Game() : window(VideoMode(320, 480), "Tetris") {
     background.setTexture(t2);
     frame.setTexture(t3);
     tetromino = TetrominoFactory::createRandomTetromino();
+
+    // Tải hình ảnh menu
+    if (!menuBackgroundTexture.loadFromFile("assets/images/menu3.jpg")) {
+        std::cerr << "Failed to load menu background image!" << std::endl;
+    }
+    else {
+        std::cout << "Menu background image loaded successfully!" << std::endl;
+    }
+
+    menuBackgroundSprite.setTexture(menuBackgroundTexture);
+    menuBackgroundSprite.setPosition(0, 0); // Đặt vị trí hình ảnh menu
+
+    // Tải hình ảnh Game Over
+    if (!gameOverTexture.loadFromFile("assets/images/end1.jpg")) {
+        std::cerr << "Failed to load Game Over image!" << std::endl;
+    }
+    else {
+        std::cout << "Game Over image loaded successfully!" << std::endl;
+    }
+
+    gameOverSprite.setTexture(gameOverTexture);
+    gameOverSprite.setPosition(0, 0); // Đặt vị trí hình ảnh Game Over
+
 }
 
 void Game::handleInput() {
@@ -60,8 +85,10 @@ void Game::update() {
             int cleared = field.clearLines(); // Xóa các dòng và trả về số dòng đã xóa
             linesCleared += cleared;
 
+            score += cleared * 100; // Cộng điểm cho mỗi dòng đã xóa
+
             // Tăng cấp độ sau mỗi 10 dòng xóa
-            if (linesCleared >= level * 10) {
+            if (linesCleared >= level * 2) { // Mỗi cấp độ yêu cầu xóa 2 dòng
                 level++;
                 delay = std::max(0.1f, delay - 0.05f); // Giảm delay để tăng tốc độ, tối thiểu là 0.1
             }
@@ -125,13 +152,142 @@ void Game::draw() {
 
 void Game::run() {
     while (window.isOpen()) {
-        handleInput();
-        update();
-        draw();
+        if (state == GameState::MainMenu) {
+            handleMainMenuInput();
+            drawMainMenu();
+        } else if (state == GameState::Playing) {
+            handleInput();
+            update();
+            draw();
 
-        if (isGameOver) {
-            // Thoát vòng lặp nếu trò chơi kết thúc
-            break;
+            if (isGameOver) {
+                state = GameState::GameOver; // Chuyển sang trạng thái kết thúc
+            }
+        } else if (state == GameState::GameOver) {
+            handleGameOverInput();
+            drawGameOverScreen();
         }
     }
+}
+
+void Game::drawMainMenu() {
+    window.clear(sf::Color::Black);
+
+    // Vẽ hình ảnh menu
+    window.draw(menuBackgroundSprite);
+
+    // Chọn phông chữ cho menu
+    sf::Font font;
+    if (!font.loadFromFile("assets/fonts/arial.ttf")) {
+        std::cerr << "Failed to load font \"assets/fonts/arial.ttf\". Please ensure the file exists." << std::endl;
+        window.close();
+        return;
+    }
+
+    // Tiêu đề
+    sf::Text title("TETRIS", font, 50);
+    title.setFillColor(sf::Color::Yellow);
+    title.setStyle(sf::Text::Bold);
+    title.setPosition(80, 220);
+    window.draw(title);
+
+    // Tùy chọn Start Game
+    sf::Text startText("Start Game", font, 30);
+    startText.setFillColor(sf::Color::White);
+    startText.setPosition(100, 300);
+    window.draw(startText);
+
+    // Tùy chọn Exit
+    sf::Text exitText("Exit", font, 30);
+    exitText.setFillColor(sf::Color::White);
+    exitText.setPosition(100, 340);
+    window.draw(exitText);
+
+
+    window.display();
+}
+
+void Game::handleMainMenuInput() {
+    Event e;
+    while (window.pollEvent(e)) {
+        if (e.type == Event::Closed) {
+            window.close();
+        }
+
+        if (e.type == Event::KeyPressed) {
+            if (e.key.code == Keyboard::Enter) {
+                state = GameState::Playing; // Chuyển sang trạng thái chơi game
+            } 
+            else if (e.key.code == Keyboard::Escape) {
+                window.close(); // Thoát trò chơi
+            }
+        }
+    }
+}
+
+void Game::drawGameOverScreen() {
+    window.clear(sf::Color::Black);
+
+    // Vẽ hình ảnh Game Over
+    window.draw(gameOverSprite);
+
+    // Chọn phông chữ cho Game Over
+    sf::Font font;
+    if (!font.loadFromFile("assets/fonts/arial.ttf")) {
+        std::cerr << "Failed to load font \"assets/fonts/arial.ttf\". Please ensure the file exists." << std::endl;
+        window.close();
+        return;
+    }
+
+    // Thông báo Game Over
+    sf::Text gameOverText("Game Over", font, 50);
+    gameOverText.setFillColor(sf::Color::Red);
+    gameOverText.setStyle(sf::Text::Bold);
+    gameOverText.setPosition(40, 100);
+    window.draw(gameOverText);
+
+    // Tùy chọn chơi lại
+    sf::Text retryText("Enter to Retry", font, 30);
+    retryText.setFillColor(sf::Color::Red);
+    retryText.setPosition(50, 200);
+    window.draw(retryText);
+
+    // Tùy chọn thoát
+    sf::Text exitText("Escape to Exit", font, 30);
+    exitText.setFillColor(sf::Color::Red);
+    exitText.setPosition(50, 250);
+    window.draw(exitText);
+
+    window.display();
+}
+
+void Game::handleGameOverInput() {
+    Event e;
+    while (window.pollEvent(e)) {
+        if (e.type == Event::Closed) {
+            window.close();
+        }
+
+        if (e.type == Event::KeyPressed) {
+            if (e.key.code == Keyboard::Enter) {
+                state = GameState::Playing; // Chuyển sang trạng thái chơi game
+                resetGame(); // Đặt lại trò chơi
+            } else if (e.key.code == Keyboard::Escape) {
+                window.close(); // Thoát trò chơi
+            }
+        }
+    }
+}
+
+void Game::resetGame() {
+    isGameOver = false;
+    score = 0;
+    level = 1;
+    linesCleared = 0;
+    delay = 0.3;
+    timer = 0;
+    dx = 0;
+    rotate = false;
+    tetromino = TetrominoFactory::createRandomTetromino();
+    field.clear(); // Xóa lưới
 }
