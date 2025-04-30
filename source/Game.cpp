@@ -77,6 +77,12 @@ void Game::update() {
             tetromino->restoreState();
             tetromino->lock(field);
 
+            // Kiểm tra nếu khối bị đè theo cột hoặc hàng
+            if (field.isColumnOverloaded({})) {
+                isGameOver = true; // Đặt trạng thái kết thúc trò chơi
+                return;
+            }
+
             int cleared = field.clearLines(); // Xóa các dòng và trả về số dòng đã xóa
             if (cleared > 0) {
                 int points = cleared * 10 * cleared; // Tính điểm theo combo
@@ -96,7 +102,7 @@ void Game::update() {
         }
         timer = 0;
     }
-            
+
     dx = 0;
     rotate = false;
     delay = 0.3;
