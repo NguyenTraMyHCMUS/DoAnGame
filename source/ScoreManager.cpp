@@ -1,20 +1,22 @@
 #include "ScoreManager.h"
 
-void ScoreManager::addObserver(const std::function<void(int)>& observer) {
-    observers.push_back(observer);
-}
+ScoreManager::ScoreManager() : currentScore(0), highScore(0) {}
 
-void ScoreManager::notifyObservers() {
-    for (const auto& observer : observers) {
-        observer(score);
+void ScoreManager::addScore(int points) {
+    currentScore += points;
+    if (currentScore > highScore) {
+        highScore = currentScore;
     }
 }
 
-void ScoreManager::addScore(int points) {
-    score += points;
-    notifyObservers();
+int ScoreManager::getScore() const {
+    return currentScore;
 }
 
-int ScoreManager::getScore() const {
-    return score;
+int ScoreManager::getHighScore() const {
+    return highScore;
+}
+
+void ScoreManager::reset() {
+    currentScore = 0;
 }
