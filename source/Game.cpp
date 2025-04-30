@@ -85,14 +85,15 @@ void Game::update() {
 
             int cleared = field.clearLines(); // Xóa các dòng và trả về số dòng đã xóa
             if (cleared > 0) {
-                int points = cleared * 10 * cleared; // Tính điểm theo combo
-                scoreManager.addScore(points); // Cộng điểm
+                int points = cleared * 10 * cleared;
+                scoreManager.addScore(points);
+                levelManager.addClearedLines(cleared);
 
-                // Kiểm tra nếu đủ điểm để tăng cấp độ
                 if (scoreManager.getScore() >= levelManager.getLevel() * 50) {
-                    levelManager.increaseLevel(); // Tăng cấp độ
+                    levelManager.increaseLevel();
                 }
             }
+
 
             if (field.isTopReached()) { // Kiểm tra nếu đỉnh của lưới đã bị chiếm
                 isGameOver = true; // Đặt trạng thái kết thúc trò chơi
@@ -118,7 +119,7 @@ void Game::draw() {
     // Nền cho cấp độ
     sf::RectangleShape levelBackground(sf::Vector2f(150, 40));
     levelBackground.setFillColor(sf::Color(0, 0, 0, 150));
-    levelBackground.setPosition(170, 5);
+    levelBackground.setPosition(225, 50);
     window.draw(levelBackground);
 
     // Hiển thị cấp độ
@@ -129,27 +130,27 @@ void Game::draw() {
         return;
     }
 
-    sf::Text levelText("Level: " + std::to_string(levelManager.getLevel()), font, 25);
+    sf::Text levelText("Level: " + std::to_string(levelManager.getLevel()), font, 18);
     levelText.setFillColor(sf::Color::Yellow);
     levelText.setStyle(sf::Text::Bold);
     levelText.setOutlineColor(sf::Color::Black);
     levelText.setOutlineThickness(2);
-    levelText.setPosition(175, 10);
+    levelText.setPosition(230, 55);
     window.draw(levelText);
 
     // Nền cho điểm số
     sf::RectangleShape scoreBackground(sf::Vector2f(150, 40));
     scoreBackground.setFillColor(sf::Color(0, 0, 0, 150));
-    scoreBackground.setPosition(170, 50);
+    scoreBackground.setPosition(225, 90);
     window.draw(scoreBackground);
 
     // Hiển thị điểm số
-    sf::Text scoreText("Score: " + std::to_string(scoreManager.getScore()), font, 25);
+    sf::Text scoreText("Score: " + std::to_string(scoreManager.getScore()), font, 18);
     scoreText.setFillColor(sf::Color::Cyan);
     scoreText.setStyle(sf::Text::Bold);
     scoreText.setOutlineColor(sf::Color::Black);
     scoreText.setOutlineThickness(2);
-    scoreText.setPosition(175, 55);
+    scoreText.setPosition(230, 95);
     window.draw(scoreText);
    
     if (isGameOver) {
@@ -297,9 +298,8 @@ void Game::handleGameOverInput() {
 
 void Game::resetGame() {
     isGameOver = false;
-    score = 0;
-    level = 1;
-    linesCleared = 0;
+    scoreManager.reset();
+    levelManager.reset();
     delay = 0.3;
     timer = 0;
     dx = 0;
