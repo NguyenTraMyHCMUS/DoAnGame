@@ -1,19 +1,17 @@
 #ifndef SCOREMANAGER_H
 #define SCOREMANAGER_H
 
-#include <vector>
-#include <functional>
-
 class ScoreManager {
 private:
-    int score = 0;
-    std::vector<std::function<void(int)>> observers; // Danh sách các observer
+    int currentScore;
+    int highScore;
 
 public:
-    void addObserver(const std::function<void(int)>& observer);
-    void notifyObservers();
+    ScoreManager();
     void addScore(int points);
     int getScore() const;
+    int getHighScore() const;
+    void reset();
 };
 
 #endif
