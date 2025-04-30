@@ -21,6 +21,8 @@ public:
     int clearLines();
     void draw(sf::RenderWindow& window, sf::Sprite& sprite);
     void clear(); 
+    bool isColumnOverloaded(const std::vector<std::pair<int, int>>& blockPositions) const;
+    
 };
 
 #endif
