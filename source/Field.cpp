@@ -75,3 +75,18 @@ void Field::clear() {
         }
     }
 }
+
+bool Field::isColumnOverloaded(const std::vector<std::pair<int, int>>&) const {
+    for (int x = 0; x < N; x++) {
+        int emptyCells = 0;
+        for (int y = 0; y < M; y++) {
+            if (grid[y][x] == 0) {
+                emptyCells++;
+            }
+        }
+        if (emptyCells < 4) { // Giả định khối có chiều cao tối đa là 4
+            return true;
+        }
+    }
+    return false;
+}
