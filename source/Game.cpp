@@ -44,6 +44,9 @@ void Game::handleInput() {
     }
 
     if (Keyboard::isKeyPressed(Keyboard::Down)) delay = 0.05;
+   if (Keyboard::isKeyPressed(Keyboard::Escape)) {
+        isGameOver = true; // Đặt trạng thái kết thúc trò chơi
+    }
 }
 
 void Game::update() {
@@ -75,14 +78,14 @@ void Game::update() {
             tetromino->lock(field);
 
             int cleared = field.clearLines(); // Xóa các dòng và trả về số dòng đã xóa
-            linesCleared += cleared;
+            if (cleared > 0) {
+                int points = cleared * 10 * cleared; // Tính điểm theo combo
+                scoreManager.addScore(points); // Cộng điểm
 
-            score += cleared * 100; // Cộng điểm cho mỗi dòng đã xóa
-
-            // Tăng cấp độ sau mỗi 10 dòng xóa
-            if (linesCleared >= level * 2) { // Mỗi cấp độ yêu cầu xóa 2 dòng
-                level++;
-                delay = std::max(0.1f, delay - 0.05f); // Giảm delay để tăng tốc độ, tối thiểu là 0.1
+                // Kiểm tra nếu đủ điểm để tăng cấp độ
+                if (scoreManager.getScore() >= levelManager.getLevel() * 50) {
+                    levelManager.increaseLevel(); // Tăng cấp độ
+                }
             }
 
             if (field.isTopReached()) { // Kiểm tra nếu đỉnh của lưới đã bị chiếm
@@ -93,7 +96,7 @@ void Game::update() {
         }
         timer = 0;
     }
-
+            
     dx = 0;
     rotate = false;
     delay = 0.3;
@@ -107,9 +110,9 @@ void Game::draw() {
     window.draw(frame);
 
     // Nền cho cấp độ
-    sf::RectangleShape levelBackground(sf::Vector2f(150, 40)); // Kích thước hình chữ nhật
-    levelBackground.setFillColor(sf::Color(0, 0, 0, 150)); // Màu đen với độ trong suốt
-    levelBackground.setPosition(5, 5); // Vị trí hiển thị
+    sf::RectangleShape levelBackground(sf::Vector2f(150, 40));
+    levelBackground.setFillColor(sf::Color(0, 0, 0, 150));
+    levelBackground.setPosition(170, 5);
     window.draw(levelBackground);
 
     // Hiển thị cấp độ
@@ -120,14 +123,29 @@ void Game::draw() {
         return;
     }
 
-    sf::Text levelText("Level: " + std::to_string(level), font, 25); // Tăng kích thước chữ
-    levelText.setFillColor(sf::Color::Yellow); // Đổi màu chữ thành vàng
-    levelText.setStyle(sf::Text::Bold); // Làm chữ đậm
-    levelText.setOutlineColor(sf::Color::Black); // Thêm viền đen
-    levelText.setOutlineThickness(2); // Độ dày viền
-    levelText.setPosition(10, 10); // Vị trí hiển thị
+    sf::Text levelText("Level: " + std::to_string(levelManager.getLevel()), font, 25);
+    levelText.setFillColor(sf::Color::Yellow);
+    levelText.setStyle(sf::Text::Bold);
+    levelText.setOutlineColor(sf::Color::Black);
+    levelText.setOutlineThickness(2);
+    levelText.setPosition(175, 10);
     window.draw(levelText);
 
+    // Nền cho điểm số
+    sf::RectangleShape scoreBackground(sf::Vector2f(150, 40));
+    scoreBackground.setFillColor(sf::Color(0, 0, 0, 150));
+    scoreBackground.setPosition(170, 50);
+    window.draw(scoreBackground);
+
+    // Hiển thị điểm số
+    sf::Text scoreText("Score: " + std::to_string(scoreManager.getScore()), font, 25);
+    scoreText.setFillColor(sf::Color::Cyan);
+    scoreText.setStyle(sf::Text::Bold);
+    scoreText.setOutlineColor(sf::Color::Black);
+    scoreText.setOutlineThickness(2);
+    scoreText.setPosition(175, 55);
+    window.draw(scoreText);
+   
     if (isGameOver) {
         // Hiển thị thông báo kết thúc trò chơi
         sf::Text gameOverText("Game Over", font, 30);
