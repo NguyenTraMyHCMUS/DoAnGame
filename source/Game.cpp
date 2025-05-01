@@ -59,6 +59,7 @@ void Game::handleInput() {
 void Game::update() {
     if (isGameOver) return; // Nếu trò chơi đã kết thúc, không cập nhật nữa
 
+
     float time = clock.getElapsedTime().asSeconds();
     clock.restart();
     timer += time;
@@ -83,33 +84,29 @@ void Game::update() {
         if (!tetromino->isValid(field)) {
             tetromino->restoreState();
             tetromino->lock(field);
-
-            // Kiểm tra nếu khối bị đè theo cột hoặc hàng
-            if (field.isColumnOverloaded({})) {
+    
+            // Kiểm tra nếu khối tiếp theo không thể đặt vào lưới
+            nextTetromino->backupState(); // Lưu trạng thái ban đầu của khối tiếp theo
+            if (!nextTetromino->isValid(field)) {
                 isGameOver = true; // Đặt trạng thái kết thúc trò chơi
                 return;
             }
-
+    
             int cleared = field.clearLines(); // Xóa các dòng và trả về số dòng đã xóa
             if (cleared > 0) {
                 int points = cleared * 10 * cleared;
                 scoreManager.addScore(points);
                 levelManager.addClearedLines(cleared);
-
+    
                 if (scoreManager.getScore() >= levelManager.getLevel() * 50) {
                     levelManager.increaseLevel();
                 }
             }
-
-
-            if (field.isTopReached()) { // Kiểm tra nếu đỉnh của lưới đã bị chiếm
-                isGameOver = true; // Đặt trạng thái kết thúc trò chơi
-                return;
-            }
-           // khối tiếp theo
-            tetromino = std::move(nextTetromino);// Đặt khối hiện tại là khối tiếp theo
-            nextTetromino = TetrominoFactory::createRandomTetromino();// Tạo khối tiếp theo mới
-            tetromino->setColor(nextTetromino->getColor());// khối hiện tại của lần tiếp theo giống màu khối tiếp thao của lần hiện tiền
+    
+            // Đặt khối tiếp theo làm khối hiện tại
+            tetromino = std::move(nextTetromino);
+            nextTetromino = TetrominoFactory::createRandomTetromino();
+            tetromino->setColor(nextTetromino->getColor()); // Khối hiện tại có màu giống khối tiếp theo
         }
         timer = 0;
     }
@@ -117,8 +114,8 @@ void Game::update() {
     dx = 0;
     rotate = false;
     delay = 0.3;
-}
-
+}       
+                
 void Game::drawInfoBox(sf::RenderWindow& window, sf::Vector2f position, const std::string& title, const std::string& value) {
     const float boxWidth = 125.0f;
     const float boxHeight = 60.0f;
