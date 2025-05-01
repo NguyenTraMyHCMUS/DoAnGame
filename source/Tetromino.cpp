@@ -80,3 +80,21 @@ void Tetromino::draw(RenderWindow &window, Sprite &sprite) const {
         window.draw(sprite); // Vẽ sprite lên cửa sổ
     }
 }
+// Hàm getBlocks: Trả về danh sách các ô của khối
+std::vector<Point> Tetromino::getBlocks() const {
+    std::vector<Point> blocks;
+    for (int i = 0; i < 4; i++) {
+        blocks.push_back(_blocks[i]);
+    }
+    return blocks;
+}
+
+// Hàm getColor: Trả về màu sắc của khối
+int Tetromino::getColor() const {
+    return _color;
+}
+
+// Hàm setColor: Thiết lập màu sắc cho khối
+void Tetromino::setColor(int color) {
+    _color = color;
+}
