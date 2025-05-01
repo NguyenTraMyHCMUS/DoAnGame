@@ -119,6 +119,33 @@ void Game::update() {
     delay = 0.3;
 }
 
+void Game::drawInfoBox(sf::RenderWindow& window, sf::Vector2f position, const std::string& title, const std::string& value) {
+    const float boxWidth = 125.0f;
+    const float boxHeight = 60.0f;
+
+    sf::RectangleShape box(sf::Vector2f(boxWidth, boxHeight));
+    box.setPosition(position);
+    box.setFillColor(sf::Color(0, 0, 0));
+    box.setOutlineColor(sf::Color::White);
+    box.setOutlineThickness(2.0f);
+    window.draw(box);
+
+    sf::Font font;
+    if (font.loadFromFile("assets/fonts/arial.ttf")) {
+        // Căn trái tiêu đề
+        sf::Text titleText(title, font, 16);
+        titleText.setFillColor(sf::Color::White);
+        titleText.setPosition(position.x + 4, position.y + 4);
+        window.draw(titleText);
+
+        // Căn trái giá trị
+        sf::Text valueText(value, font, 18);
+        valueText.setFillColor(sf::Color::Yellow);
+        valueText.setPosition(position.x + 8, position.y + boxHeight / 2);
+        window.draw(valueText);
+    }
+}
+
 void Game::draw() {
     window.clear(sf::Color::White);
     window.draw(background);
@@ -126,18 +153,6 @@ void Game::draw() {
     tetromino->draw(window, s);
     window.draw(frame);
 
-    // Hiển thị khối tiếp theo
-    if (nextTetromino) {
-        nextTetrominoDisplay.draw(window, *nextTetromino);
-    }
-   
-    // Nền cho cấp độ
-    sf::RectangleShape levelBackground(sf::Vector2f(150, 40));
-    levelBackground.setFillColor(sf::Color(0, 0, 0, 150));
-    levelBackground.setPosition(225, 50);
-    window.draw(levelBackground);
-
-    // Hiển thị cấp độ
     sf::Font font;
     if (!font.loadFromFile("assets/fonts/arial.ttf")) {
         std::cerr << "Failed to load font \"assets/fonts/arial.ttf\". Please ensure the file exists." << std::endl;
@@ -145,29 +160,16 @@ void Game::draw() {
         return;
     }
 
-    sf::Text levelText("Level: " + std::to_string(levelManager.getLevel()), font, 18);
-    levelText.setFillColor(sf::Color::Yellow);
-    levelText.setStyle(sf::Text::Bold);
-    levelText.setOutlineColor(sf::Color::Black);
-    levelText.setOutlineThickness(2);
-    levelText.setPosition(230, 55);
-    window.draw(levelText);
+    // Hiển thị khối tiếp theo
+    if (nextTetromino) {
+        nextTetrominoDisplay.draw(window, *nextTetromino);
+    }
 
-    // Nền cho điểm số
-    sf::RectangleShape scoreBackground(sf::Vector2f(150, 40));
-    scoreBackground.setFillColor(sf::Color(0, 0, 0, 150));
-    scoreBackground.setPosition(225, 90);
-    window.draw(scoreBackground);
+    sf::Vector2f infoStartPos(240, 180); // Ngay dưới khung "Next"
+    drawInfoBox(window, infoStartPos, "Level", std::to_string(levelManager.getLevel()));
+    drawInfoBox(window, sf::Vector2f(infoStartPos.x, infoStartPos.y + 70), "Score", std::to_string(scoreManager.getScore()));
+    drawInfoBox(window, sf::Vector2f(infoStartPos.x, infoStartPos.y + 140), "HighScore", std::to_string(scoreManager.getHighScore()));
 
-    // Hiển thị điểm số
-    sf::Text scoreText("Score: " + std::to_string(scoreManager.getScore()), font, 18);
-    scoreText.setFillColor(sf::Color::Cyan);
-    scoreText.setStyle(sf::Text::Bold);
-    scoreText.setOutlineColor(sf::Color::Black);
-    scoreText.setOutlineThickness(2);
-    scoreText.setPosition(230, 95);
-    window.draw(scoreText);
-   
     if (isGameOver) {
         // Hiển thị thông báo kết thúc trò chơi
         sf::Text gameOverText("Game Over", font, 30);
