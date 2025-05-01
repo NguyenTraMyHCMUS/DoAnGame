@@ -13,7 +13,6 @@ private:
 public:
     Field();
 
-    bool isTopReached() const;
     bool isInside(int x, int y) const;
     bool isOccupied(int x, int y) const;
     void setCell(int x, int y, int color);
@@ -21,7 +20,7 @@ public:
     int clearLines();
     void draw(sf::RenderWindow& window, sf::Sprite& sprite);
     void clear(); 
-    bool isColumnOverloaded(const std::vector<std::pair<int, int>>& blockPositions) const;
+    bool canPlaceBlock(const std::vector<std::pair<int, int>>& blockPositions) const;
     
 };
 
