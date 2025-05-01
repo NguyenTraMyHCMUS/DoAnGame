@@ -26,6 +26,10 @@ public:
     virtual void rotate(); // Xoay khối: O không xoay, I xoay ngang và dọc, {Z, T, S} xoay theo chiều kim đồng hồ, {L, J} ngược chiều kim đồng hồ
 
     void setCellSize(int size); // Thay đổi kích thước ô trong khối
+    std::vector<Point> getBlocks() const;
+    void setColor(int color); // Thiết lập màu sắc cho khối
+    int getColor() const;
+
     void backupState(); // Lưu trạng thái hiện tại của khối
     void restoreState(); // Khôi phục trạng thái từ backup
     void move(int dx); // Di chuyển khối theo chiều ngang
@@ -33,11 +37,6 @@ public:
     bool isValid(const Field &field) const; // Kiểm tra vị trí hợp lệ
     void lock(Field &field) const; // Cố định khối vào lưới
     void draw(sf::RenderWindow &window, sf::Sprite &sprite) const; //  Vẽ khối lên cửa sổ trò chơi
-
-    // Thêm phương thức getBlocks
-     std::vector<Point> getBlocks() const;
-     void setColor(int color); // Thiết lập màu sắc cho khối
-     int getColor() const;
 };
 
 #endif
