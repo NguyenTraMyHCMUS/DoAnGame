@@ -48,6 +48,7 @@ public:
     void update();
     void draw();
     void run();
+    void drawInfoBox(sf::RenderWindow& window, sf::Vector2f position, const std::string& title, const std::string& value);
 
     void drawMainMenu();
     void handleMainMenuInput();
