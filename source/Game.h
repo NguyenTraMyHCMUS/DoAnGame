@@ -4,6 +4,8 @@
 #include "Field.h"
 #include "TetrominoFactory.h"
 #include "NextTetrominoDisplay.h"
+#include "ScoreManager.h"
+#include "LevelManager.h"
 using namespace sf;
 
 enum class GameState {
