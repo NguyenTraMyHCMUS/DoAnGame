@@ -18,6 +18,9 @@ private:
     Sprite s, background, frame;
     Field field;
     std::unique_ptr<Tetromino> tetromino; // Sử dụng con trỏ thông minh để quản lý Tetromino
+    std::unique_ptr<Tetromino> nextTetromino; // Khối tiếp theo
+
+
     Clock clock;
     float timer = 0, delay = 0.3;
     int dx = 0;
