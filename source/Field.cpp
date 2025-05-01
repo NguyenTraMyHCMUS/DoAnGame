@@ -59,15 +59,6 @@ void Field::draw(RenderWindow& window, Sprite& sprite) {
     }
 }
 
-bool Field::isTopReached() const {
-    for (int j = 0; j < N; j++) {
-        if (grid[0][j] != 0) { // Nếu có ô nào trên dòng 0 đã bị chiếm
-            return true;
-        }
-    }
-    return false;
-}
-
 void Field::clear() {
     for (int y = 0; y < M; ++y) { // Sử dụng M thay cho height
         for (int x = 0; x < N; ++x) { // Sử dụng N thay cho width
@@ -76,17 +67,15 @@ void Field::clear() {
     }
 }
 
-bool Field::isColumnOverloaded(const std::vector<std::pair<int, int>>&) const {
-    for (int x = 0; x < N; x++) {
-        int emptyCells = 0;
-        for (int y = 0; y < M; y++) {
-            if (grid[y][x] == 0) {
-                emptyCells++;
-            }
-        }
-        if (emptyCells < 4) { // Giả định khối có chiều cao tối đa là 4
-            return true;
+bool Field::canPlaceBlock(const std::vector<std::pair<int, int>>& blockPositions) const {
+    for (const auto& pos : blockPositions) {
+        int x = pos.first;
+        int y = pos.second;
+
+        // Nếu ô nằm ngoài lưới hoặc đã bị chiếm, không thể đặt khối
+        if (!isInside(x, y) || isOccupied(x, y)) {
+            return false;
         }
     }
-    return false;
+    return true; // Tất cả các ô đều hợp lệ, có thể đặt khối
 }
