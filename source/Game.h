@@ -43,7 +43,8 @@ private:
     sf::Texture gameOverTexture; // Texture cho hình ảnh Game Over
     sf::Sprite gameOverSprite;   // Sprite để hiển thị hình ảnh Game Over
     
-
+    ScoreManager scoreManager;
+    LevelManager levelManager;
 public:
     Game();
     void handleInput();
