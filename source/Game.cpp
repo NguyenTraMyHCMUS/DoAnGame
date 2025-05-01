@@ -12,6 +12,11 @@ Game::Game() : window(VideoMode(320, 480), "Tetris") {
     frame.setTexture(t3);
     tetromino = TetrominoFactory::createRandomTetromino();
 
+   //Khối tiếp theo
+    nextTetromino = TetrominoFactory::createRandomTetromino(); // Tạo khối tiếp theo đầu tiên
+    tetromino = std::move(nextTetromino);// Đặt khối hiện tại là khối tiếp theo
+    nextTetromino = TetrominoFactory::createRandomTetromino(); // Tạo khối tiếp theo mới
+
     // Tải hình ảnh menu
     if (!menuBackgroundTexture.loadFromFile("assets/images/menu.jpg")) {
         std::cerr << "Failed to load menu background image!" << std::endl;
@@ -99,7 +104,10 @@ void Game::update() {
                 isGameOver = true; // Đặt trạng thái kết thúc trò chơi
                 return;
             }
-            tetromino = TetrominoFactory::createRandomTetromino();
+           // khối tiếp theo
+            tetromino = std::move(nextTetromino);// Đặt khối hiện tại là khối tiếp theo
+            nextTetromino = TetrominoFactory::createRandomTetromino();// Tạo khối tiếp theo mới
+            tetromino->setColor(nextTetromino->getColor());// khối hiện tại của lần tiếp theo giống màu khối tiếp thao của lần hiện tiền
         }
         timer = 0;
     }
@@ -116,6 +124,11 @@ void Game::draw() {
     tetromino->draw(window, s);
     window.draw(frame);
 
+    // Hiển thị khối tiếp theo
+    if (nextTetromino) {
+        nextTetrominoDisplay.draw(window, *nextTetromino);
+    }
+   
     // Nền cho cấp độ
     sf::RectangleShape levelBackground(sf::Vector2f(150, 40));
     levelBackground.setFillColor(sf::Color(0, 0, 0, 150));
