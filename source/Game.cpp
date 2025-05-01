@@ -3,7 +3,9 @@
 #include "TetrominoFactory.h"
 using namespace sf;
 
-Game::Game() : window(VideoMode(320, 480), "Tetris") {
+Game::Game() : window(VideoMode(320, 480), "Tetris"), 
+            nextTetrominoDisplay(sf::Vector2f(300, 100), 18) // Khởi tạo đối tượng hiển thị khối tiếp theo
+{
    t1.loadFromFile("assets/images/tiles.png");
     t2.loadFromFile("assets/images/background.png");
     t3.loadFromFile("assets/images/frame.png");
