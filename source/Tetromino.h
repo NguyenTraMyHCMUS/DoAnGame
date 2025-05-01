@@ -33,6 +33,11 @@ public:
     bool isValid(const Field &field) const; // Kiểm tra vị trí hợp lệ
     void lock(Field &field) const; // Cố định khối vào lưới
     void draw(sf::RenderWindow &window, sf::Sprite &sprite) const; //  Vẽ khối lên cửa sổ trò chơi
+
+    // Thêm phương thức getBlocks
+     std::vector<Point> getBlocks() const;
+     void setColor(int color); // Thiết lập màu sắc cho khối
+     int getColor() const;
 };
 
 #endif
