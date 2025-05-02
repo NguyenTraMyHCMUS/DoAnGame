@@ -3,7 +3,7 @@
 
 #include "Field.h"
 #include "TetrominoFactory.h"
-#include "NextTetrominoDisplay.h"
+#include "NextTetrominoPreview.h"
 #include "ScoreManager.h"
 #include "LevelManager.h"
 using namespace sf;
@@ -22,7 +22,7 @@ private:
     Field field;
 
     std::unique_ptr<Tetromino> tetromino; // Sử dụng con trỏ thông minh để quản lý Tetromino
-    std::unique_ptr<Tetromino> nextTetromino; // Khối tiếp theo
+    NextTetrominoPreview nextPreview; // thêm đối tượng preview
 
     Clock clock;
     float timer = 0, delay = 0.3;
