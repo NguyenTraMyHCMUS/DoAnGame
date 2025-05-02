@@ -16,14 +16,9 @@ void Tetromino::setCellSize(int size) {
 }
 
 // Hàm getBlocks: Trả về danh sách các ô của khối
-std::vector<Point> Tetromino::getBlocks() const {
-    std::vector<Point> blocks;
-    for (int i = 0; i < 4; i++) {
-        blocks.push_back(_blocks[i]);
-    }
-    return blocks;
+const Point* Tetromino::getBlocks() const {
+    return _blocks; // Trả về mảng các ô của khối
 }
-
 // Hàm getColor: Trả về màu sắc của khối
 int Tetromino::getColor() const {
     return _color;
