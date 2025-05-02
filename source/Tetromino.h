@@ -24,6 +24,7 @@ public:
     virtual ~Tetromino() = default; // Destructor ảo để giải phóng bộ nhớ
     virtual void initializeShape() = 0; // Khởi tạo hình dạng khối Tetris
     virtual void rotate(); // Xoay khối: O không xoay, I xoay ngang và dọc, {Z, T, S} xoay theo chiều kim đồng hồ, {L, J} ngược chiều kim đồng hồ
+    virtual std::unique_ptr<Tetromino> clone() const = 0; //Tạo một bản sao của khối Tetris
 
     int getColor() const; // Lấy màu sắc của khối
     const Point* getBlocks() const;
