@@ -14,7 +14,9 @@ void NextTetrominoPreview::generateNext() {
 std::unique_ptr<Tetromino> NextTetrominoPreview::getNext() {
     return std::move(_next); // chuyển giao quyền sở hữu
 }
-
+std::unique_ptr<Tetromino> NextTetrominoPreview::cloneNext() const {
+    return _next->clone();
+}
 void NextTetrominoPreview::draw(sf::RenderWindow& window, sf::Sprite& sprite) {
     const float frameSize = 120.0f;
     const float titleHeight = 24.0f;
