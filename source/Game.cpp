@@ -82,9 +82,9 @@ void Game::update() {
             tetromino->lock(field);
     
             // Kiểm tra nếu khối tiếp theo không thể đặt vào lưới
-            nextTetromino->backupState(); // Lưu trạng thái ban đầu của khối tiếp theo
-            if (!nextTetromino->isValid(field)) {
-                isGameOver = true; // Đặt trạng thái kết thúc trò chơi
+           auto temp = nextPreview.cloneNext();
+            if (!temp->isValid(field)) {
+                isGameOver = true;
                 return;
             }
     
