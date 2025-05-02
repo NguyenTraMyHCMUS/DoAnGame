@@ -22,3 +22,8 @@ void JTetromino::rotate() {
         _blocks[i]._y = center._y - y;
     }
 }
+
+std::unique_ptr<Tetromino> JTetromino::clone() const 
+{
+    return std::make_unique<JTetromino>(*this);
+}
