@@ -16,3 +16,8 @@ void OTetromino::initializeShape() {
 void OTetromino::rotate() {
     // Không làm gì cả vì khối O không thay đổi hình dạng khi xoay
 }   
+
+std::unique_ptr<Tetromino> OTetromino::clone() const 
+{
+    return std::make_unique<OTetromino>(*this);
+}
