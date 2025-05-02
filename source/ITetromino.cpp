@@ -33,7 +33,3 @@ std::unique_ptr<Tetromino> ITetromino::clone() const
 {
     return std::make_unique<ITetromino>(*this);
 }
-std::unique_ptr<Tetromino> ITetromino::clone() const 
-{
-    return std::make_unique<ITetromino>(*this);
-}
