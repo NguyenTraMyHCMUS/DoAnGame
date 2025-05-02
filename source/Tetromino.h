@@ -3,7 +3,7 @@
 
 #include "Field.h"
 #include <SFML/Graphics.hpp>
-
+#include <memory>
 
 struct Point {
     int _x; // Tọa độ x của ô trong lưới
