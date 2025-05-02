@@ -30,10 +30,7 @@ private:
     bool rotate = false;
     bool isGameOver = false; // Biến để theo dõi trạng thái kết thúc trò chơi
     
-    NextTetrominoDisplay nextTetrominoDisplay; // Đối tượng hiển thị khối tiếp theo
-    int nextTetrominoType;// Loại khối tiếp theo
-    int nextTetrominoColor;// Màu sắc của khối tiếp theo
-
+   
     int score = 0; // Biến lưu điểm số của trò chơi
     int level = 1; // Cấp độ hiện tại
     int linesCleared = 0; // Số dòng đã xóa
