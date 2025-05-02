@@ -24,11 +24,6 @@ int Tetromino::getColor() const {
     return _color;
 }
 
-// Hàm setColor: Thiết lập màu sắc cho khối
-void Tetromino::setColor(int color) {
-    _color = color;
-}
-
 // Hàm backupState: Lưu trạng thái hiện tại của khối
 void Tetromino::backupState() {
     for (int i = 0; i < 4; i++) {
