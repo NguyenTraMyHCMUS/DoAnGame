@@ -9,6 +9,7 @@ public:
     ~STetromino() override = default; // Destructor ảo để giải phóng bộ nhớ
     void initializeShape() override; // Khởi tạo hình dạng khối S
     void rotate() override; // Xoay khối S (theo chiều kim đồng hồ)
+    std::unique_ptr<Tetromino> clone() const override;
 };
 
 #endif
