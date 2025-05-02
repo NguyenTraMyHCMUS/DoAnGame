@@ -29,3 +29,7 @@ void ITetromino::rotate() {
     }
     isHorizontal = !isHorizontal;
 }
+std::unique_ptr<Tetromino> ITetromino::clone() const 
+{
+    return std::make_unique<ITetromino>(*this);
+}
