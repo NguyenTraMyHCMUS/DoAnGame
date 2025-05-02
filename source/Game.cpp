@@ -12,12 +12,9 @@ Game::Game() : window(VideoMode(320, 480), "Tetris"),
     s.setTexture(t1);
     background.setTexture(t2);
     frame.setTexture(t3);
-    tetromino = TetrominoFactory::createRandomTetromino();
-
-   //Khối tiếp theo
-    nextTetromino = TetrominoFactory::createRandomTetromino(); // Tạo khối tiếp theo đầu tiên
-    tetromino = std::move(nextTetromino);// Đặt khối hiện tại là khối tiếp theo
-    nextTetromino = TetrominoFactory::createRandomTetromino(); // Tạo khối tiếp theo mới
+            
+    tetromino = nextPreview.getNext();       // lấy khối đầu tiên từ preview
+    nextPreview.generateNext();              // tạo khối tiếp theo tiếp theo
 
     // Tải hình ảnh menu
     if (!menuBackgroundTexture.loadFromFile("assets/images/menu.jpg")) {
@@ -103,10 +100,8 @@ void Game::update() {
                 }
             }
     
-            // Đặt khối tiếp theo làm khối hiện tại
-            tetromino = std::move(nextTetromino);
-            nextTetromino = TetrominoFactory::createRandomTetromino();
-            tetromino->setColor(nextTetromino->getColor()); // Khối hiện tại có màu giống khối tiếp theo
+            tetromino = nextPreview.getNext();  // lấy khối tiếp theo làm hiện tại
+            nextPreview.generateNext();         // tạo khối tiếp theo mới
         }
         timer = 0;
     }
@@ -148,6 +143,7 @@ void Game::draw() {
     window.draw(background);
     field.draw(window, s);
     tetromino->draw(window, s);
+    nextPreview.draw(window, s); // vẽ khối tiếp theo
     window.draw(frame);
 
     sf::Font font;
@@ -157,10 +153,7 @@ void Game::draw() {
         return;
     }
 
-    // Hiển thị khối tiếp theo
-    if (nextTetromino) {
-        nextTetrominoDisplay.draw(window, *nextTetromino);
-    }
+   
 
     sf::Vector2f infoStartPos(240, 180); // Ngay dưới khung "Next"
     drawInfoBox(window, infoStartPos, "Level", std::to_string(levelManager.getLevel()));
