@@ -14,6 +14,7 @@ public:
     NextTetrominoPreview();
     void generateNext();
     std::unique_ptr<Tetromino> getNext();
+    std::unique_ptr<Tetromino> cloneNext() const;
     void draw(sf::RenderWindow& window, sf::Sprite& sprite);
 };
 
