@@ -2,14 +2,9 @@
 
 std::unique_ptr<Tetromino> TetrominoFactory::createRandomTetromino() {
     int type = rand() % 7; // Chọn ngẫu nhiên một loại khối
-    auto tetromino = createTetromino(type);
-
-    if (tetromino) {
-        tetromino->setColor(type + 1); // +1 để tránh màu trắng ở index 0
-        tetromino->initializeShape();  // Khởi tạo hình dạng khối
-    }
-    return tetromino;
+    return createTetromino(type);
 }
+
 
 std::unique_ptr<Tetromino> TetrominoFactory::createTetromino(int type) {
     switch (type) {
