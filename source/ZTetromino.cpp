@@ -16,3 +16,8 @@ void ZTetromino::initializeShape() {
 void ZTetromino::rotate(){
     Tetromino::rotate(); // Gọi hàm xoay của lớp cha
 }
+
+std::unique_ptr<Tetromino> ZTetromino::clone() const 
+{
+    return std::make_unique<ZTetromino>(*this);
+}
