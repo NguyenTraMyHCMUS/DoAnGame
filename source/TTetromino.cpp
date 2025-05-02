@@ -16,3 +16,7 @@ void TTetromino::initializeShape() {
 void TTetromino::rotate(){
     Tetromino::rotate(); // Gọi hàm xoay của lớp cha
 }
+std::unique_ptr<Tetromino> TTetromino::clone() const 
+{
+    return std::make_unique<TTetromino>(*this);
+}
