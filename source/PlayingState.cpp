@@ -4,9 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+// Constructor
 PlayingState::PlayingState(Game& game) : _game(game) {
     sf::Texture tempT1, tempT2, tempT3;
 
+    // Tải texture từ file
     if (!tempT1.loadFromFile("assets/images/tiles.png")) {
         std::cout << "Failed to load tiles.png!" << std::endl;
     }
@@ -41,13 +43,16 @@ PlayingState::PlayingState(Game& game) : _game(game) {
 
 }
 
+// Xử lý đầu vào 
 void PlayingState::handleInput(Game& game) {
     sf::Event event;
+    // Xử lý sự kiện từ cửa sổ
     while (game.getWindow().pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
             game.getWindow().close();
         }
 
+        // Xử lý các phím bấm
         if (event.type == sf::Event::KeyPressed) {
             if (event.key.code == sf::Keyboard::Escape) {
                 game.setState(std::make_unique<PausedState>(game)); // Chuyển sang trạng thái tạm dừng
@@ -67,6 +72,7 @@ void PlayingState::handleInput(Game& game) {
     }
 }
 
+// Vẽ hộp thông tin chứa điểm số, level, khối tiếp theo
 void PlayingState::drawInfoBox(sf::RenderWindow& window, sf::Vector2f position, const std::string& title, const std::string& value) {
     const float boxWidth = 125.0f;
     const float boxHeight = 60.0f;
@@ -94,9 +100,9 @@ void PlayingState::drawInfoBox(sf::RenderWindow& window, sf::Vector2f position, 
     }
 }
 
-
+// Vẽ toàn cảnh trạng thái playing
 void PlayingState::draw(Game& game) {
-    // Xóa
+    // Xóa cửa sổ với màu trắng
     game.getWindow().clear(sf::Color::White);
 
     // Vẽ nền
@@ -106,7 +112,7 @@ void PlayingState::draw(Game& game) {
     game.getField().draw(game.getWindow(), game.getSprite());
     game.getTetromino()->draw(game.getWindow(), game.getSprite());
     game.getNextTetrominoPreview().draw(game.getWindow(), game.getSprite());
-
+  
     // Vẽ khung
     game.getWindow().draw(game.getFrame());
 
@@ -116,5 +122,6 @@ void PlayingState::draw(Game& game) {
     drawInfoBox(game.getWindow(), sf::Vector2f(infoStartPos.x, infoStartPos.y + 70), "Score", std::to_string(game.getScoreManager().getScore()));
     drawInfoBox(game.getWindow(), sf::Vector2f(infoStartPos.x, infoStartPos.y + 140), "HighScore", std::to_string(game.getScoreManager().getHighScore()));
 
+    // Hiển thị cửa sổ
     game.getWindow().display();
 }
