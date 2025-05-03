@@ -19,9 +19,15 @@ void Tetromino::setCellSize(int size) {
 const Point* Tetromino::getBlocks() const {
     return _blocks; // Trả về mảng các ô của khối
 }
+
 // Hàm getColor: Trả về màu sắc của khối
 int Tetromino::getColor() const {
     return _color;
+}
+
+// Hàm setColor: Thiết lập màu sắc cho khối
+void Tetromino::setColor(int color) {
+    _color = color;
 }
 
 // Hàm backupState: Lưu trạng thái hiện tại của khối
