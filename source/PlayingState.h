@@ -13,7 +13,7 @@ private:
 
 public:
     PlayingState(Game& game); // Constructor
-    void handleInput(Game& game) override; // Xử lý đầu vào (tải hình ảnh, font chữ, v.v.)
+    void handleInput(Game& game) override; // Xử lý đầu vào
     void drawInfoBox(sf::RenderWindow& window, sf::Vector2f position, const std::string& title, const std::string& value); // Vẽ hộp thông tin chứa điểm số, level, khối tiếp theo
     void draw(Game& game) override; // Vẽ toàn cảnh trạng thái playing 
 };
