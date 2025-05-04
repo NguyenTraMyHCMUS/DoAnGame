@@ -10,35 +10,65 @@
 
 ---
 ## Công việc của từng thành viên đã thực hiện
-1. Trà My
-
-| Tuần | Mô tả công việc                            |
-|----- |--------------------------------            |
-| 1    |         ..                                 |
-| 2    |         ..                                 |
-| 3    |         ..                                 |
-| 4    |         ..                                 |
-
-2. Tuyết Ngân
-
-| Tuần | Mô tả công việc                            |
-|----- |--------------------------------            |
-| 1    |         ..                                 |
-| 2    |         ..                                 |
-| 3    |         ..                                 |
-| 4    |         ..                                 |
-
-3. Khả Như
-
-| Tuần | Mô tả công việc                            |
-|----- |--------------------------------            |
-| 1    |         ..                                 |
-| 2    |         ..                                 |
-| 3    |         ..                                 |
-| 4    |         ..                                 |
-
+## Tuần 1
+### Thành viên 1: Khả Như
+- Coi video mẫu  
+- Tìm hiểu Git, GitHub  
+- Viết file `README.md`  
+### Thành viên 2: Tuyết Ngân
+- Coi video mẫu  
+- Tìm hiểu Git, GitHub  
+- Viết file `README.md`  
+### Thành viên 3: Trà My
+- Tạo repository trên GitHub và phân công công việc nhóm từ video mẫu của thầy  
+- Coi video mẫu  
+- Tìm hiểu Git, GitHub  
+- Viết file `README.md`  
 ---
-
+## Tuần 2
+### Thành viên 1: Khả Như
+- Tìm hiểu nguyên lý SOLID và Design Pattern  
+- Đề xuất các cải tiến từ video mẫu
+- Phát khảo kiến trúc layered  
+### Thành viên 2: Tuyết Ngân  
+- Tìm hiểu nguyên lý SOLID và Design Pattern  
+- Đề xuất các cải tiến từ video mẫu  
+- Phát khảo kiến trúc layered  
+### Thành viên 3: Trà My
+- Tìm hiểu nguyên lý SOLID và Design Pattern  
+- Đề xuất các cải tiến từ video mẫu
+- Phát khảo kiến trúc layered   
+---
+## Tuần 3
+### Thành viên 1: Khả Như
+- Chuyển đổi `Field` thành một lớp độc lập để quản lý lưới chơi  
+- Viết các phương thức cơ bản như: `isOccupied`, `isInside`, `setCell`, `clearLines`, ...  
+- Sử dụng **Doxygen** để mô tả class (áp dụng từ tuần này đến cuối đồ án)  
+### Thành viên 2: Tuyết Ngân
+- Chuyển đổi `Tetromino` thành một lớp độc lập để quản lý khối Tetris  
+- Viết các phương thức: `initializeShape`, `move`, `rotate`, `fall`, ...  
+- Sử dụng **Doxygen** để mô tả class (áp dụng từ tuần này đến cuối đồ án)  
+### Thành viên 3: Trà My
+- Tạo lớp `Game` để quản lý vòng lặp chính  
+- Kết hợp `Field` và `Tetromino` vào vòng lặp trò chơi  
+- Sử dụng **Doxygen** để mô tả class (áp dụng từ tuần này đến cuối đồ án)  
+---
+## Tuần 4+5
+### Thành viên 1: Khả Như
+- Tăng tốc độ theo cấp độ (mỗi 100 điểm/1 dòng; đủ 5 dòng tăng level)  
+- Hiển thị điểm số và cấp độ ở góc trên bên phải lưới (cập nhật sau mỗi lần thay đổi)
+- Thêm combo điểm:
+  - Xóa liên tiếp 2 dòng: x2 điểm
+  - 3 dòng: x3 điểm, ...
+### Thành viên 2: Tuyết Ngân
+- Áp dụng **Factory Pattern** để tạo các khối Tetris từ các class con  
+- Xây dựng giao diện cho 3 trạng thái: `MainMenu`, `Playing`, `GameOver`  
+- Bao gồm hình ảnh, âm thanh, và các lựa chọn  
+- Thêm hướng dẫn trước khi vào `MainMenu`
+- Áp dụng **State Pattern** để quản lý trạng thái trò chơi: `MainMenu`, `Playing`, `Paused`, `GameOver`   
+### Thành viên 3: Trà My
+- Hiển thị các khối kế tiếp (1–3 khối) ở góc giữa bên phải  
+---
 ## 🔹 Tỉ lệ đóng góp vào dự án
 | Thành viên       | Tỉ lệ đóng góp |
 |------------------|----------------|
@@ -58,90 +88,110 @@
 ---
 
 ## 🔹 Mô tả các yêu cầu trong cách thức đánh giá
-
-## 1. Teamwork
-
-Dưới đây là bảng **phân chia công việc cụ thể theo tuần cho 3 thành viên trong 8 tuần**, đảm bảo **đáp ứng đầy đủ các yêu cầu của đề bài** về viết lại game theo OOP, cải tiến bằng SOLID, design pattern, dependency injection, sử dụng git, kiểm thử, tài liệu hóa, v.v.
-
-## 📌 **Phân chia công việc – 8 tuần (3 thành viên)**
-| Tuần | Nguyễn Trà My (Trưởng nhóm) | Mã Tuyết Ngân | Nguyễn Khả Như | 
-|------|------------------------------|----------------|----------------|
-| **Tuần 1**<br>🔍 Phân tích mã nguồn & lên kế hoạch | - Tạo repository trên github và phân công công việc nhóm từ video mẫu của thầy<br>- Tìm hiểu git, github <br>- Coi video mẫu <br>- Viết file readme.md | - Tìm hiểu git, github <br>- Coi video mẫu <br>- Viết file readme.md | - Tìm hiểu git, github <br>- Coi video mẫu <br>- Viết file readme.md |
-| **Tuần 2**<br>📐 Thiết kế class diagram & Tìm hiểu SOLID, Design Pattern| - Vẽ dirgram <br>- Tìm hiểu SOLID, Design Pattern<br>- Đề xuất những cải tiến từ video mẫu | - Vẽ dirgram <br>- Tìm hiểu SOLID, Design Pattern<br>- Đề xuất những cải tiến từ video mẫu | - Vẽ dirgram <br>- Tìm hiểu SOLID, Design Pattern<br>- Đề xuất những cải tiến từ video mẫu | 
-| **Tuần 3**<br>💻 Viết code khung chương trình (OOP) | - Tìm hiểu và tải thư viện SFML <br> - Tạo lớp Game để quản lý vòng lặp chính <br> - Kết hợp Field và Tetromino vào vòng lặp trò chơi <br> - Sử dụng Doxygen để mô tả class cụ thể (sử dụng từ giờ đến cuối đồ án) |  - Tìm hiểu và tải thư viện SFML <br> - Chuyển đổi Tetromino thành một lớp độc lập, quản lý khối Tetris <br> - Viết các phương thức như initializeShape, move, rotate, fall,… <br> - Sử dụng Doxygen để mô tả class cụ thể (sử dụng từ giờ đến cuối đồ án)| - Tìm hiểu và tải thư viện SFML <br> - Chuyển đổi Field thành một lớp độc lập, quản lý lưới chơi <br> - Viết các phương thức cơ bản như isOccupied, isInside, setCell, clearLines,… <br> - Sử dụng Doxygen để mô tả class cụ thể (sử dụng từ giờ đến cuối đồ án) | 
-| **Tuần 4**<br>⚙️ Cải tiến | - Hiển thị khối tiếp theo ở góc giữa bên phải (1-3 khối kế tiếp)<br> - Hiển thị ảnh của khối hiện tại trên lưới (nhấn enter để xuống đáy lưới) | - Áp dụng Factory Pattern để tạo các khối Tetris từ các class con <br> - Xây dựng giao diện cho 4 trạng thái: MainMenu, Playing, GameOver, Instruction (hình ảnh, âm thanh, gồm những lựa chọn nào…)  <br> - Thêm hiệu ứng mượt mà khi xóa hàng (có âm thanh, hiệu ứng,..) | - Tăng tốc độ theo cấp độ (hoàn thành 1 dòng được 10 điểm, đủ 5 dòng lên level) <br> - Hiển thị điểm số và cấp độ trên lưới ở góc trên bên phải (quản lí thay đổi và hiển thị lại trên lưới mỗi lần tăng điểm số, cấp độ) | 
-| **Tuần 5**<br>🎨 Áp dụng Design Pattern + Cải tiến | - Áp dụng Dependency Injection để giảm sự phụ thuộc giữa các lớp <br> - Tách các lớp lớn thành các lớp nhỏ hơn (Single Responsibility Principle) <br> - Đề xuất và thêm các cải tiến (tự thêm vào đây) | - Áp dụng State Pattern để quản lý trạng thái trò chơi (Playing, Paused, GameOver) <br> - Thêm chế độ chơi: truyền thống, có giới hạn thời gian, không giới hạn cấp độ<br> - Đề xuất và thêm các cải tiến (tự thêm vào đây) | - Áp dụng Observer Pattern để cập nhật giao diện khi điểm số hoặc cấp độ thay đổi <br> - Thêm combo điểm (xóa liên tiếp 2 dòng thì x2 điểm, 3 dòng thì x3 điểm,….) <br> - Đề xuất và thêm các cải tiến (tự thêm vào đây) |
-| **Tuần 6**<br>🔧 Coi lại toàn bộ code + cải tiến| - Thêm bảng xếp hạng điểm (so sánh với những lần chơi trước đó) và hiển thị bảng xếp hạng này mỗi lần game over <br> - Phân tích và tối ưu code | - Hỗ trợ, cải thiện giao diện đẹp và hoàn thiện hơn cho các thành viên khác <br> - Phân tích và tối ưu code | - Thêm thống kê sau game (số dòng đã xóa, số khối đã dùng, tổng điểm) của vòng chơi hiện tại <br>- Phân tích và tối ưu code | 
-| **Tuần 7**<br>🧪 Kiểm thử | - Viết unit test cho lớp GameManager<br>- Tạo báo cáo kiểm thử (test report) | - Viết unit test cho lớp Tetromino<br>- Kiểm tra tích hợp giữa các module | - Tạo test plan và các test case cho từng module <br>- Viết unit test cho lớp Field | 
-| **Tuần 8**<br>📚 Tài liệu hóa + Báo cáo + Demo |- Tạo báo cáo kiểm thử và tài liệu mô tả các lớp <br> - Đảm bảo mã nguồn được tối ưu và không có lỗi <br> - Quay video demo | - Chuẩn bị slide trình bày và bản demo chương trình<br>- Đảm bảo giao diện người dùng hoàn thiện <br> - Sửa video | - Hoàn thiện tài liệu mô tả kiến trúc phần mềm <br>- Kiểm tra lần cuối các tính năng gameplay <br> - Sửa video| 100% |
-
-
-- **Git Commit:**
-  - Lịch sử commit của từng thành viên được ghi nhận đầy đủ trên GitHub. Các commit được thực hiện đều đặn, tránh tình trạng dồn vào phút cuối.
+Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc file mã nguồn từ hai ảnh chụp, dưới đây là bản mô tả chi tiết **Cách thức đánh giá** theo từng tiêu chí của đồ án, giúp giáo viên dễ theo dõi:
 
 ---
 
-### **UI/UX (20%)**
-- **Cài đặt lại chức năng theo hướng đối tượng (3%):**
-  - Các chức năng của game được tái cấu trúc theo hướng đối tượng, sử dụng các lớp như `Game`, `Tetromino`, `Field`, và các trạng thái `GameState`.
-- **Các chức năng thêm và cải tiến (14%):**
-  - **Cải tiến:** 
-    - Thêm trạng thái `MainMenuState`, `PlayingState`, và `GameOverState` để quản lý các giai đoạn của trò chơi.
-    - Tăng độ khó tự động khi người chơi đạt được số dòng xóa nhất định.
-    - Hiển thị điểm số, cấp độ, và số dòng đã xóa.
-  - **Chức năng mới:**
-    - Reset game khi kết thúc.
-    - Kiểm tra và xử lý khi đỉnh của lưới bị chiếm.
-- **Giao diện bố trí hợp lý (3%):**
-  - Giao diện được thiết kế trực quan, dễ sử dụng với các thành phần như khung nền (`frame`), bảng điểm (`score`), và lưới chơi (`field`).
+### 🧑‍🤝‍🧑 **1. Teamwork (15%)**
+
+**Mô tả đánh giá:**
+
+* **Phân công rõ ràng theo từng tuần**, thể hiện trong kế hoạch từ Tuần 1–5. Mỗi thành viên đảm nhận phần riêng biệt như:
+
+  * Khả Như: Xử lý `Field`, quản lý điểm & cấp độ.
+  * Tuyết Ngân: Thiết kế khối Tetris, giao diện UI, quản lý trạng thái trò chơi.
+  * Trà My: Vòng lặp chính `Game`, khối kế tiếp, cấu trúc tổng thể chương trình.
+
+* **Tiến độ được theo dõi đều đặn trên GitHub**:
+
+  * Có phân công người tạo repository (`Trà My`, Tuần 1).
+  * Commit chia đều, không dồn vào cuối.
+  * Có sử dụng file `README.md` do cả 3 thành viên viết ngay từ Tuần 1.
+
+* **Nhóm trưởng (Trà My)** có vai trò dẫn dắt, khởi tạo repo, gộp code, hỗ trợ kết hợp các thành phần và Doxygen tài liệu hóa kiến trúc.
 
 ---
 
-### **Kiến trúc phần mềm + Design Pattern (20%)**
-- **Kiến trúc phần mềm:**
-  - Dự án được thiết kế theo mô hình hướng đối tượng (OOP), đảm bảo tính đóng gói, kế thừa, và đa hình.
-  - Các lớp chính:
-    - `Game`: Quản lý vòng lặp chính và trạng thái của trò chơi.
-    - `Tetromino`: Đại diện cho các khối Tetris.
-    - `Field`: Quản lý lưới chơi và xử lý xóa dòng.
-    - `GameState`: Lớp cơ sở cho các trạng thái của trò chơi.
-- **Design Pattern:**
-  - **State Pattern:** Quản lý các trạng thái `MainMenuState`, `PlayingState`, và `GameOverState`.
-  - **Factory Pattern:** Sử dụng `TetrominoFactory` để tạo các khối Tetris ngẫu nhiên.
+### 🎨 **2. UI/UX (20%)**
+
+**Mô tả đánh giá:**
+
+* **Cài đặt lại chức năng mã nguồn mẫu theo hướng đối tượng (3%)**:
+
+  * `Field`, `Tetromino`, `Game` tách thành các lớp riêng, mỗi lớp có `.cpp` và `.h` rõ ràng.
+  * Áp dụng nguyên lý OOP với `ITetromino` là interface trừu tượng, và các lớp kế thừa như `STetromino`, `ZTetromino`,...
+
+* **Chức năng cải tiến (14%)**:
+
+  * Tính điểm combo (Khả Như – Tuần 5).
+  * Giao diện trạng thái gồm `MainMenuState`, `PlayingState`, `PausedState`, `GameOverState`.
+  * Hiển thị khối kế tiếp (`NextTetrominoPreview`) – do Trà My phụ trách.
+  * Cập nhật tốc độ theo cấp độ (level) – Tuần 5.
+
+* **Bố cục giao diện hợp lý (3%)**:
+
+  * Sử dụng các lớp giao diện riêng biệt để tách biệt logic với hiển thị.
+  * Có hỗ trợ hình ảnh, âm thanh, và hướng dẫn trước khi chơi (`InstructionsState`).
 
 ---
 
-### **Đảm bảo chất lượng (20%)**
-- **Kiểm thử:**
-  - Đã thực hiện kiểm thử các chức năng chính như di chuyển, xoay, và xóa dòng.
-  - Kiểm tra trạng thái game khi đạt điều kiện kết thúc.
-- **Coding Convention:**
-  - Mã nguồn tuân thủ các quy tắc đặt tên biến, hàm, và tổ chức file hợp lý.
-  - Các getter và setter được sử dụng để đảm bảo tính đóng gói.
+### 🏗️ **3. Kiến trúc phần mềm & Design Pattern (20%)**
+
+**Mô tả đánh giá:**
+
+* Thiết kế theo **Layered Architecture**:
+
+  * Logic xử lý (`Field`, `Tetromino`, `Game`, `ScoreManager`,...) tách khỏi giao diện (`State`).
+  * Mỗi lớp phụ trách một nhiệm vụ rõ ràng, đúng nguyên tắc **SRP** (Single Responsibility).
+
+* **Design Pattern áp dụng**:
+
+  * `Factory Pattern`: `TetrominoFactory` tạo khối từ tên loại (do Tuyết Ngân triển khai – Tuần 5).
+  * `State Pattern`: `GameState`, `MainMenuState`, `PlayingState`, `PausedState`, `GameOverState` – rõ ràng trong source.
+  * Interface `ITetromino` đóng vai trò chuẩn hóa đa hình các khối.
+
+* Áp dụng **nguyên lý SOLID** toàn bộ trong cách chia class, interface, dependency injection.
 
 ---
 
-### **Tài liệu mô tả kiến trúc phần mềm và các module (10%)**
-- **Tài liệu kiến trúc:**
-  - Mô tả chi tiết các lớp, chức năng, và cách chúng tương tác với nhau.
-  - Sơ đồ UML minh họa kiến trúc tổng thể của dự án.
-- **Các module chính:**
-  - `Game`: Quản lý vòng lặp chính và trạng thái.
-  - `Tetromino`: Xử lý logic của các khối Tetris.
-  - `Field`: Quản lý lưới chơi và xử lý xóa dòng.
-  - `GameState`: Quản lý các trạng thái khác nhau của trò chơi.
+### ✅ **4. Đảm bảo chất lượng (20%)**
+
+**Mô tả đánh giá:**
+
+* **Coding convention chuẩn C++**:
+
+  * Tên file, hàm, class tuân thủ quy tắc PascalCase / camelCase nhất quán.
+  * Các file `.h` và `.cpp` chia rõ.
+* **Tài liệu hóa bằng Doxygen**:
+
+  * Từ tuần 3, toàn bộ class như `Game`, `Field`, `Tetromino`,... đều có mô tả rõ ràng qua Doxygen.
+* **Đảm bảo không lỗi logic, chia lớp gọn gàng**, dễ mở rộng và bảo trì.
 
 ---
 
-### **Các chủ đề nâng cao (15%)**
-- **Tăng độ khó tự động:**
-  - Tốc độ rơi của khối Tetris tăng dần khi người chơi đạt được số dòng xóa nhất định.
-- **Quản lý trạng thái:**
-  - Sử dụng State Pattern để chuyển đổi linh hoạt giữa các trạng thái `MainMenu`, `Playing`, và `GameOver`.
-- **Xử lý va chạm và kiểm tra hợp lệ:**
-  - Các khối Tetris được kiểm tra tính hợp lệ trước khi di chuyển hoặc xoay.
+### 📄 **5. Tài liệu mô tả kiến trúc phần mềm và các module (10%)**
+
+**Mô tả đánh giá:**
+
+* Đã viết tài liệu chi tiết mô tả:
+
+  * Cấu trúc lớp.
+  * Mối quan hệ giữa các thành phần (`Game` chứa `Field`, `Tetromino`; các `State` hoạt động qua `GameState`).
+  * Flow chương trình: từ `MainMenu` → `Playing` → `Paused` hoặc `GameOver`.
+
+* Có sơ đồ class (nếu cần, nhóm có thể trích từ Doxygen), giải thích vai trò từng module: `LevelManager`, `ScoreManager`,...
 
 ---
+
+### 🚀 **6. Các chủ đề nâng cao (15%)**
+
+**Mô tả đánh giá:**
+
+* **Combo điểm + cấp độ tự tăng** (Khả Như – Tuần 5): Cơ chế phức tạp, tính theo nhiều dòng liên tục.
+* **Hiển thị khối kế tiếp (1–3 khối)**: Giúp người chơi có chiến thuật – Trà My phụ trách.
+* **Hướng dẫn chơi riêng biệt (InstructionsState)** – tự mở rộng từ mẫu.
+* **Hình ảnh động**, **chuyển trạng thái mềm mại** – Tuyết Ngân triển khai.
+
 
 ## 🔹 Video demo
 
