@@ -8,52 +8,63 @@ class Game;
 
 /**
  * @class MainMenuState
- * @brief Lớp đại diện cho trạng thái menu chính của trò chơi.
+ * @brief Trạng thái menu của trò chơi.
  * 
- * Lớp này xử lý tất cả các thao tác liên quan đến giao diện menu chính, bao gồm xử lý đầu vào và vẽ màn hình menu.
+ * Lớp này kế thừa từ GameState (interface) và chịu trách nhiệm hiển thị giao diện menu chính,
+ * xử lý các lựa chọn menu như: start, instruction, exit.
  */
 class MainMenuState : public GameState {
 private:
-    Game& _game; /**< Tham chiếu đến đối tượng game */
-    sf::Texture _menuBackgroundTexture; /**< Texture cho hình ảnh menu nền */
-    sf::Sprite _menuBackgroundSprite;   /**< Sprite để hiển thị hình ảnh nền */
-    sf::Font _fontTitle; /**< Phông chữ cho tiêu đề */
-    sf::Font _fontWelcome; /**< Phông chữ cho phần chào mừng */
-    sf::Text _welcome; /**< Tiêu đề chào mừng trên menu */
-    sf::Font _font; /**< Phông chữ cho các mục menu */
-    sf::Text _title; /**< Tiêu đề menu */
-    sf::Texture _buttonTexture; /**< Texture cho hình ảnh các nút bấm */
-    sf::Sprite _buttonSprites[3]; /**< Mảng các sprite cho các nút */
-    sf::Text _menuOptions[3]; /**< Mảng các mục menu (Start Game, Instructions, Exit) */
-    int _selectedIndex; /**< Chỉ số của mục menu đang được chọn */
+    Game& _game;  ///< Tham chiếu đến đối tượng Game để truy cập và thay đổi trạng thái.
+
+    sf::Texture _menuBackgroundTexture; ///< Texture cho hình nền của menu.
+    sf::Sprite _menuBackgroundSprite;   ///< Sprite hiển thị hình nền menu.
+
+    sf::Font _fontTitle;    ///< Phông chữ dùng cho tiêu đề menu.
+    sf::Font _fontWelcome;  ///< Phông chữ dùng cho dòng chữ chào mừng.
+    sf::Text _welcome;      ///< Văn bản chào mừng người chơi.
+
+    sf::Font _font;         ///< Phông chữ dùng cho các mục menu.
+    sf::Text _title;        ///< Tiêu đề chính của menu.
+
+    sf::Texture _buttonTexture;         ///< Texture dùng cho các nút menu.
+    sf::Sprite _buttonSprites[3];       ///< Mảng các nút (Start, Instructions, Exit).
+    sf::Text _menuOptions[3];           ///< Mảng các văn bản cho mỗi lựa chọn menu.
+
+    int _selectedIndex;     ///< Chỉ số hiện tại của lựa chọn được chọn trong 3 mục menu.
 
 public:
     /**
-     * @brief Constructor cho lớp MainMenuState.
+     * @brief Constructor.
      * 
-     * Khởi tạo trạng thái menu chính của trò chơi.
-     * 
-     * @param game Tham chiếu đến đối tượng game.
+     * Tải các tài nguyên (ảnh, font), khởi tạo các thành phần của menu và chuẩn bị sẵn sàng để hiển thị.
+     *  
+     * @param game Tham chiếu đến đối tượng Game chính.
      */
     MainMenuState(Game& game);
 
     /**
-     * @brief Xử lý đầu vào của người chơi trong trạng thái menu chính.
-     * 
-     * Hàm này sẽ nhận và xử lý các sự kiện đầu vào từ người chơi như phím bấm.
-     * 
-     * @param game Tham chiếu đến đối tượng game.
-     */
+    * @brief Xử lý đầu vào của người dùng (bàn phím, chuột).
+    * 
+    * Nháy đúp chuột vào nút X ở góc trên bên trái để đóng cửa sổ.
+    * Di chuyển giữa các mục menu bằng keyboard (mũi tên lên/xuống) và
+    * thực hiện chọn một mục bằng cách nhấn Enter.
+    * Chọn "Start": chuyển sang trạng thái chơi game.  
+    * Chọn "Instruction": mở cửa sổ hướng dẫn.  
+    * Chọn "Exit": thoát trò chơi.
+    * 
+    * @param game Tham chiếu đến đối tượng Game chính.
+    */
     void handleInput(Game& game) override;
 
     /**
-     * @brief Vẽ giao diện menu chính lên màn hình.
+     * @brief Vẽ giao diện menu chính lên cửa sổ game.
      * 
-     * Hàm này vẽ tất cả các yếu tố của menu chính, bao gồm nền, tiêu đề và các nút.
+     * Bao gồm hình nền, tiêu đề, lời chào mừng, các nút và mục menu.
      * 
-     * @param game Tham chiếu đến đối tượng game.
+     * @param game Tham chiếu đến đối tượng Game chính.
      */
     void draw(Game& game) override;
 };
 
-#endif
+#endif // MAINMENUSTATE_H
