@@ -13,6 +13,7 @@ public:
     int getLevel() const;
     int getLinesCleared() const;
     void reset();
+    void resetLinesCleared(); // Chỉ reset số dòng đã xóa
 };
 
 #endif
