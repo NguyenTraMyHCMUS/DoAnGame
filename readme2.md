@@ -195,7 +195,7 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 
 ## 🔹 Video demo
 
-- Link YouTube: [https://youtu.be/your-demo-link](https://youtu.be/your-demo-link)
+- Link: https://drive.google.com/file/d/1MGjBpu_OtFdUxOffmD8MYMuHyF-MKkaN/view?usp=sharing
 
 ---
 
