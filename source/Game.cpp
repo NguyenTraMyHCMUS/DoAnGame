@@ -165,13 +165,18 @@ void Game::update() {
            int cleared = field.clearLines(); // Xóa các dòng và trả về số dòng đã xóa
 
             if (cleared > 0) {
-                int points = cleared * 100 * cleared;
+                int points = cleared * 10 * cleared; // Tính điểm theo số dòng xóa
                 scoreManager.addScore(points);
                 levelManager.addClearedLines(cleared);
-    
-                if (scoreManager.getScore() >= levelManager.getLevel() * 500) {
+            
+                if (scoreManager.getScore() >= levelManager.getLevel() * 100) {
                     levelManager.increaseLevel();
+            
+                    // Giảm delay khi cấp độ tăng, nhưng không để delay quá nhỏ
+                    delay = std::max(0.1f, delay - 0.02f); // Giảm 0.02 giây mỗi cấp, tối thiểu là 0.1 giây
                 }
+            
+                levelManager.resetLinesCleared();
             }
     
             tetromino = nextPreview.getNext();  // lấy khối tiếp theo làm hiện tại
@@ -201,13 +206,12 @@ void Game::run() {
 }
 
 void Game::resetGame() {
-    score = 0;
-    level = 1;
-    linesCleared = 0;
-    delay = 0.3;
+    scoreManager.reset();          
+    levelManager.reset();          
+    delay = 0.3;                   
     timer = 0;
     dx = 0;
     rotate = false;
     tetromino = TetrominoFactory::createRandomTetromino();
-    field.clear();
+    field.clear();                
 }
