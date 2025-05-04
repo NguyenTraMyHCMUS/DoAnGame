@@ -50,7 +50,7 @@ public:
      *
      * @details
      * Hỗ trợ người dùng tương tác với "Instructions":
-     * - Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
+     * - Nháy chuột trái vào nút X ở góc trên bên phải để đóng cửa sổ.
      * - Nhấn phím Enter để quay lại menu chính.
      *
      * @param game Tham chiếu đến đối tượng Game chính.
