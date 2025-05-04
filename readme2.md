@@ -43,15 +43,15 @@
 ### Thành viên 1: Khả Như
 - Chuyển đổi `Field` thành một lớp độc lập để quản lý lưới chơi  
 - Viết các phương thức cơ bản như: `isOccupied`, `isInside`, `setCell`, `clearLines`, ...  
-- Sử dụng **Doxygen** để mô tả class (áp dụng từ tuần này đến cuối đồ án)  
+- Có chú thích rõ thuộc tính và phương thức để tiện theo dõi và tạo doxyfile
 ### Thành viên 2: Tuyết Ngân
 - Chuyển đổi `Tetromino` thành một lớp độc lập để quản lý khối Tetris  
 - Viết các phương thức: `initializeShape`, `move`, `rotate`, `fall`, ...  
-- Sử dụng **Doxygen** để mô tả class (áp dụng từ tuần này đến cuối đồ án)  
+- Có chú thích rõ thuộc tính và phương thức để tiện theo dõi và tạo doxyfile
 ### Thành viên 3: Trà My
 - Tạo lớp `Game` để quản lý vòng lặp chính  
 - Kết hợp `Field` và `Tetromino` vào vòng lặp trò chơi  
-- Sử dụng **Doxygen** để mô tả class (áp dụng từ tuần này đến cuối đồ án)  
+- Có chú thích rõ thuộc tính và phương thức để tiện theo dõi và tạo doxyfile 
 ---
 ## Tuần 4+5
 ### Thành viên 1: Khả Như
