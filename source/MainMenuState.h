@@ -10,8 +10,8 @@ class Game;
  * @class MainMenuState
  * @brief Trạng thái menu của trò chơi.
  * 
- * Lớp này kế thừa từ GameState (interface) và chịu trách nhiệm hiển thị giao diện menu chính,
- * xử lý các lựa chọn menu như: start, instruction, exit.
+ * Lớp này kế thừa từ GameState (interface) và chịu trách nhiệm hiển thị giao diện menu chính.
+ * Xử lý các lựa chọn menu như: Start (bắt đầu trò chơi), Instructions (hướng dẫn), và Exit (thoát).
  */
 class MainMenuState : public GameState {
 private:
@@ -44,14 +44,15 @@ public:
     MainMenuState(Game& game);
 
     /**
-    * @brief Xử lý đầu vào của người dùng (bàn phím, chuột).
+    * @brief Xử lý đầu vào từ người dùng (bàn phím, chuột).
     * 
-    * Nháy đúp chuột vào nút X ở góc trên bên trái để đóng cửa sổ.
-    * Di chuyển giữa các mục menu bằng keyboard (mũi tên lên/xuống) và
+    * Hỗ trợ người dùng tương tác với menu chính:
+    * Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
+    * Di chuyển giữa các mục menu bằng keyboard (mũi tên lên/xuống),
     * thực hiện chọn một mục bằng cách nhấn Enter.
-    * Chọn "Start": chuyển sang trạng thái chơi game.  
-    * Chọn "Instruction": mở cửa sổ hướng dẫn.  
-    * Chọn "Exit": thoát trò chơi.
+    * Chọn "Start": để chuyển sang trạng thái chơi game.  
+    * Chọn "Instruction": để mở cửa sổ hướng dẫn.  
+    * Chọn "Exit": để thoát trò chơi.
     * 
     * @param game Tham chiếu đến đối tượng Game chính.
     */
