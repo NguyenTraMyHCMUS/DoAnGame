@@ -55,19 +55,23 @@
 ---
 ## Tuần 4+5
 ### Thành viên 1: Khả Như
-- Tăng tốc độ theo cấp độ (mỗi 100 điểm/1 dòng; đủ 5 dòng tăng level)  
-- Hiển thị điểm số và cấp độ ở góc trên bên phải lưới (cập nhật sau mỗi lần thay đổi)
+- Tăng tốc độ theo cấp độ (mỗi 10 điểm/1 dòng; đủ 10 dòng tăng level)  
+- Hiển thị điểm số và cấp độ ở góc trên bên phải lưới (cập nhật sau mỗi lần thay đổi) trong trạng thái Playing
 - Thêm combo điểm:
   - Xóa liên tiếp 2 dòng: x2 điểm
   - 3 dòng: x3 điểm, ...
+- Tải doxygen và tạo doxyfile 
+- Quay video demo
 ### Thành viên 2: Tuyết Ngân
 - Áp dụng **Factory Pattern** để tạo các khối Tetris từ các class con  
-- Xây dựng giao diện cho 3 trạng thái: `MainMenu`, `Playing`, `GameOver`  
-- Bao gồm hình ảnh, âm thanh, và các lựa chọn  
-- Thêm hướng dẫn trước khi vào `MainMenu`
-- Áp dụng **State Pattern** để quản lý trạng thái trò chơi: `MainMenu`, `Playing`, `Paused`, `GameOver`   
+- Xây dựng giao diện cho 3 trạng thái: `MainMenu`, `Playing`, `GameOver`
+- Thêm hướng dẫn trò chơi vào `MainMenu`
+- Áp dụng **State Pattern** để quản lý trạng thái trò chơi: `MainMenu`, `Playing`, `Paused`, `GameOver`
+- Tải doxygen và tạo doxyfile 
 ### Thành viên 3: Trà My
-- Hiển thị các khối kế tiếp (1–3 khối) ở góc giữa bên phải  
+- Hiển thị các khối kế tiếp (1–3 khối) ở góc giữa bên phải trong trạng thái Playing
+- Tải doxygen và tạo doxyfile 
+- Viết file readme.md
 ---
 ## 🔹 Tỉ lệ đóng góp vào dự án
 | Thành viên       | Tỉ lệ đóng góp |
