@@ -31,7 +31,7 @@ InstructionsState::InstructionsState(Game& game) : _game(game) {
 
     // Thiết lập nội dung hướng dẫn
     _instructions.setFont(_font);
-    _instructions.setString(L"1. Xóa 1 dòng được 100 điểm\n2. Xóa 5 dòng tăng 1 level\n3. Xóa x dòng tăng 100x điểm\n4. Level cao tốc độ rơi nhanh\n5. Esc để tạm dừng khi chơi");
+    _instructions.setString(L"1. Xóa 1 dòng được 10 điểm\n2. Tăng 100 điểm thì tăng 1 level\n3. Xóa x dòng tăng 10*x*x điểm\n4. Level cao tốc độ rơi nhanh\n5. Esc để tạm dừng khi chơi");
     _instructions.setCharacterSize(16);
     _instructions.setFillColor(sf::Color(221, 160, 221));
     _instructions.setPosition(50, 150);
