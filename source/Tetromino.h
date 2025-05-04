@@ -1,3 +1,11 @@
+/**
+ * @file Tetromino.h
+ * @brief Định nghĩa lớp trừu tượng Tetromino cho các khối Tetris trong trò chơi.
+ * 
+ * Lớp này định nghĩa các thuộc tính và phương thức cần thiết để quản lý các khối Tetris,
+ * bao gồm việc khởi tạo hình dạng, xoay, di chuyển, vẽ, kiểm tra tính hợp lệ của khối trong lưới và lưu trữ trạng thái của khối.
+ */
+
 #ifndef TETROMINO_H
 #define TETROMINO_H
 
@@ -26,9 +34,10 @@ struct Point {
 
 /**
  * @class Tetromino
- * @brief Lớp cơ sở đại diện cho khối Tetris trong trò chơi.
+ * @brief Lớp cơ sở trừu tượng đại diện cho khối Tetris trong trò chơi
  * 
- * Lớp này đại diện cho các khối Tetris trong trò chơi, bao gồm các thao tác như xoay, di chuyển, vẽ và kiểm tra tính hợp lệ của khối.
+ * Lớp này quản lý các thao tác như: xoay, di chuyển, vẽ, kiểm tra tính hợp lệ và lưu trữ trạng thái của khối.
+ * 
  */
 class Tetromino {
 protected:
