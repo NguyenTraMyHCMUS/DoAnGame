@@ -37,7 +37,8 @@ public:
     /**
      * @brief Constructor.
      * 
-     * Tải các tài nguyên (ảnh, font), khởi tạo các thành phần của menu và chuẩn bị sẵn sàng để hiển thị.
+     * Khởi tạo trạng thái "MainMenu", bao gồm việc tải tài nguyên, khởi tạo các thành phần của menu,
+     * thiết lập hình ảnh nền và các văn bản liên quan.
      *  
      * @param game Tham chiếu đến đối tượng Game chính.
      */
