@@ -1,3 +1,11 @@
+/** 
+* @file MainMenuState.h
+* @brief Định nghĩa lớp MainMenuState cho trạng thái menu chính của trò chơi.
+* 
+* Lớp này kế thừa từ GameState, cung cấp các phương thức và thuộc tính cần thiết để quản lý giao diện menu,
+* bao gồm việc xử lý đầu vào từ người dùng và vẽ các thành phần giao diện lên cửa sổ game.
+*/
+
 #ifndef MAINMENUSTATE_H
 #define MAINMENUSTATE_H
 
@@ -37,27 +45,29 @@ public:
     /**
      * @brief Constructor.
      * 
-     * Khởi tạo trạng thái "MainMenu", bao gồm việc tải tài nguyên, khởi tạo các thành phần của menu,
-     * thiết lập hình ảnh nền và các văn bản liên quan.
+     * Khởi tạo trạng thái "MainMenu" bao gồm: tải các tài nguyên (hình ảnh, phông chữ), khởi tạo và thiết lập các thành phần của menu,
+     * thiết lập hình ảnh nền, khung nút và các văn bản liên quan (màu sắc, kích thước, vị trí).
      *  
      * @param game Tham chiếu đến đối tượng Game chính.
      */
     MainMenuState(Game& game);
 
-    /**
-    * @brief Xử lý đầu vào từ người dùng (bàn phím, chuột).
-    * 
-    * Hỗ trợ người dùng tương tác với menu chính:
-    * Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
-    * Di chuyển giữa các mục menu bằng keyboard (mũi tên lên/xuống),
-    * thực hiện chọn một mục bằng cách nhấn Enter.
-    * Chọn "Start": để chuyển sang trạng thái chơi game.  
-    * Chọn "Instruction": để mở cửa sổ hướng dẫn.  
-    * Chọn "Exit": để thoát trò chơi.
-    * 
-    * @param game Tham chiếu đến đối tượng Game chính.
-    */
+   /**
+     * @brief Xử lý đầu vào từ người dùng (bàn phím, chuột).
+     * 
+     * @details
+     * Hỗ trợ người dùng tương tác với menu chính:
+     * - Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
+     * - Di chuyển giữa các mục menu bằng keyboard (mũi tên lên/xuống),
+     * thực hiện chọn một mục bằng cách nhấn Enter.
+     *   + Chọn "Start": để chuyển sang trạng thái chơi game.
+     *   + Chọn "Instruction": để mở cửa sổ hướng dẫn.
+     *   + Chọn "Exit": để thoát trò chơi.
+     * 
+     * @param game Tham chiếu đến đối tượng Game chính.
+     */
     void handleInput(Game& game) override;
+
 
     /**
      * @brief Vẽ giao diện menu chính lên cửa sổ game.
