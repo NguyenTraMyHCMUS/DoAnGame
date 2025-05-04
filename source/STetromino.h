@@ -1,3 +1,11 @@
+/**
+ * @file STetromino.h
+ * @brief Định nghĩa lớp STetromino cho khối S trong trò chơi Tetris.
+ * 
+ * Lớp này kế thừa từ lớp Tetromino và cài đặt các phương thức đặc trưng cho khối S,
+ * bao gồm việc khởi tạo hình dạng, xoay khối và tạo bản sao của khối.
+ */
+
 #ifndef STETROMINO_H
 #define STETROMINO_H
 
