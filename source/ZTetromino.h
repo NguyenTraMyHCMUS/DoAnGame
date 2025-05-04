@@ -1,3 +1,11 @@
+/**
+ * @file ZTetromino.h
+ * @brief Định nghĩa lớp ZTetromino cho khối Z trong trò chơi Tetris.
+ * 
+ * Lớp này kế thừa từ lớp Tetromino và cài đặt các phương thức đặc trưng cho khối Z,
+ * bao gồm việc khởi tạo hình dạng, xoay khối và tạo bản sao của khối.
+ */
+
 #ifndef ZTETROMINO_H
 #define ZTETROMINO_H
 
