@@ -57,7 +57,7 @@ public:
      * 
      * @details
      * Hỗ trợ người dùng tương tác với menu chính:
-     * - Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
+     * - Nháy chuột trái vào nút X ở góc trên bên phải để đóng cửa sổ.
      * - Di chuyển giữa các mục menu bằng keyboard (mũi tên lên/xuống),
      * thực hiện chọn một mục bằng cách nhấn Enter.
      *   + Chọn "Start": để chuyển sang trạng thái chơi game.
