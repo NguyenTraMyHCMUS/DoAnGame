@@ -1,50 +1,60 @@
 #ifndef OTETROMINO_H
 #define OTETROMINO_H
 
-#include "Tetromino.h"
+/**
+ * @file OTetromino.h
+ * @brief Định nghĩa lớp OTetromino đại diện cho khối hình chữ O trong trò chơi Tetris.
+ * 
+ * Lớp này kế thừa từ lớp Tetromino và cung cấp các phương thức đặc trưng cho khối O.
+ * Khối O có cấu trúc cố định (một hình vuông 2x2) và không thay đổi khi xoay.
+ */
+
+ #include "Tetromino.h"
 
 /**
  * @class OTetromino
- * @brief Lớp đại diện cho khối O trong trò chơi Tetris.
+ * @brief Đại diện cho khối Tetromino hình chữ O trong trò chơi Tetris.
  * 
- * Khối O là một trong các hình dạng Tetromino có cấu trúc cố định, không xoay được.
+ * Khối O là một trong bảy hình dạng Tetromino cơ bản. Nó có hình dạng cố định là 
+ * một hình vuông 2x2 và không thể xoay. Lớp này định nghĩa cách khối O được khởi tạo 
+ * và sao chép.
  */
 class OTetromino : public Tetromino {
 public:
     /**
-     * @brief Constructor cho khối O.
+     * @brief Constructor khởi tạo khối O với hình dạng ban đầu.
      * 
-     * Khởi tạo khối O với hình dạng ban đầu.
+     * Thiết lập trạng thái ban đầu của khối O, bao gồm vị trí và hình dạng mặc định.
      */
     OTetromino();
 
     /**
-     * @brief Destructor cho khối O.
+     * @brief Destructor ảo mặc định để giải phóng tài nguyên.
      * 
-     * Giải phóng bộ nhớ khi khối O bị hủy.
+     * Đảm bảo việc giải phóng bộ nhớ được thực hiện đúng cách khi đối tượng bị hủy.
      */
     ~OTetromino() override = default;
 
     /**
-     * @brief Khởi tạo hình dạng của khối O.
+     * @brief Khởi tạo hình dạng mặc định của khối O.
      * 
-     * Phương thức này thiết lập hình dạng ban đầu của khối O (một ô vuông 2x2).
+     * Thiết lập ma trận biểu diễn khối O ở trạng thái ban đầu (một hình vuông 2x2).
      */
     void initializeShape() override;
 
     /**
      * @brief Xoay khối O.
      * 
-     * Phương thức này không làm gì vì khối O không thay đổi khi xoay.
+     * Phương thức này không thực hiện bất kỳ thay đổi nào vì khối O có hình dạng cố định 
+     * và không thay đổi khi xoay.
      */
     void rotate() override;
 
     /**
      * @brief Tạo một bản sao của khối O.
      * 
-     * Phương thức này tạo một bản sao mới của khối O bằng cách sao chép dữ liệu hiện tại.
-     * 
-     * @return Một con trỏ duy nhất đến bản sao của khối O.
+     * Sử dụng Prototype Pattern để tạo một đối tượng mới giống hệt khối O hiện tại.
+     * @return Con trỏ thông minh chứa đối tượng bản sao của khối O.
      */
     std::unique_ptr<Tetromino> clone() const override;
 };
