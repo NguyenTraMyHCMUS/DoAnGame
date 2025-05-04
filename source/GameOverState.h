@@ -51,9 +51,9 @@ public:
      * 
      * @details
      * Hỗ trợ người dùng tương tác với menu "Game Over": 
-     * - Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
-     * - Di chuyển giữa các mục menu bằng keyboard (mũi tên lên/xuống),
-     * thực hiện chọn một mục bằng cách nhấn Enter.
+     * - Nháy chuột trái vào nút X ở góc trên bên phải để đóng cửa sổ.
+     * - Di chuyển giữa các mục menu bằng keyboard (mũi tên lên/xuống).
+     * Thực hiện chọn một mục bằng cách nhấn Enter.
      *   + Chọn "Retry": để chuyển sang trạng thái chơi game.
      *   + Chọn "Exit": để thoát trò chơi.
      * 
