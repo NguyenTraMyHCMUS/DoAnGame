@@ -31,7 +31,8 @@ public:
     /**
      * @brief Constructor.
      * 
-     * Khởi tạo trạng thái "Game Over", tải tài nguyên, và thiết lập giao diện ban đầu.
+     * Khởi tạo trạng thái "GameOver", bao gồm việc tải tài nguyên,
+     * thiết lập hình ảnh nền và các văn bản liên quan.
      * 
      * @param game Tham chiếu đến đối tượng Game chính.
      */
@@ -54,7 +55,7 @@ public:
     /**
      * @brief Vẽ màn hình "Game Over" và menu lựa chọn lên cửa sổ.
      * 
-     * Bao gồm hình ảnh, tiêu đề, và các mục menu.
+     * Bao gồm nền, tiêu đề, và các mục menu.
      * 
      * @param game Tham chiếu đến đối tượng Game chính.
      */
