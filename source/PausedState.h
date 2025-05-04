@@ -1,9 +1,9 @@
 /**
  * @file PausedState.h
- * @brief Định nghĩa trạng thái tạm dừng của trò chơi.
+ * @brief Định nghĩa lớp PausedState cho trạng thái tạm dừng của trò chơi.
  * 
- * Lớp này kế thừa từ GameState và chịu trách nhiệm hiển thị giao diện tạm dừng,
- * xử lý các lựa chọn menu như Tiếp tục (Continue) hoặc Thoát (Exit).
+ * Lớp này kế thừa từ GameState, cung cấp các phương thức và thuộc tính cần thiết để quản lý giao diện tạm dừng,
+ * bao gồm việc xử lý đầu vào từ người dùng và vẽ các thành phần giao diện lên cửa sổ game.
  */
 
  #ifndef PAUSEDSTATE_H
@@ -38,8 +38,8 @@
      /**
       * @brief Constructor.
       * 
-      * Khởi tạo trạng thái tạm dừng, bao gồm việc tải tài nguyên, thiết lập hình ảnh
-      * và các mục menu.
+      * Khởi tạo trạng thái "Paused" bao gồm: tải các tài nguyên (hình ảnh, phông chữ), khởi tạo và thiết lập các thành phần của menu,
+      * thiết lập hình ảnh nền và các văn bản liên quan (màu sắc, kích thước, vị trí).
       * 
       * @param game Tham chiếu đến đối tượng Game chính.
       */
@@ -48,12 +48,13 @@
      /**
       * @brief Xử lý đầu vào từ người dùng.
       * 
-      * Hỗ trợ người dùng tương tác với menu tạm dừng:
-      * Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
-      * Di chuyển giữa các mục menu bằng phím mũi tên trái/phải.
+      * @details
+      * Hỗ trợ người dùng tương tác với menu "Paused":
+      * - Nháy chuột trái vào nút X ở góc trên bên phải để đóng cửa sổ.
+      * - Di chuyển giữa các mục menu bằng phím mũi tên trái/phải.
       * Chọn một mục bằng cách nhấn Enter.
-      * Chọn "Continue" để quay lại trạng thái chơi game.
-      * Chọn "Exit" để thoát trò chơi.
+      *   + Chọn "Continue" để quay lại trạng thái chơi game.
+      *   + Chọn "Exit" để thoát trò chơi.
       * 
       * @param game Tham chiếu đến đối tượng Game chính.
       */
