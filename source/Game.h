@@ -1,6 +1,11 @@
 #ifndef GAME_H
 #define GAME_H
 
+/// \file Game.h
+/// \brief Định nghĩa lớp Game điều khiển logic chính của trò chơi Tetris.
+/// \author [Tên nhóm hoặc sinh viên]
+/// \date [Ngày tạo]
+
 #include "Field.h"
 #include "TetrominoFactory.h"
 #include "GameState.h"
@@ -10,35 +15,47 @@
 
 using namespace sf;
 
+/// \class Game
+/// \brief Lớp chính điều khiển trò chơi Tetris: xử lý vòng lặp game, vẽ, quản lý trạng thái.
+/// 
+/// Chứa các đối tượng chính như Field, Tetromino, GameState, ScoreManager, LevelManager.
+/// Xử lý đầu vào, cập nhật trạng thái và vẽ màn hình.
 class Game {
 private:
-    RenderWindow window;
-    Texture t1, t2, t3;
-    Sprite s, background, frame;
-    Field field;
-    Clock clock;
-    float timer = 0;
-    float delay = 0.3;
-    int dx = 0;
-    bool rotate = false;
-    int score = 0; // Biến lưu điểm số của trò chơi
-    int level = 1; // Cấp độ hiện tại
-    int linesCleared = 0; // Số dòng đã xóa
-    
-    std::unique_ptr<Tetromino> tetromino; // Sử dụng con trỏ thông minh để quản lý Tetromino
-    std::unique_ptr<GameState> currentState; // Trạng thái hiện tại của trò chơi
+    RenderWindow window;           ///< Cửa sổ game
+    Texture t1, t2, t3;            ///< Các texture cho sprite
+    Sprite s, background, frame;   ///< Các sprite chính
+    Field field;                   ///< Lưới trò chơi
+    Clock clock;                   ///< Đồng hồ thời gian
+    float timer = 0;               ///< Bộ đếm thời gian cập nhật
+    float delay = 0.3;             ///< Thời gian trễ giữa các bước rơi
+    int dx = 0;                    ///< Độ dịch ngang của khối
+    bool rotate = false;          ///< Cờ xoay khối
+    int score = 0;                ///< Điểm số hiện tại
+    int level = 1;                ///< Cấp độ hiện tại
+    int linesCleared = 0;         ///< Số dòng đã xóa
 
-    NextTetrominoPreview nextPreview; // Đối tượng hiển thị khối tiếp theo
+    std::unique_ptr<Tetromino> tetromino; ///< Con trỏ thông minh quản lý khối hiện tại
+    std::unique_ptr<GameState> currentState; ///< Trạng thái trò chơi hiện tại
 
-    ScoreManager scoreManager;
-    LevelManager levelManager;
+    NextTetrominoPreview nextPreview; ///< Hiển thị khối tiếp theo
+    ScoreManager scoreManager;        ///< Quản lý điểm số
+    LevelManager levelManager;        ///< Quản lý cấp độ
 
 public:
+    /// \brief Constructor mặc định
     Game();
+
+    /// \brief Cập nhật logic game theo thời gian
     void update();
+
+    /// \brief Chạy vòng lặp chính của trò chơi
     void run();
 
+    /// \brief Trả về texture t1
     const Texture& getT1() const;
+
+    /// \brief Gán texture t1
     void setT1(const Texture& texture);
 
     const Texture& getT2() const;
@@ -47,7 +64,10 @@ public:
     const Texture& getT3() const;
     void setT3(const Texture& texture);
 
-    Sprite& getSprite() ; // chỗ này không có cost 
+    /// \brief Trả về sprite s
+    Sprite& getSprite(); 
+
+    /// \brief Gán sprite s
     void setSprite(const Sprite& sprite);
 
     const Sprite& getBackground() const;
@@ -56,23 +76,43 @@ public:
     const Sprite& getFrame() const;
     void setFrame(const Sprite& sprite);
 
+    /// \brief Thiết lập độ trễ rơi khối
     void setDelay(float value); 
+
+    /// \brief Lấy độ trễ rơi khối
     float getDelay() const;  
 
-    void setDx(int dx); // Setter cho dx
-    void setRotate(bool rotate); // Setter cho rotate
-    
-    NextTetrominoPreview& getNextTetrominoPreview(); // Getter cho hiển thị khối tiếp theo
-    LevelManager& getLevelManager(); // Getter cho level manager
-    ScoreManager& getScoreManager(); // Getter cho score manager
+    /// \brief Thiết lập độ dịch ngang dx
+    void setDx(int dx);
 
+    /// \brief Thiết lập cờ xoay khối
+    void setRotate(bool rotate);
+
+    /// \brief Truy cập đối tượng hiển thị khối tiếp theo
+    NextTetrominoPreview& getNextTetrominoPreview();
+
+    /// \brief Truy cập đối tượng quản lý cấp độ
+    LevelManager& getLevelManager();
+
+    /// \brief Truy cập đối tượng quản lý điểm số
+    ScoreManager& getScoreManager();
+
+    /// \brief Trả về cửa sổ game
     RenderWindow& getWindow();
 
-    Field& getField(); // Trả về lưới hiện tại
-    std::unique_ptr<Tetromino>& getTetromino(); // Getter cho tetromino
-    int getLevel() const;                      // Getter cho level
-    void setState(std::unique_ptr<GameState> newState); // Thay đổi trạng thái trò chơi
-   
+    /// \brief Truy cập lưới hiện tại
+    Field& getField();
+
+    /// \brief Trả về con trỏ tới Tetromino hiện tại
+    std::unique_ptr<Tetromino>& getTetromino();
+
+    /// \brief Trả về cấp độ hiện tại
+    int getLevel() const;
+
+    /// \brief Đổi trạng thái trò chơi (State Pattern)
+    void setState(std::unique_ptr<GameState> newState);
+
+    /// \brief Reset trò chơi về trạng thái ban đầu
     void resetGame(); 
 };
 
