@@ -1,3 +1,11 @@
+/**
+ * @file TTetromino.h
+ * @brief Định nghĩa lớp TTetromino cho khối T trong trò chơi Tetris.
+ * 
+ * Lớp này kế thừa từ lớp Tetromino và cài đặt các phương thức đặc trưng cho khối T,
+ * bao gồm việc khởi tạo hình dạng, xoay khối và tạo bản sao của khối.
+ */
+
 #ifndef TTETROMINO_H
 #define TTETROMINO_H
 
