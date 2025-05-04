@@ -22,3 +22,7 @@ void LevelManager::reset() {
     currentLevel = 1;
     linesCleared = 0;
 }
+
+void LevelManager::resetLinesCleared() {
+    linesCleared = 0; // Chỉ đặt lại số dòng đã xóa
+}
