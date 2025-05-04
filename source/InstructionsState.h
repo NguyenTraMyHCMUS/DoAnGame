@@ -1,3 +1,11 @@
+/**
+ * @file InstructionsState.h
+ * @brief Định nghĩa lớp InstructionsState cho trạng thái "Instructions" của trò chơi.
+ * 
+ * Lớp này kế thừa từ GameState, cung cấp các phương thức và thuộc tính cần thiết để quản lý giao diện hướng dẫn,
+ * bao gồm việc xử lý đầu vào từ người dùng và vẽ các thành phần giao diện lên cửa sổ game.
+ */
+
 #ifndef INSTRUCTIONSSTATE_H
 #define INSTRUCTIONSSTATE_H
 
@@ -38,11 +46,12 @@ public:
     InstructionsState(Game& game);
 
     /**
-     * @brief Xử lý đầu vào của người dùng.
+     * @brief Xử lý đầu vào của người dùng (bàn phím, chuột).
      *
-     * Hỗ trợ người dùng tương tác "Instructions":
-     * Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
-     * Nhấn phím Enter để quay lại menu chính.
+     * @details
+     * Hỗ trợ người dùng tương tác với "Instructions":
+     * - Nháy chuột trái vào nút X ở góc trên bên trái để đóng cửa sổ.
+     * - Nhấn phím Enter để quay lại menu chính.
      *
      * @param game Tham chiếu đến đối tượng Game chính.
      */
