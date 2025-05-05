@@ -1,3 +1,6 @@
+#ifndef MAINMENUSTATE_H
+#define MAINMENUSTATE_H
+
 /** 
 * @file MainMenuState.h
 * @brief Định nghĩa lớp MainMenuState cho trạng thái menu chính của trò chơi.
@@ -5,9 +8,6 @@
 * Lớp này kế thừa từ GameState, cung cấp các phương thức và thuộc tính cần thiết để quản lý giao diện menu,
 * bao gồm việc xử lý đầu vào từ người dùng và vẽ các thành phần giao diện lên cửa sổ game.
 */
-
-#ifndef MAINMENUSTATE_H
-#define MAINMENUSTATE_H
 
 #include "GameState.h"
 #include <SFML/Graphics.hpp>
