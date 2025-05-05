@@ -205,7 +205,7 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 ## Thư viện: Tải thư viện SFML 
 ## 🔹 Video demo
 
-- Link: [https://drive.google.com/file/d/1MGjBpu_OtFdUxOffmD8MYMuHyF-MKkaN/view?usp=sharing](https://www.youtube.com/watch?v=TfmBUhhInyo)
+- Link: https://www.youtube.com/watch?v=TfmBUhhInyo
 
 ---
 
