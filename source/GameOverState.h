@@ -1,3 +1,6 @@
+#ifndef GAMEOVERSTATE_H
+#define GAMEOVERSTATE_H
+
 /**
  * @file GameOverState.h
  * @brief Định nghĩa lớp GameOverState cho trạng thái "Game Over" của trò chơi.
@@ -5,9 +8,6 @@
  * Lớp này kế thừa từ GameState, cung cấp các phương thức và thuộc tính cần thiết để quản lý giao diện "Game Over",
  * bao gồm việc xử lý đầu vào từ người dùng và vẽ các thành phần giao diện lên cửa sổ game.
  */
-
-#ifndef GAMEOVERSTATE_H
-#define GAMEOVERSTATE_H
 
 #include "GameState.h"
 #include <SFML/Graphics.hpp>
