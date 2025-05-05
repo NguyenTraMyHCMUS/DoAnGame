@@ -1,3 +1,6 @@
+#ifndef TETROMINO_H
+#define TETROMINO_H
+
 /**
  * @file Tetromino.h
  * @brief Định nghĩa lớp trừu tượng Tetromino cho các khối Tetris trong trò chơi.
@@ -5,9 +8,6 @@
  * Lớp này định nghĩa các thuộc tính và phương thức cần thiết để quản lý các khối Tetris,
  * bao gồm việc khởi tạo hình dạng, xoay, di chuyển, vẽ, kiểm tra tính hợp lệ của khối trong lưới và lưu trữ trạng thái của khối.
  */
-
-#ifndef TETROMINO_H
-#define TETROMINO_H
 
 #include "Field.h"
 #include <SFML/Graphics.hpp>
@@ -19,6 +19,7 @@
  * 
  * Cấu trúc này lưu trữ tọa độ x và y của mỗi ô trong khối Tetris.
  */
+
 struct Point {
     int _x; /**< Tọa độ x của ô trong lưới */
     int _y; /**< Tọa độ y của ô trong lưới */
@@ -39,6 +40,7 @@ struct Point {
  * Lớp này quản lý các thao tác như: xoay, di chuyển, vẽ, kiểm tra tính hợp lệ và lưu trữ trạng thái của khối.
  * 
  */
+
 class Tetromino {
 protected:
     Point _blocks[4]; /**< Mảng chứa 4 ô của khối Tetris */
