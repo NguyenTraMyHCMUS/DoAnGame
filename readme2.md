@@ -200,7 +200,7 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 * **Hướng dẫn chơi riêng biệt (InstructionsState)** – tự mở rộng từ mẫu.
 * **Hình ảnh động**, **chuyển trạng thái mềm mại** – Tuyết Ngân triển khai.
 
-
+## Thư viện: Tải thư viện SFML 
 ## 🔹 Video demo
 
 - Link: [https://drive.google.com/file/d/1MGjBpu_OtFdUxOffmD8MYMuHyF-MKkaN/view?usp=sharing](https://www.youtube.com/watch?v=TfmBUhhInyo)
