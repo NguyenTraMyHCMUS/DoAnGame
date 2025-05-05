@@ -1,3 +1,6 @@
+#ifndef LTETROMINO_H
+#define LTETROMINO_H
+
 /**
  * @file LTetromino.h
  * @brief Định nghĩa lớp LTetromino cho khối L trong trò chơi Tetris.
@@ -5,9 +8,6 @@
  * Lớp này kế thừa từ lớp Tetromino và cài đặt các phương thức đặc trưng cho khối L,
  * bao gồm việc khởi tạo hình dạng, xoay khối và tạo bản sao của khối.
  */
-
-#ifndef LTETROMINO_H
-#define LTETROMINO_H
 
 #include "Tetromino.h"
 
