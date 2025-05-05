@@ -113,6 +113,8 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
   * Có sử dụng file `README.md` do cả 3 thành viên viết ngay từ Tuần 1.
 
 * **Nhóm trưởng (Trà My)** có vai trò dẫn dắt, khởi tạo repo, gộp code, hỗ trợ kết hợp các thành phần và Doxygen tài liệu hóa kiến trúc.
+![image](https://github.com/user-attachments/assets/af7b4b12-0e32-4179-9249-931754c9a110)
+
 
 ---
 
