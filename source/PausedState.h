@@ -1,3 +1,6 @@
+ #ifndef PAUSEDSTATE_H
+ #define PAUSEDSTATE_H
+
 /**
  * @file PausedState.h
  * @brief Định nghĩa lớp PausedState cho trạng thái tạm dừng của trò chơi.
@@ -6,9 +9,6 @@
  * bao gồm việc xử lý đầu vào từ người dùng và vẽ các thành phần giao diện lên cửa sổ game.
  */
 
- #ifndef PAUSEDSTATE_H
- #define PAUSEDSTATE_H
- 
  #include "GameState.h"
  #include <SFML/Graphics.hpp>
  
@@ -21,6 +21,7 @@
   * Lớp này kế thừa từ GameState và chịu trách nhiệm hiển thị giao diện tạm dừng,
   * xử lý các lựa chọn menu như Tiếp tục (Continue) hoặc Thoát (Exit).
   */
+
  class PausedState : public GameState {
  private:
      Game& _game; ///< Tham chiếu đến đối tượng Game chính.
