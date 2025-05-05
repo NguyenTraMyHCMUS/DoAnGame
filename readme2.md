@@ -162,10 +162,14 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 
 **Mô tả đánh giá:**
 
-* **Coding convention chuẩn C++**:
-
-  * Tên file, hàm, class tuân thủ quy tắc PascalCase / camelCase nhất quán.
-  * Các file `.h` và `.cpp` chia rõ.
+- **Coding Convention:**  
+  - **Đặt tên:**  
+    - Lớp: `PascalCase` (ví dụ: `Tetrimino`, `BoardManager`).  
+    - Hàm: `camelCase` (ví dụ: `rotatePiece`, `clearLine`).  
+    - Biến: `lower_snake_case` (ví dụ: `current_piece`, `line_count`).  
+    - Thành viên lớp: thêm `_` đầu (ví dụ: `_position`, `_board`).  
+  - **Định dạng:** Thụt lề bằng **tab**, dấu `{` cùng dòng với khai báo hàm/class.  
+  - **Comments:** Dùng **Doxygen** (`/** ... */`) cho lớp/hàm quan trọng, tránh ghi chú dư thừa. 
 * **Tài liệu hóa bằng Doxygen**:
 
   * Từ tuần 3, toàn bộ class như `Game`, `Field`, `Tetromino`,... đều có mô tả rõ ràng qua Doxygen.
