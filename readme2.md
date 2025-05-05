@@ -199,7 +199,7 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 
 ## 🔹 Video demo
 
-- Link: https://drive.google.com/file/d/1MGjBpu_OtFdUxOffmD8MYMuHyF-MKkaN/view?usp=sharing
+- Link: [https://drive.google.com/file/d/1MGjBpu_OtFdUxOffmD8MYMuHyF-MKkaN/view?usp=sharing](https://www.youtube.com/watch?v=TfmBUhhInyo)
 
 ---
 
