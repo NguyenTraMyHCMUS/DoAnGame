@@ -38,19 +38,6 @@ public:
      * @param game Tham chiếu đến đối tượng game.
      */
     void handleInput(Game& game) override;
-
-    /**
-     * @brief Vẽ hộp thông tin trong trò chơi.
-     * 
-     * Phương thức này vẽ một hộp thông tin chứa các thông tin như điểm số, level và khối tiếp theo lên cửa sổ.
-     * 
-     * @param window Cửa sổ render nơi hộp thông tin sẽ được vẽ.
-     * @param position Vị trí trên màn hình nơi hộp thông tin sẽ được đặt.
-     * @param title Tiêu đề của hộp thông tin.
-     * @param value Giá trị (ví dụ: điểm số, level, hoặc khối tiếp theo).
-     */
-    void drawInfoBox(sf::RenderWindow& window, sf::Vector2f position, const std::string& title, const std::string& value);
-
     /**
      * @brief Vẽ toàn cảnh trong trạng thái chơi.
      * 
