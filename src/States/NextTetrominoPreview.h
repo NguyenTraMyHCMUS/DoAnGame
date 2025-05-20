@@ -1,7 +1,7 @@
 #ifndef NEXTTETROMINOPREVIEW_H
 #define NEXTTETROMINOPREVIEW_H
 
-#include "../Tetromino/TetrominoFactory.h"
+#include "../Entities/TetrominoFactory.h"
 #include <memory>
 
 /**
@@ -56,6 +56,24 @@ public:
      * @param sprite Sprite dùng để vẽ các ô của Tetromino.
      */
     void draw(sf::RenderWindow& window, sf::Sprite& sprite);
+
+    /**
+     * @brief Lấy con trỏ đến Tetromino tiếp theo mà không chuyển quyền sở hữu.
+     
+    * Phương thức này cho phép xem Tetromino tiếp theo mà không làm thay đổi quyền sở hữu.
+        
+    * @return Con trỏ đến Tetromino tiếp theo.
+    */
+
+    const Tetromino* getNextTetromino() const;
+
+    /**
+    * @brief Reset bản xem trước về trạng thái ban đầu.
+    * 
+    * Phương thức này làm mới bản xem trước khi bắt đầu lại trò chơi.
+    */
+
+    void reset();
 };
 
 #endif
