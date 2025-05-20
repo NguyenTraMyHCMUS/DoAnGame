@@ -1,0 +1,37 @@
+
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build SFML App",
+        "type": "shell",
+        "command": "D:\\winlibs-x86_64-posix-seh-gcc-13.1.0-mingw-w64msvcrt-11.0.0-r5\\mingw64\\bin\\g++.exe",
+        "args": [
+          "source/src/*.cpp",
+          "source/src/Core/*.cpp",
+          "source/src/States/*.cpp",
+          "source/src/Entities/*.cpp",
+          "source/src/Entities/Types/*.cpp",
+          "source/src/Logic/*.cpp",
+          "source/src/Graphics/*.cpp",
+          "source/src/Input/*.cpp",
+          "source/src/Time/*.cpp",
+        
+          "-ID:/SFML-2.6.2-windows-gcc-13.1.0-mingw-64-bit/SFML-2.6.2/include",
+          "-DSFML_STATIC",
+          "-LD:/SFML-2.6.2-windows-gcc-13.1.0-mingw-64-bit/SFML-2.6.2/lib",
+          "-lsfml-graphics-s",
+          "-lsfml-window-s",
+          "-lsfml-system-s",    
+          "-lopengl32",
+          "-lfreetype",
+          "-lwinmm",
+          "-lgdi32",
+          "-o", "main.exe"
+        ],
+        "group": "build",
+        "problemMatcher": ["$gcc"]
+      }
+    ]
+  }
+  
