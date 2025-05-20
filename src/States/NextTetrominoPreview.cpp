@@ -63,3 +63,11 @@ void NextTetrominoPreview::draw(sf::RenderWindow& window, sf::Sprite& sprite) {
         window.draw(sprite);
     }
 }
+
+const Tetromino* NextTetrominoPreview::getNextTetromino() const {
+    return _next.get();
+}
+
+void NextTetrominoPreview::reset() {
+    generateNext();
+}
