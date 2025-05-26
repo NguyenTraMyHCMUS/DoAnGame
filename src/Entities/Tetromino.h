@@ -12,26 +12,13 @@
 #include "../Entities/Field.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
-
-/**
- * @struct Point
- * @brief Cấu trúc đại diện cho một ô trong lưới với tọa độ x, y.
- * 
- * Cấu trúc này lưu trữ tọa độ x và y của mỗi ô trong khối Tetris.
- */
-
-struct Point {
-    int _x; /**< Tọa độ x của ô trong lưới */
-    int _y; /**< Tọa độ y của ô trong lưới */
-
-    /**
-     * @brief Constructor khởi tạo tọa độ ô.
-     * 
-     * @param x Tọa độ x của ô.
-     * @param y Tọa độ y của ô.
-     */
-    Point(int x = 0, int y = 0) : _x(x), _y(y) {}
-};
+#include "Point.h"
+#include "Interface/ITetrominoValidator.h"
+#include "Interface/ITetrominoState.h"
+#include "Interface/ITetrominoRenderer.h"
+#include "Interface/ITetrominoMovement.h"
+#include "Interface/ITetrominoLocker.h"
+#include "Interface/ITetrominoRotator.h"
 
 /**
  * @class Tetromino
@@ -47,6 +34,14 @@ protected:
     Point _backup[4]; /**< Lưu trạng thái khối để khôi phục */
     int _color; /**< Màu sắc của khối */
     int _cellSize; /**< Kích thước của mỗi ô trong khối */
+    
+    #include "Interface/ITetrominoValidator.h"
+    std::unique_ptr<ITetrominoValidator> _validator;
+    std::unique_ptr<ITetrominoState> _state;
+    std::unique_ptr<ITetrominoRenderer> _renderer;
+    std::unique_ptr<ITetrominoMovement> _movement;
+    std::unique_ptr<ITetrominoLocker> _locker;
+    ITetrominoRotator* _rotator; /**< Con trỏ đến đối tượng xoay khối Tetris */
 
 public:
     /**
@@ -61,7 +56,7 @@ public:
      * 
      * Phương thức này sẽ giải phóng bộ nhớ khi đối tượng bị hủy.
      */
-    virtual ~Tetromino() = default;
+    virtual ~Tetromino();
 
     /**
      * @brief Khởi tạo hình dạng của khối Tetris.
@@ -76,6 +71,7 @@ public:
      * Phương thức này xoay khối Tetris theo quy tắc: O không xoay, I xoay ngang và dọc, {Z, T, S} xoay theo chiều kim đồng hồ,
      * {L, J} xoay ngược chiều kim đồng hồ.
      */
+
     virtual void rotate();
 
     /**
@@ -94,6 +90,7 @@ public:
      * 
      * @param size Kích thước mới của ô.
      */
+
     void setCellSize(int size);
 
     /**
@@ -201,6 +198,9 @@ public:
      * @return Tọa độ y của ô.
      */
     int getY(int i) const;
+    void setRotator(ITetrominoRotator* rotator);
+protected:
+    void cloneComponents(const Tetromino& other);
 };
 
 #endif
