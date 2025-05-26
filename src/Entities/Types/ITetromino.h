@@ -10,6 +10,7 @@
  */
 
 #include "../Tetromino.h"
+#include "../Task/TypeRotation/IRotator.h"
 
 /**
  * @class ITetromino
