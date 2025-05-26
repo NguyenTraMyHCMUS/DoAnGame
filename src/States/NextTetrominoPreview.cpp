@@ -40,11 +40,11 @@ void NextTetrominoPreview::draw(sf::RenderWindow& window, sf::Sprite& sprite) {
 
 
     // Tính toán vị trí khối tetromino để nó luôn ở bên trái khung
-    int minX = _next->getBlocks()[0]._x, maxX = _next->getBlocks()[0]._x;
-    int minY = _next->getBlocks()[0]._y, maxY = _next->getBlocks()[0]._y;
+    int minX = _next->getBlocks()[0].getX(), maxX = _next->getBlocks()[0].getX();
+    int minY = _next->getBlocks()[0].getY(), maxY = _next->getBlocks()[0].getY();
     for (int i = 1; i < 4; i++) {
-        int x = _next->getBlocks()[i]._x;
-        int y = _next->getBlocks()[i]._y;
+        int x = _next->getBlocks()[i].getX();
+        int y = _next->getBlocks()[i].getY();
         if (x < minX) minX = x;
         if (x > maxX) maxX = x;
         if (y < minY) minY = y;
@@ -56,8 +56,8 @@ void NextTetrominoPreview::draw(sf::RenderWindow& window, sf::Sprite& sprite) {
     float offsetY = _position.y + (frameSize - tetrominoHeight) / 2 - minY * _cellSize + 10; // +10 tránh đè chữ
 
     for (int i = 0; i < 4; i++) {
-        int x = _next->getBlocks()[i]._x;
-        int y = _next->getBlocks()[i]._y;
+        int x = _next->getBlocks()[i].getX();
+        int y = _next->getBlocks()[i].getY();
         sprite.setTextureRect(sf::IntRect(_next->getColor() * _cellSize, 0, _cellSize, _cellSize));
         sprite.setPosition(offsetX + x * _cellSize, offsetY + y * _cellSize);
         window.draw(sprite);
