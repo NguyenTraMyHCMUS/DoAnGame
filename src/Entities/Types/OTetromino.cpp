@@ -4,14 +4,15 @@
 OTetromino::OTetromino() {
     _color = 6; // Màu sắc cho khối O
     initializeShape(); 
+    _rotator = nullptr;
 }
 
 // Hàm khởi tạo hình dạng khối O
 void OTetromino::initializeShape() {
     int figures[4] = {2, 3, 4, 5}; 
     for (int i = 0; i < 4; i++) {
-        _blocks[i]._x = figures[i] % 2;
-        _blocks[i]._y = figures[i] / 2;
+        _blocks[i].setX(figures[i] % 2);
+        _blocks[i].setY(figures[i] / 2);
     }
 }
 
@@ -22,5 +23,15 @@ void OTetromino::rotate() {
 
 // Hàm tạo một bản sao của khối O
 std::unique_ptr<Tetromino> OTetromino::clone() const {
-    return std::make_unique<OTetromino>(*this);
+    // Tạo đối tượng mới thay vì sao chép
+    auto copy = std::make_unique<OTetromino>();
+    
+    // Sao chép các thuộc tính thường
+    copy->setColor(_color);
+    
+    copy->cloneComponents(*this);
+    
+    // Không cần rotator cho khối O
+    
+    return copy;
 }
