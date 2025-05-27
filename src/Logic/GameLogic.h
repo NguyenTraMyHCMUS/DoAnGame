@@ -8,24 +8,20 @@
 #include "ScoreManager.h"
 #include "LevelManager.h"
 
-/**
- * @class GameLogic
- * @brief Xử lý logic chính của game (Single Responsibility)
- */
 class GameLogic {
 private:
-    Field& field;
-    std::unique_ptr<Tetromino>& tetromino;
-    NextTetrominoPreview& nextPreview;
-    ScoreManager& scoreManager;
-    LevelManager& levelManager;
-    float& delay;
+    Field& _field;
+    std::unique_ptr<Tetromino>& _tetromino;
+    NextTetrominoPreview& _nextPreview;
+    ScoreManager& _scoreManager;
+    LevelManager& _levelManager;
+    float& _delay;
 
 public:
     GameLogic(Field& field, std::unique_ptr<Tetromino>& tetromino, 
               NextTetrominoPreview& nextPreview, ScoreManager& scoreManager,
               LevelManager& levelManager, float& delay);
-    
+
     bool update(int dx, bool rotate);
     bool moveTetrominoHorizontally(int dx);
     bool rotateTetrominoIfPossible(bool rotate);
