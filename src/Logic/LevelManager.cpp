@@ -1,28 +1,28 @@
 #include "LevelManager.h"
 
-LevelManager::LevelManager() : currentLevel(1), linesCleared(0) {}
+LevelManager::LevelManager() : _currentLevel(1), _linesCleared(0) {}
 
 void LevelManager::increaseLevel() {
-    currentLevel++;
+    _currentLevel++;
 }
 
 void LevelManager::addClearedLines(int lines) {
-    linesCleared += lines;
+    _linesCleared += lines;
 }
 
 int LevelManager::getLevel() const {
-    return currentLevel;
+    return _currentLevel;
 }
 
 int LevelManager::getLinesCleared() const {
-    return linesCleared;
+    return _linesCleared;
 }
 
 void LevelManager::reset() {
-    currentLevel = 1;
-    linesCleared = 0;
+    _currentLevel = 1;
+    _linesCleared = 0;
 }
 
 void LevelManager::resetLinesCleared() {
-    linesCleared = 0; // Chỉ đặt lại số dòng đã xóa
+    _linesCleared = 0;
 }
