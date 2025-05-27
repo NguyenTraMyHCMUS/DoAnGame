@@ -10,7 +10,6 @@
  */
 
 #include "../Tetromino.h"
-#include "../Task/TypeRotation/CounterclockwiseRotator.h"
 
 /**
  * @class JTetromino
@@ -21,7 +20,23 @@
  * xoay, và sao chép.
  */
 class JTetromino : public Tetromino {
+private:
+    /**
+     * @brief Thiết lập bộ xoay cho khối J.
+     * 
+     * Phương thức này thiết lập bộ xoay cho khối J để có thể xoay khối theo quy tắc.
+     */
+    void setupRotator();
+
 public:
+    /**
+     * @brief Constructor khởi tạo khối J với thành phần từ factory.
+     * 
+     * Khởi tạo các thành phần của khối J bằng cách sử dụng một factory để tạo ra các đối tượng cần thiết.
+     * @param factory Factory để tạo các thành phần của khối J.
+     */
+    explicit JTetromino(ITetrominoComponentFactory& factory);
+
     /**
      * @brief Constructor khởi tạo khối J với hình dạng ban đầu.
      * 
@@ -58,6 +73,14 @@ public:
      * @return Con trỏ thông minh chứa đối tượng bản sao của khối J.
      */
     std::unique_ptr<Tetromino> clone() const override;
+
+    /**
+     * @brief Lấy tên loại khối J.
+     * 
+     * Phương thức này trả về tên loại của khối J, thường được sử dụng để hiển thị hoặc ghi nhận.
+     * @return Tên loại của khối J.
+     */
+    std::string getTypeName() const override;
 };
 
 #endif
