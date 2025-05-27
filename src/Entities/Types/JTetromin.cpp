@@ -28,8 +28,9 @@ void JTetromino::setupRotator() {
 // Hàm khởi tạo hình dạng khối J
 void JTetromino::initializeShape() {
     int figures[4] = {3, 5, 7, 6}; // Hình dạng khối J
+    int offsetX = rand() % (N - 3);
     for (int i = 0; i < 4; i++) {
-        _blocks[i].setX(figures[i] % 2);
+        _blocks[i].setX(figures[i] % 2 + offsetX);
         _blocks[i].setY(figures[i] / 2);
     }
 }
