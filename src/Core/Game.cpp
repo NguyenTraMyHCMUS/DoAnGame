@@ -4,10 +4,10 @@
 #include "../Entities/Factories/TetrominoFactory.h"
 
 Game::Game() 
-    : window(sf::VideoMode(320, 480), "Tetris"),
-      renderer(window, resourceManager),
-      delay(0.3f),
-      gameLogic(field, tetromino, nextPreview, scoreManager, levelManager, delay) {
+    : _window(sf::VideoMode(320, 480), "Tetris"),
+      _renderer(_window, _resourceManager),
+      _delay(0.3f),
+      _gameLogic(_field, _tetromino, _nextPreview, _scoreManager, _levelManager, _delay) {
     
     // Load configuration từ file
     auto& config = ConfigurationManager::getInstance();
@@ -21,115 +21,123 @@ Game::Game()
     //ColorMapper::updateFromConfig();
     ColorMapper::getInstance().updateFromConfig();
     // Khởi tạo tài nguyên
-    resourceManager.loadResources();
+    _resourceManager.loadResources();
     
     // Khối đầu tiên
-    tetromino = TetrominoFactory::createRandomTetromino();
-    if (!tetromino) {
+    _tetromino = TetrominoFactory::createRandomTetromino();
+    if (!_tetromino) {
         // Fallback nếu factory trả về nullptr
         throw std::runtime_error("Failed to create initial Tetromino");
     }
     
     // Khối tiếp theo
-    tetromino = nextPreview.getNext();
-    nextPreview.generateNext();
+    _tetromino = _nextPreview.getNext();
+    _nextPreview.generateNext();
     
     // Khởi tạo trạng thái ban đầu là MainMenu
-    currentState = std::make_unique<MainMenuState>(*this);
+    _currentState = std::make_unique<MainMenuState>(*this);
 }
 
 void Game::update() {
-    if (currentState == nullptr) return;
+    if (_currentState == nullptr) return;
 
     // Cập nhật thời gian
-    gameTimer.update();
+    _gameTimer.update();
     
     // Xử lý di chuyển ngang và xoay
-    bool horizontalMoved = gameLogic.moveTetrominoHorizontally(inputManager.getDx());
-    bool rotated = gameLogic.rotateTetrominoIfPossible(inputManager.getRotate());
+    bool horizontalMoved = _gameLogic.moveTetrominoHorizontally(_inputManager.getDx());
+    bool rotated = _gameLogic.rotateTetrominoIfPossible(_inputManager.getRotate());
     
     // Reset input
-    inputManager.reset();
+    _inputManager.reset();
     
     // Xử lý di chuyển xuống theo thời gian
-    if (gameTimer.shouldUpdate()) {
-        if (!gameLogic.update(0, false)) {
+    if (_gameTimer.shouldUpdate()) {
+        if (!_gameLogic.update(0, false)) {
             // Game over
-            currentState = std::make_unique<GameOverState>(*this);
+            _currentState = std::make_unique<GameOverState>(*this);
         }
     }
 }
 
 void Game::run() {
-    while (window.isOpen()) {
-        if (currentState != nullptr) {
+    while (_window.isOpen()) {
+        if (_currentState != nullptr) {
             // Xử lý input và cập nhật state
-            currentState->handleInput(*this);
+            _currentState->handleInput(*this);
             
-            if (dynamic_cast<PlayingState*>(currentState.get()) != nullptr) {
+            if (dynamic_cast<PlayingState*>(_currentState.get()) != nullptr) {
                 update();
             }
             
             // Vẽ state
-            currentState->draw(*this);
+            _currentState->draw(*this);
         }
     }
 }
 
 void Game::resetGame() {
-    gameLogic.resetGame();
-    gameTimer.restart();
-    inputManager.reset();
+    _gameLogic.resetGame();
+    _gameTimer.restart();
+    _inputManager.reset();
 }
 
 sf::RenderWindow& Game::getWindow() {
-    return window;
+    return _window;
 }
 
 ResourceManager& Game::getResourceManager() {
-    return resourceManager;
+    return _resourceManager;
 }
 
 GameRenderer& Game::getRenderer() {
-    return renderer;
+    return _renderer;
 }
 
 InputManager& Game::getInputManager() {
-    return inputManager;
+    return _inputManager;
 }
 
 GameTimer& Game::getGameTimer() {
-    return gameTimer;
+    return _gameTimer;
 }
 
 Field& Game::getField() {
-    return field;
+    return _field;
 }
 
 std::unique_ptr<Tetromino>& Game::getTetromino() {
-    return tetromino;
+    return _tetromino;
 }
 
 NextTetrominoPreview& Game::getNextTetrominoPreview() {
-    return nextPreview;
+    return _nextPreview;
 }
 
 ScoreManager& Game::getScoreManager() {
-    return scoreManager;
+    return _scoreManager;
 }
 
 LevelManager& Game::getLevelManager() {
-    return levelManager;
+    return _levelManager;
 }
 
 void Game::setState(std::unique_ptr<GameState> newState) {
-    currentState = std::move(newState);
+    _currentState = std::move(newState);
 }
 
 void Game::setDelay(float value) {
-    delay = value;
+    _delay = value;
 }
 
 float Game::getDelay() const {
-    return delay;
+    return _delay;
+}
+
+const std::string& Game::getPlayerName() const {
+    return _playerName;
+}
+
+void Game::setPlayerName(const std::string& name) {
+    _playerName = name;
 }
