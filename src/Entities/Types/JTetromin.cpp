@@ -1,12 +1,28 @@
 #include "JTetromino.h"
-#include "../RotatorFactory.h"
+#include "../Factories/RotatorFactory.h"
+#include "../Registries/TetrominoAutoRegistrar.h"
+#include "../Configuration/ColorMapper.h"
+
+// Đăng ký khối J với ID 1 và tên "J"
+REGISTER_TETROMINO(JTetromino, 1, "J")
+
+JTetromino::JTetromino(ITetrominoComponentFactory& factory) : Tetromino(factory) {
+    _color = ColorMapper::getInstance().getColor("J"); // Màu sắc cho khối J
+    initializeShape(); // Khởi tạo hình dạng khối
+    setupRotator(); // Tạo rotator cho khối J
+}
 
 // Hàm khởi tạo khối J
 JTetromino::JTetromino() {
-    _color = 2; // Màu sắc cho khối J
+    _color = ColorMapper::getInstance().getColor("J");; // Màu sắc cho khối J
     initializeShape(); // Khởi tạo hình dạng khối
-    _rotator = new CounterclockwiseRotator();
-    //_rotator = std::make_unique<CounterclockwiseRotator>(); // Sử dụng IRotator cho khối J
+    setupRotator();  // Tạo rotator cho khối J
+}
+
+void JTetromino::setupRotator() {
+    if (_componentFactory) {
+        _rotator = _componentFactory->createRotator("J");
+    }
 }
 
 // Hàm khởi tạo hình dạng khối J
@@ -37,4 +53,8 @@ std::unique_ptr<Tetromino> JTetromino::clone() const {
     copy->setRotator(RotatorFactory::createRotator("J"));
     
     return copy;
+}
+
+std::string JTetromino::getTypeName() const { 
+    return "J"; 
 }
