@@ -92,3 +92,8 @@ void PausedState::draw(Game& game) {
 
     game.getWindow().display();
 }
+
+void PausedState::update(Game& game) {
+    // Không cần cập nhật gì trong trạng thái tạm dừng
+    // Tất cả xử lý sự kiện và vẽ đã được thực hiện trong handleInput và draw
+}
