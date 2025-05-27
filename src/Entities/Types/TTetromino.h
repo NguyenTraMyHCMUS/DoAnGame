@@ -10,53 +10,64 @@
  */
 
 #include "../Tetromino.h"
-#include "../Task/TypeRotation/StandardRotator.h"
 
 /**
  * @class TTetromino
  * @brief Lớp đại diện cho khối T trong trò chơi Tetris.
  * 
- * Khối T có hình dạng chữ T và có khả năng xoay theo chiều kim đồng hồ. Lớp này kế thừa từ lớp `Tetromino` và cài đặt các phương thức đặc trưng cho khối T.
+ * Khối T có hình dạng chữ T và có khả năng xoay theo chiều kim đồng hồ. 
+ * Lớp này kế thừa từ lớp `Tetromino` và cài đặt các phương thức đặc trưng cho khối T.
  */
-
 class TTetromino : public Tetromino {
+private:
+    /**
+     * @brief Thiết lập bộ xoay cho khối T.
+     * 
+     * Phương thức này thiết lập bộ xoay cho khối T để có thể xoay khối theo quy tắc.
+     */
+    void setupRotator();
+
 public:
     /**
-     * @brief Constructor khởi tạo khối T.
+     * @brief Constructor khởi tạo khối T với thành phần từ factory.
      * 
-     * Khởi tạo các thuộc tính của khối T, bao gồm kích thước ô và màu sắc.
+     * @param factory Factory để tạo các thành phần của khối T.
+     */
+    explicit TTetromino(ITetrominoComponentFactory& factory);
+
+    /**
+     * @brief Constructor khởi tạo khối T với hình dạng ban đầu.
      */
     TTetromino();
 
     /**
-     * @brief Destructor ảo để giải phóng bộ nhớ.
-     * 
-     * Phương thức này sẽ giải phóng bộ nhớ khi đối tượng khối T bị hủy.
+     * @brief Destructor ảo mặc định để giải phóng tài nguyên.
      */
     ~TTetromino() override = default;
 
     /**
-     * @brief Khởi tạo hình dạng khối T.
-     * 
-     * Phương thức này cài đặt hình dạng ban đầu của khối T (các ô được sắp xếp theo hình chữ T).
+     * @brief Khởi tạo hình dạng mặc định của khối T.
      */
     void initializeShape() override;
 
     /**
      * @brief Xoay khối T theo chiều kim đồng hồ.
-     * 
-     * Phương thức này xoay khối T theo chiều kim đồng hồ khi người chơi thực hiện thao tác xoay.
      */
     void rotate() override;
 
     /**
      * @brief Tạo một bản sao của khối T.
      * 
-     * Phương thức này tạo một bản sao của khối T và trả về một con trỏ duy nhất đến đối tượng bản sao.
-     * 
-     * @return Một con trỏ duy nhất đến bản sao của khối T.
+     * @return Con trỏ thông minh chứa đối tượng bản sao của khối T.
      */
     std::unique_ptr<Tetromino> clone() const override;
+
+    /**
+     * @brief Lấy tên loại khối T.
+     * 
+     * @return Tên loại khối T.
+     */
+    std::string getTypeName() const override;
 };
 
 #endif
