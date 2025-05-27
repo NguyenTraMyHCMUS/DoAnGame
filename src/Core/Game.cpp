@@ -1,4 +1,7 @@
 #include "Game.h"
+#include "../Entities/Configuration/ColorMapper.h"
+#include "../Entities/Configuration/ConfigurationManager.h"
+#include "../Entities/Factories/TetrominoFactory.h"
 
 Game::Game() 
     : window(sf::VideoMode(320, 480), "Tetris"),
@@ -6,11 +9,26 @@ Game::Game()
       delay(0.3f),
       gameLogic(field, tetromino, nextPreview, scoreManager, levelManager, delay) {
     
+    // Load configuration từ file
+    auto& config = ConfigurationManager::getInstance();
+    if (!config.loadFromFile("../Entities/Configguration/tetris_config.txt")) {
+        // Use default values if file not found
+        config.setInt("cell_size", 18);
+        config.setInt("fall_speed", 300);
+    }
+
+    // Update color mapping từ config
+    //ColorMapper::updateFromConfig();
+    ColorMapper::getInstance().updateFromConfig();
     // Khởi tạo tài nguyên
     resourceManager.loadResources();
     
     // Khối đầu tiên
     tetromino = TetrominoFactory::createRandomTetromino();
+    if (!tetromino) {
+        // Fallback nếu factory trả về nullptr
+        throw std::runtime_error("Failed to create initial Tetromino");
+    }
     
     // Khối tiếp theo
     tetromino = nextPreview.getNext();
