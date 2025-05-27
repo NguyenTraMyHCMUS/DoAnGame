@@ -16,10 +16,10 @@
 class LevelManager {
 private:
     /** @brief Cấp độ hiện tại của trò chơi. */
-    int currentLevel;
+    int _currentLevel;
 
     /** @brief Tổng số dòng đã được xóa. */
-    int linesCleared;
+    int _linesCleared;
 
 public:
     /** @brief Constructor khởi tạo cấp độ và số dòng đã xóa về 0. */
