@@ -50,6 +50,8 @@
       * @param game Tham chiếu đến đối tượng Game chính.
       */
      virtual void draw(Game& game) = 0;
+
+     virtual void update(Game& game) = 0;
  };
  
  #endif // GAMESTATE_H
