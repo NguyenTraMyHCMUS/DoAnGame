@@ -1,11 +1,28 @@
 #include "ITetromino.h"
-#include "../RotatorFactory.h"
+#include "../Factories/RotatorFactory.h"
+#include "../Registries/TetrominoAutoRegistrar.h"
+#include "../Configuration/ColorMapper.h"
+
+// Đăng ký khối I với ID 0 và tên "I"
+REGISTER_TETROMINO(ITetromino, 0, "I")
+
+ITetromino::ITetromino(ITetrominoComponentFactory& factory) : Tetromino(factory) {
+    _color = ColorMapper::getInstance().getColor("I");
+    initializeShape();
+    setupRotator();
+}
 
 // Hàm khởi tạo khối I
-ITetromino::ITetromino() {
-    _color = 1; // Màu sắc cho khối I
+ITetromino::ITetromino() : Tetromino() {
+    _color = ColorMapper::getInstance().getColor("I");
     initializeShape();
-    _rotator = new IRotator(); // Sử dụng IRotator cho khối I
+    setupRotator();
+}
+
+void ITetromino::setupRotator() {
+    if (_componentFactory) {
+        _rotator = _componentFactory->createRotator("I");
+    }
 }
 
 // Hàm khởi tạo hình dạng khối I
@@ -28,11 +45,15 @@ void ITetromino::rotate() {
 std::unique_ptr<Tetromino> ITetromino::clone() const {
     auto copy = std::make_unique<ITetromino>();
     copy->setColor(_color);
-
+    
     copy->cloneComponents(*this);
     
     // Đảm bảo khởi tạo rotator cho bản sao
     copy->setRotator(RotatorFactory::createRotator("I"));
     
     return copy;
+}
+
+std::string ITetromino::getTypeName() const { 
+    return "I"; 
 }
