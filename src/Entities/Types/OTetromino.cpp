@@ -22,8 +22,9 @@ OTetromino::OTetromino() {
 // Hàm khởi tạo hình dạng khối O
 void OTetromino::initializeShape() {
     int figures[4] = {2, 3, 4, 5}; 
+    int offsetX = rand() % (N - 3);
     for (int i = 0; i < 4; i++) {
-        _blocks[i].setX(figures[i] % 2);
+        _blocks[i].setX(figures[i] % 2 + offsetX);
         _blocks[i].setY(figures[i] / 2);
     }
 }
