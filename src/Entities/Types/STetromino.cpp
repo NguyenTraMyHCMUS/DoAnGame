@@ -1,12 +1,29 @@
 #include "STetromino.h"
-#include "../RotatorFactory.h"
+#include "../Factories/RotatorFactory.h"
+#include "../Registries/TetrominoAutoRegistrar.h"
+#include "../Configuration/ColorMapper.h"
+
+// Đăng ký khối O với ID 4 và tên "S"
+REGISTER_TETROMINO(STetromino, 4, "S")
+
+// Hàm khởi tạo khối S với thành phần từ factory
+STetromino::STetromino(ITetrominoComponentFactory& factory) : Tetromino(factory) {
+    _color = ColorMapper::getInstance().getColor("S"); // Màu sắc cho khối S
+    initializeShape(); // Khởi tạo hình dạng khối
+    setupRotator(); // Tạo rotator cho khối S
+}
 
 // Hàm khởi tạo khối S
 STetromino::STetromino() {
-    _color = 3; // Màu sắc cho khối S
+    _color = ColorMapper::getInstance().getColor("S"); // Màu sắc cho khối S
     initializeShape(); 
-    _rotator = new StandardRotator(); // Sử dụng StandardRotator cho khối S
-    //_rotator = std::make_unique<StandardRotator>(); // Sử dụng StandardRotator cho khối S
+    setupRotator(); // Tạo rotator cho khối L
+}
+
+void STetromino::setupRotator() {
+    if (_componentFactory) {
+        _rotator = _componentFactory->createRotator("S");
+    }
 }
 
 // Hàm khởi tạo hình dạng khối S
@@ -21,18 +38,21 @@ void STetromino::initializeShape() {
 // Hàm xoay khối S
 void STetromino::rotate(){
     if (_rotator) {
-        _rotator->rotate(_blocks); // Sử dụng con trỏ với ->
+        _rotator->rotate(_blocks); 
     }
 }
 
 // Hàm tạo một bản sao của khối S
 std::unique_ptr<Tetromino> STetromino::clone() const {
     auto copy = std::make_unique<STetromino>();
+
     copy->setColor(_color);
-    
     copy->cloneComponents(*this);
-    // Đảm bảo khởi tạo rotator cho bản sao
-     copy->setRotator(RotatorFactory::createRotator("S"));
+    copy->setRotator(RotatorFactory::createRotator("S"));
     
     return copy;
+}
+
+std::string STetromino::getTypeName() const { 
+    return "S"; // Trả về tên loại khối S
 }
