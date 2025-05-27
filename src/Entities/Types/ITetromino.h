@@ -10,7 +10,6 @@
  */
 
 #include "../Tetromino.h"
-#include "../Task/TypeRotation/IRotator.h"
 
 /**
  * @class ITetromino
@@ -21,9 +20,26 @@
  * Lớp này định nghĩa cách khối I được khởi tạo, xoay, và sao chép.
  */
 class ITetromino : public Tetromino {
+private:
+    /**
+     * @brief Thiết lập bộ xoay (rotator) phù hợp cho khối I.
+     * 
+     * Phương thức này khởi tạo hoặc cấu hình đối tượng rotator đặc biệt dành cho khối I,
+     * giúp thực hiện các phép xoay đặc thù của khối này.
+     */
+    void setupRotator();
+
 public:
     /**
-     * @brief Constructor khởi tạo khối I với hình dạng ban đầu.
+     * @brief Constructor khởi tạo khối I với factory component.
+     * 
+     * Sử dụng factory để tạo các thành phần cần thiết cho khối Tetromino I.
+     * @param factory Factory để tạo các thành phần của khối Tetromino
+     */
+    explicit ITetromino(ITetrominoComponentFactory& factory);
+
+    /**
+     * @brief Constructor mặc định khởi tạo khối I với hình dạng ban đầu.
      * 
      * Thiết lập trạng thái ban đầu của khối I, bao gồm vị trí và hình dạng mặc định.
      */
@@ -58,6 +74,13 @@ public:
      * @return Con trỏ thông minh chứa đối tượng bản sao của khối I.
      */
     std::unique_ptr<Tetromino> clone() const override;
+
+    /**
+     * @brief Lấy tên loại khối Tetromino.
+     * 
+     * @return Chuỗi tên loại, ví dụ "I"
+     */
+    std::string getTypeName() const override;
 };
 
 #endif
