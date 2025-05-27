@@ -1,0 +1,13 @@
+# Tetris Game Configuration
+# Basic settings
+cell_size 18
+fall_speed 300
+
+# Tetromino colors (texture indices)
+i_color 1
+j_color 2
+l_color 3
+o_color 4
+s_color 5
+t_color 6
+z_color 7
