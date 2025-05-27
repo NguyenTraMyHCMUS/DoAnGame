@@ -26,6 +26,8 @@
 #include "../States/MainMenuState.h"
 #include "../States/GameOverState.h"
 #include "../States/PlayingState.h"
+#include "../Input/InputPlayerName.h"
+#include <string>
 
 /**
  * @class Game
@@ -33,22 +35,22 @@
  */
 class Game {
 private:
-    sf::RenderWindow window;
-    ResourceManager resourceManager;
-    GameRenderer renderer;
-    InputManager inputManager;
-    GameTimer gameTimer;
+    sf::RenderWindow _window;
+    ResourceManager _resourceManager;
+    GameRenderer _renderer;
+    InputManager _inputManager;
+    GameTimer _gameTimer;
     
-    Field field;
-    std::unique_ptr<Tetromino> tetromino;
-    NextTetrominoPreview nextPreview;
-    ScoreManager scoreManager;
-    LevelManager levelManager;
-
-    std::unique_ptr<GameState> currentState;
+    Field _field;
+    std::unique_ptr<Tetromino> _tetromino;
+    NextTetrominoPreview _nextPreview;
+    ScoreManager _scoreManager;
+    LevelManager _levelManager;
+    std::unique_ptr<GameState> _currentState;
     
-    GameLogic gameLogic;
-    float delay;
+    GameLogic _gameLogic;
+    float _delay;
+    std::string _playerName;
 
 public:
     Game();
@@ -72,6 +74,8 @@ public:
     void setState(std::unique_ptr<GameState> newState);
     void setDelay(float value);
     float getDelay() const;
+    const std::string& getPlayerName() const;
+    void setPlayerName(const std::string& name);
 };
 
 #endif 
