@@ -1,5 +1,5 @@
 #include "GameLogic.h"
-#include "../Entities/TetrominoFactory.h"
+#include "../Entities/Factories/TetrominoFactory.h"
 #include <algorithm>
 
 GameLogic::GameLogic(Field& field, std::unique_ptr<Tetromino>& tetromino, 
