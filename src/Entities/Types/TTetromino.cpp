@@ -30,8 +30,9 @@ void TTetromino::setupRotator() {
 // Hàm khởi tạo hình dạng khối T
 void TTetromino::initializeShape() {
     int figures[4] = {3, 5, 4, 7}; 
+    int offsetX = rand() % (N - 3);
     for (int i = 0; i < 4; i++) {
-        _blocks[i].setX(figures[i] % 2);
+        _blocks[i].setX(figures[i] % 2 + offsetX);
         _blocks[i].setY(figures[i] / 2);
     }
 }
