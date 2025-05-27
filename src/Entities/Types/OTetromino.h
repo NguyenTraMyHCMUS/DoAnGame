@@ -9,7 +9,7 @@
  * Khối O có cấu trúc cố định (một hình vuông 2x2) và không thay đổi khi xoay.
  */
 
- #include "../Tetromino.h"
+#include "../Tetromino.h"
 
 /**
  * @class OTetromino
@@ -21,6 +21,14 @@
  */
 class OTetromino : public Tetromino {
 public:
+    /**
+     * @brief Constructor khởi tạo khối O với thành phần từ factory.
+     * 
+     * Khởi tạo các thành phần của khối O bằng cách sử dụng một factory để tạo ra các đối tượng cần thiết.
+     * @param factory Factory để tạo các thành phần của khối O.
+     */
+    explicit OTetromino(ITetrominoComponentFactory& factory);
+
     /**
      * @brief Constructor khởi tạo khối O với hình dạng ban đầu.
      * 
@@ -57,6 +65,15 @@ public:
      * @return Con trỏ thông minh chứa đối tượng bản sao của khối O.
      */
     std::unique_ptr<Tetromino> clone() const override;
+
+    /**
+     * @brief Lấy tên loại khối O.
+     * 
+     * Phương thức này trả về tên loại của khối O.
+     * 
+     * @return Tên loại của khối O.
+     */
+    std::string getTypeName() const override;
 };
 
 #endif
