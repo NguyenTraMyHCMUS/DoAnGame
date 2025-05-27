@@ -1,12 +1,29 @@
 #include "LTetromino.h"
-#include "../RotatorFactory.h"
+#include "../Factories/RotatorFactory.h"
+#include "../Registries/TetrominoAutoRegistrar.h"
+#include "../Configuration/ColorMapper.h"
+
+// Đăng ký khối L với ID 2 và tên "L"
+REGISTER_TETROMINO(LTetromino, 2, "L")
+
+// Hàm khởi tạo khối L với thành phần từ factory
+LTetromino::LTetromino(ITetrominoComponentFactory& factory) : Tetromino(factory) {
+    _color = ColorMapper::getInstance().getColor("L"); // Màu sắc cho khối L
+    initializeShape(); // Khởi tạo hình dạng khối
+    setupRotator(); // Tạo rotator cho khối L
+}
 
 // Hàm khởi tạo khối L
 LTetromino::LTetromino() {
-    _color = 5; // Màu sắc cho khối L
+    _color = ColorMapper::getInstance().getColor("L");; // Màu sắc cho khối L
     initializeShape(); // Khởi tạo hình dạng khối
-    _rotator = new CounterclockwiseRotator();
-    //_rotator = std::make_unique<CounterclockwiseRotator>(); // Sử dụng CounterclockwiseRotator cho khối L
+    setupRotator(); // Tạo rotator cho khối L
+}
+
+void LTetromino::setupRotator() {
+    if (_componentFactory) {
+        _rotator = _componentFactory->createRotator("L");
+    }
 }
 
 // Hàm khởi tạo hình dạng khối L
@@ -37,4 +54,8 @@ std::unique_ptr<Tetromino> LTetromino::clone() const {
     copy->setRotator(RotatorFactory::createRotator("L"));
     
     return copy;
+}
+
+std::string LTetromino::getTypeName() const { 
+    return "L"; 
 }
