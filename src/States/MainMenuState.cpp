@@ -106,7 +106,7 @@ void MainMenuState::handleInput(Game& game) {
                 // Xử lý lựa chọn
                 if (_selectedIndex == 0) {
                     // Bắt đầu trò chơi
-                    game.setState(std::make_unique<PlayingState>(game));
+                    game.setState(std::make_unique<PlayerNameState>(game));
                 } 
                 else if (_selectedIndex == 1) {
                     // Mở cửa sổ hướng dẫn
@@ -144,3 +144,7 @@ void MainMenuState::draw(Game& game) {
     game.getWindow().display();
 }
 
+void MainMenuState::update(Game& game) {
+    // Không cần cập nhật gì trong menu chính
+    // Tất cả xử lý sự kiện đã được thực hiện trong handleInput
+}
