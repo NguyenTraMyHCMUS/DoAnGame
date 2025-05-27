@@ -72,3 +72,7 @@ void PlayingState::draw(Game& game) {
     // Hiển thị cửa sổ
     renderer.display();
 }
+
+void PlayingState::update(Game& game){
+
+}
