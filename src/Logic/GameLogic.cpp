@@ -5,39 +5,37 @@
 GameLogic::GameLogic(Field& field, std::unique_ptr<Tetromino>& tetromino, 
                      NextTetrominoPreview& nextPreview, ScoreManager& scoreManager, 
                      LevelManager& levelManager, float& delay)
-    : field(field), tetromino(tetromino), nextPreview(nextPreview), 
-      scoreManager(scoreManager), levelManager(levelManager), delay(delay) {
+    : _field(field), _tetromino(tetromino), _nextPreview(nextPreview), 
+      _scoreManager(scoreManager), _levelManager(levelManager), _delay(delay) {
 }
 
 bool GameLogic::update(int dx, bool rotate) {
     bool gameOver = false;
-    
+
     moveTetrominoHorizontally(dx);
     rotateTetrominoIfPossible(rotate);
-    
+
     if (!moveTetrominoDown()) {
-        // Khối đã chạm đất, xử lý tiếp
-        auto temp = nextPreview.cloneNext();
-        if (!temp->isValid(field)) {
-            // Game over
+        auto temp = _nextPreview.cloneNext();
+        if (!temp->isValid(_field)) {
             gameOver = true;
         } else {
             handleLineClearing();
-            tetromino = nextPreview.getNext();
-            nextPreview.generateNext();
+            _tetromino = _nextPreview.getNext();
+            _nextPreview.generateNext();
         }
     }
-    
+
     return !gameOver;
 }
 
 bool GameLogic::moveTetrominoHorizontally(int dx) {
     if (dx == 0) return false;
-    
-    tetromino->backupState();
-    tetromino->move(dx);
-    if (!tetromino->isValid(field)) {
-        tetromino->restoreState();
+
+    _tetromino->backupState();
+    _tetromino->move(dx);
+    if (!_tetromino->isValid(_field)) {
+        _tetromino->restoreState();
         return false;
     }
     return true;
@@ -45,58 +43,54 @@ bool GameLogic::moveTetrominoHorizontally(int dx) {
 
 bool GameLogic::rotateTetrominoIfPossible(bool rotate) {
     if (!rotate) return false;
-    
-    tetromino->backupState();
-    tetromino->rotate();
-    if (!tetromino->isValid(field)) {
-        tetromino->restoreState();
+
+    _tetromino->backupState();
+    _tetromino->rotate();
+    if (!_tetromino->isValid(_field)) {
+        _tetromino->restoreState();
         return false;
     }
     return true;
 }
 
 bool GameLogic::moveTetrominoDown() {
-    tetromino->backupState();
-    tetromino->fall();
-    
-    if (!tetromino->isValid(field)) {
-        tetromino->restoreState();
-        tetromino->lock(field);
+    _tetromino->backupState();
+    _tetromino->fall();
+
+    if (!_tetromino->isValid(_field)) {
+        _tetromino->restoreState();
+        _tetromino->lock(_field);
         return false;
     }
-    
+
     return true;
 }
 
 bool GameLogic::isGameOver() {
-    auto temp = nextPreview.cloneNext();
-    return !temp->isValid(field);
+    auto temp = _nextPreview.cloneNext();
+    return !temp->isValid(_field);
 }
 
 void GameLogic::handleLineClearing() {
-    int clearedLines = field.clearLines();
-    
+    int clearedLines = _field.clearLines();
+
     if (clearedLines > 0) {
-        // Tính điểm theo số dòng xóa (công thức điểm)
         int points = clearedLines * 10 * clearedLines;
-        scoreManager.addScore(points);
-        levelManager.addClearedLines(clearedLines);
-        
-        // Tăng cấp độ nếu đủ điểm
-        if (scoreManager.getScore() >= levelManager.getLevel() * 100) {
-            levelManager.increaseLevel();
-            
-            // Giảm delay khi cấp độ tăng, nhưng không để delay quá nhỏ
-            delay = std::max(0.1f, delay - 0.02f);
+        _scoreManager.addScore(points);
+        _levelManager.addClearedLines(clearedLines);
+
+        if (_scoreManager.getScore() >= _levelManager.getLevel() * 100) {
+            _levelManager.increaseLevel();
+            _delay = std::max(0.1f, _delay - 0.02f);
         }
     }
 }
 
 void GameLogic::resetGame() {
-    field.clear();
-    tetromino = TetrominoFactory::createRandomTetromino();
-    nextPreview.reset();
-    scoreManager.reset();
-    levelManager.reset();
-    delay = 0.3f;
+    _field.clear();
+    _tetromino = TetrominoFactory::createRandomTetromino();
+    _nextPreview.reset();
+    _scoreManager.reset();
+    _levelManager.reset();
+    _delay = 0.3f;
 }
