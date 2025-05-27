@@ -29,8 +29,9 @@ void LTetromino::setupRotator() {
 // Hàm khởi tạo hình dạng khối L
 void LTetromino::initializeShape() {
     int figures[4] = {2, 3, 5, 7}; // Hình dạng khối L
+    int offsetX = rand() % (N - 3);
     for (int i = 0; i < 4; i++) {
-        _blocks[i].setX(figures[i] % 2);
+        _blocks[i].setX(figures[i] % 2 + offsetX);
         _blocks[i].setY(figures[i] / 2);
     }
 }
