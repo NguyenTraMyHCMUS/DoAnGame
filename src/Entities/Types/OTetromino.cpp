@@ -1,8 +1,20 @@
 #include "OTetromino.h"
+#include "../Registries/TetrominoAutoRegistrar.h"
+#include "../Configuration/ColorMapper.h"
+
+// Đăng ký khối O với ID 3 và tên "O"
+REGISTER_TETROMINO(OTetromino, 3, "O")
+
+// Hàm khởi tạo khối O với thành phần từ factory
+OTetromino::OTetromino(ITetrominoComponentFactory& factory) : Tetromino(factory) {
+    _color = ColorMapper::getInstance().getColor("O"); // Màu sắc cho khối O
+    initializeShape(); // Khởi tạo hình dạng khối
+    _rotator = nullptr; // Không cần rotator cho khối O
+}
 
 // Hàm khởi tạo khối O
 OTetromino::OTetromino() {
-    _color = 6; // Màu sắc cho khối O
+    _color = ColorMapper::getInstance().getColor("O"); // Màu sắc cho khối O
     initializeShape(); 
     _rotator = nullptr;
 }
@@ -34,4 +46,8 @@ std::unique_ptr<Tetromino> OTetromino::clone() const {
     // Không cần rotator cho khối O
     
     return copy;
+}
+
+std::string OTetromino::getTypeName() const {
+    return "O"; // Trả về tên loại khối O
 }
