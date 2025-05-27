@@ -78,3 +78,8 @@ void InstructionsState::draw(Game& game) {
     // Hiển thị cửa sổ
     game.getWindow().display();
 }
+
+void InstructionsState::update(Game& game) {
+    // Không cần cập nhật gì trong trạng thái hướng dẫn
+    // Nếu cần, có thể thêm logic cập nhật ở đây
+}
