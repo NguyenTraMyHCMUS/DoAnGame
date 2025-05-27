@@ -36,6 +36,7 @@ private:
     sf::Font _font;          ///< Phông chữ dùng cho tiêu đề và menu.
     sf::Text _title;         ///< Tiêu đề "Game Over" hiển thị trên màn hình.
     sf::Text _menuOptions[2];///< Hai lựa chọn menu: Retry và Exit.
+    sf::Text _topScoreTexts[3]; ///< Hiển thị top 3 điểm cao nhất
 
     int _selectedIndex;      ///< Chỉ số của mục menu hiện đang được chọn.
     
@@ -73,6 +74,8 @@ public:
      * @param game Tham chiếu đến đối tượng Game chính.
      */
     void draw(Game& game) override;
+
+    void update(Game& game) override;
 };
 
 #endif // GAMEOVERSTATE_H
