@@ -1,4 +1,3 @@
-
 #ifndef GAME_H
 #define GAME_H
 
@@ -14,8 +13,12 @@
 #include "../Input/InputManager.h"
 #include "../Time/GameTimer.h"
 #include "../Logic/GameLogic.h"
+
 #include "../Entities/Field.h"
 #include "../Entities/Tetromino.h"
+#include "../Entities/Configuration/ConfigurationManager.h"  // sử dụng fig 
+#include "../Entities/Configuration/ColorMapper.h" 
+
 #include "../States/GameState.h"
 #include "../Logic/ScoreManager.h"
 #include "../Logic/LevelManager.h"
@@ -41,6 +44,7 @@ private:
     NextTetrominoPreview nextPreview;
     ScoreManager scoreManager;
     LevelManager levelManager;
+
     std::unique_ptr<GameState> currentState;
     
     GameLogic gameLogic;
@@ -70,4 +74,4 @@ public:
     float getDelay() const;
 };
 
-#endif
+#endif 
