@@ -67,6 +67,8 @@ public:
      * @param game Tham chiếu đến đối tượng Game chính.
      */
     void draw(Game& game) override;
+
+    void update(Game& game) override;
 };
 
 #endif // INSTRUCTIONSSTATE_H
