@@ -46,6 +46,8 @@ public:
      * @param game Tham chiếu đến đối tượng game.
      */
     void draw(Game& game) override;
+
+    void update(Game& game) override;
 };
 
 #endif
