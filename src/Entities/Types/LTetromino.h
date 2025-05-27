@@ -10,7 +10,6 @@
  */
 
 #include "../Tetromino.h"
-#include "../Task/TypeRotation/CounterclockwiseRotator.h"
 
 /**
  * @class LTetromino
@@ -20,9 +19,25 @@
  * Nó có hình dạng đặc trưng giống chữ "L" và có thể xoay để thay đổi hướng.
  */
 class LTetromino : public Tetromino {
+private:
+    /**
+     * @brief Thiết lập bộ xoay cho khối L.
+     * 
+     * Phương thức này thiết lập bộ xoay cho khối L để có thể xoay khối theo quy tắc.
+     */
+    void setupRotator();
+
 public:
     /**
-     * @brief Constructor khởi tạo khối L.
+     * @brief Constructor khởi tạo khối L với thành phần từ factory.
+     * 
+     * Khởi tạo các thành phần của khối L bằng cách sử dụng một factory để tạo ra các đối tượng cần thiết.
+     * @param factory Factory để tạo các thành phần của khối L.
+     */
+    explicit LTetromino(ITetrominoComponentFactory& factory);
+
+    /**
+     * @brief Constructor khởi tạo khối L với hình dạng ban đầu.
      * 
      * Thiết lập trạng thái ban đầu của khối L, bao gồm vị trí và hình dạng mặc định.
      */
@@ -57,6 +72,15 @@ public:
      * @return Con trỏ thông minh chứa đối tượng bản sao của khối L.
      */
     std::unique_ptr<Tetromino> clone() const override;
+
+    /**
+     * @brief Lấy tên loại khối L.
+     * 
+     * Phương thức này trả về tên loại của khối L, thường dùng để hiển thị hoặc ghi nhận.
+     * 
+     * @return Tên loại khối L.
+     */
+    std::string getTypeName() const override;
 };
 
 #endif
