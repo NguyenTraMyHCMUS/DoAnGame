@@ -1,11 +1,29 @@
 #include "ZTetromino.h"
-#include "../RotatorFactory.h"
+#include "../Factories/RotatorFactory.h"
+#include "../Registries/TetrominoAutoRegistrar.h"
+#include "../Configuration/ColorMapper.h"
+
+// Đăng ký khối O với ID 6 và tên "Z"
+REGISTER_TETROMINO(ZTetromino, 6, "Z")
+
+// Hàm khởi tạo khối Z với thành phần từ factory
+ZTetromino::ZTetromino(ITetrominoComponentFactory& factory) : Tetromino(factory) {
+    _color = ColorMapper::getInstance().getColor("Z"); // Màu sắc cho khối Z
+    initializeShape(); // Khởi tạo hình dạng khối
+    setupRotator(); // Tạo rotator cho khối Z
+}
 
 // Hàm khởi tạo khối Z
 ZTetromino::ZTetromino() {
-    _color = 7; // Màu sắc cho khối Z
+    _color = ColorMapper::getInstance().getColor("Z"); // Màu sắc cho khối Z
     initializeShape(); 
-    _rotator = new StandardRotator();
+    setupRotator(); // Tạo rotator cho khối L
+}
+
+void ZTetromino::setupRotator() {
+    if (_componentFactory) {
+        _rotator = _componentFactory->createRotator("Z");
+    }
 }
 
 // Hàm khởi tạo hình dạng khối Z
@@ -20,19 +38,21 @@ void ZTetromino::initializeShape() {
 // Hàm xoay khối Z
 void ZTetromino::rotate(){
     if (_rotator) {
-        _rotator->rotate(_blocks); // Sử dụng con trỏ với ->
+        _rotator->rotate(_blocks); 
     }
 }
 
 // Hàm tạo một bản sao của khối Z
 std::unique_ptr<Tetromino> ZTetromino::clone() const {
     auto copy = std::make_unique<ZTetromino>();
+
     copy->setColor(_color);
-    
     copy->cloneComponents(*this);
-    
-    // Đảm bảo khởi tạo rotator cho bản sao
     copy->setRotator(RotatorFactory::createRotator("Z"));
     
     return copy;
+}
+
+std::string ZTetromino::getTypeName() const { 
+    return "Z"; // Trả về tên loại khối Z
 }
