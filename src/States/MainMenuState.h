@@ -14,6 +14,7 @@
 #include "PlayingState.h"
 #include "InstructionsState.h"
 #include "../Core/Game.h"
+#include "PlayerNameState.h"
 #include <iostream>
 
 class Game;
@@ -81,6 +82,8 @@ public:
      * @param game Tham chiếu đến đối tượng Game chính.
      */
     void draw(Game& game) override;
+
+    void update(Game& game) override;
 };
 
 #endif // MAINMENUSTATE_H
