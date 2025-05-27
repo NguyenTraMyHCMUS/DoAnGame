@@ -1,7 +1,7 @@
 #ifndef NEXTTETROMINOPREVIEW_H
 #define NEXTTETROMINOPREVIEW_H
 
-#include "../Entities/TetrominoFactory.h"
+#include "../Entities/Factories/TetrominoFactory.h"
 #include <memory>
 
 /**
