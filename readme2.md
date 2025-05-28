@@ -73,6 +73,32 @@
 - Tải doxygen và tạo doxyfile 
 - Viết file readme.md
 ---
+## Tuần 6
+### Thành viên 1: Khả Như
+
+### Thành viên 2: Tuyết Ngân
+Áp dụng S, I trong SOLID cho tetromino. Tách các hành vi trong Terminal thành các class riêng xử lí 1 nhiêm vụ và class interface tương ứng.
+### Thành viên 3: Trà My
+ 
+---
+## Tuần 7
+### Thành viên 1: Khả Như
+
+### Thành viên 2: Tuyết Ngân
+- Áp dụng S, L, I. Tách class hành vi xoay thành 3 class cho mỗi công việc xoay ngang-dọc (I), xoay theo kim đồng hồ (S, T, Z), ngược chiều kim đồng hồ (J, L). Và O không xoay. Có interface chung cho 3 class. Các rotator có thể thay thế cho nhau. Tạo **Factory rotation**. 
+- Áp dụng O trong SOLID: **Registry Pattern** để quản lí rotators. **Singleton Pattern** trong RotatorFactoryRegistry. **Auto registration** - tự động đăng ký rotator khi khởi động trong RotatorFactoryInitialized => dễ dàng thêm rotator mới
+- Áp dụng D trong SOLID: tetromino phụ thuộc vào interface ITetrominoRotator. Factory trả về interface. High-level modules (VD: ITetromino) không phụ thuộc low-level (IRotator)
+### Thành viên 3: Trà My
+---
+## Tuần 8
+### Thành viên 1: Khả Như
+
+### Thành viên 2: Tuyết Ngân
+- Hoàn tất SOLID cho terminal.
+- Hỗ trợ viết file readme.md
+### Thành viên 3: Trà My
+
+---
 ## 🔹 Tỉ lệ đóng góp vào dự án
 | Thành viên       | Tỉ lệ đóng góp |
 |------------------|----------------|
