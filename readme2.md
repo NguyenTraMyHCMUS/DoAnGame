@@ -64,7 +64,7 @@
 - Quay video demo
 ### Thành viên 2: Tuyết Ngân
 - Áp dụng **Factory Pattern** để tạo các khối Tetris từ các class con  
-- Xây dựng giao diện cho 3 trạng thái: `MainMenu`, `Playing`, `GameOver`
+- Xây dựng 3 class và giao diện cho 3 trạng thái: `MainMenu`, `Playing`, `GameOver`
 - Thêm hướng dẫn trò chơi vào `MainMenu`
 - Áp dụng **State Pattern** để quản lý trạng thái trò chơi: `MainMenu`, `Playing`, `Paused`, `GameOver`
 - Tải doxygen và tạo doxyfile 
@@ -77,7 +77,9 @@
 ### Thành viên 1: Khả Như
 
 ### Thành viên 2: Tuyết Ngân
-Áp dụng S, I trong SOLID cho tetromino. Tách các hành vi trong Terminal thành các class riêng xử lí 1 nhiêm vụ và class interface tương ứng.
+- Áp dụng S, L, I trong SOLID cho tetromino. Tách các hành vi trong Terminal thành các class riêng xử lí 1 nhiêm vụ và class interface tương ứng. các type Tetromino có thể thay thế cho class cha Tetromino
+- Áp dụng S, L, I trong SOLID cho hành vi xoay: Tách class hành vi xoay thành 3 class cho mỗi công việc xoay ngang-dọc (I), xoay theo kim đồng hồ (S, T, Z), ngược chiều kim đồng hồ (J, L). Và O không xoay. Có interface chung cho 3 class. Các rotator có thể thay thế cho nhau. Áp dụng **Factory Pattern** cho rotator.
+- Áp dụng **Abstract Factory Pattern** cho ITetrominoComponentFactory 
 ### Thành viên 3: Trà My
  
 ---
@@ -85,17 +87,17 @@
 ### Thành viên 1: Khả Như
 
 ### Thành viên 2: Tuyết Ngân
-- Áp dụng S, L, I. Tách class hành vi xoay thành 3 class cho mỗi công việc xoay ngang-dọc (I), xoay theo kim đồng hồ (S, T, Z), ngược chiều kim đồng hồ (J, L). Và O không xoay. Có interface chung cho 3 class. Các rotator có thể thay thế cho nhau. Tạo **Factory rotation**. 
-- Áp dụng O trong SOLID: **Registry Pattern** để quản lí rotators. **Singleton Pattern** trong RotatorFactoryRegistry. **Auto registration** - tự động đăng ký rotator khi khởi động trong RotatorFactoryInitialized => dễ dàng thêm rotator mới
-- Áp dụng D trong SOLID: tetromino phụ thuộc vào interface ITetrominoRotator. Factory trả về interface. High-level modules (VD: ITetromino) không phụ thuộc low-level (IRotator)
+- Áp dụng O trong SOLID cho class xoay: **Registry Pattern** để quản lí và tạo các đối tượng rotators. **Strategy Pattern** cho ITetrominoRotator để xử lí các hành vi xoay khác nhau cho từng loại Tetromino. **Singleton Pattern** trong RotatorFactoryRegistry. **Auto registration** - tự động đăng ký rotator khi khởi động trong RotatorFactoryInitialized => dễ dàng thêm rotator mới
+- Áp dụng D trong SOLID cho class xoay và tetromino: tetromino phụ thuộc vào interface ITetrominoRotator. Factory trả về interface. High-level modules (VD: ITetromino) không phụ thuộc low-level (IRotator)
 ### Thành viên 3: Trà My
 ---
 ## Tuần 8
 ### Thành viên 1: Khả Như
 
 ### Thành viên 2: Tuyết Ngân
-- Hoàn tất SOLID cho terminal.
-- Hỗ trợ viết file readme.md
+- Component Substitutability, Rotator Substitutability, Tetromino Substitutability
+- Áp dụng O trong SOLID cho tetromino : **Registry Pattern** để quản lí quản lý các factory của Tetromino. **Singleton Pattern** trong TetrominoFactoryRegistry. **Auto registration** - tự động đăng ký các loại tetromino khi compile => dễ dàng thêm tetromino mới
+- Áp dụng D trong SOLID cho tetromino: tetromino phụ thuộc vào interface. Factory trả về interface. High-level modules không phụ thuộc low-level 
 ### Thành viên 3: Trà My
 
 ---
