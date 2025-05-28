@@ -95,7 +95,7 @@
 ### Thành viên 1: Khả Như
 
 ### Thành viên 2: Tuyết Ngân
-- Component Substitutability, Rotator Substitutability, Tetromino Substitutability
+- Hoàn tất nguyên lí **SOLID**, **design pattern** cho tetromino. Component Substitutability, Rotator Substitutability, Tetromino Substitutability
 - Áp dụng O trong SOLID cho tetromino : **Registry Pattern** để quản lí quản lý các factory của Tetromino. **Singleton Pattern** trong TetrominoFactoryRegistry. **Auto registration** - tự động đăng ký các loại tetromino khi compile => dễ dàng thêm tetromino mới
 - Áp dụng D trong SOLID cho tetromino: tetromino phụ thuộc vào interface. Factory trả về interface. High-level modules không phụ thuộc low-level 
 ### Thành viên 3: Trà My
