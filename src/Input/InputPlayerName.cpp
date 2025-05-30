@@ -1,7 +1,7 @@
 #include "InputPlayerName.h"
 
 PlayerNameInput::PlayerNameInput(sf::RenderWindow& win) : window(win), playerName("") {
-    font.loadFromFile("assets/arial.ttf");
+    font.loadFromFile("assets/fonts/arial.ttf");
 
     promptText.setFont(font);
     promptText.setString("Nhap ten nguoi choi:");
