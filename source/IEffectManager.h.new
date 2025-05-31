@@ -1,0 +1,48 @@
+#ifndef IEFFECT_MANAGER_H
+#define IEFFECT_MANAGER_H
+
+#include <SFML/Graphics.hpp>
+#include <vector>
+
+/**
+ * @brief Interface cho EffectManager
+ * 
+ * Theo nguyên tắc Dependency Inversion của SOLID, chúng ta tạo interface này để 
+ * GameRenderer không phụ thuộc trực tiếp vào implementation cụ thể của EffectManager.
+ */
+class IEffectManager {
+public:
+    virtual ~IEffectManager() = default;
+
+    /**
+     * @brief Cập nhật tất cả hiệu ứng
+     * @param deltaTime Thời gian trôi qua từ frame trước
+     */
+    virtual void update(float deltaTime) = 0;
+
+    /**
+     * @brief Vẽ tất cả hiệu ứng
+     * @param window Cửa sổ để vẽ
+     */
+    virtual void render(sf::RenderWindow& window) = 0;
+
+    /**
+     * @brief Khởi tạo hiệu ứng xóa dòng
+     * @param lines Danh sách các dòng cần xóa
+     */
+    virtual void initLineClearEffect(const std::vector<int>& lines) = 0;
+
+    /**
+     * @brief Kiểm tra có hiệu ứng xóa dòng đang hoạt động
+     * @return true nếu có hiệu ứng đang hoạt động
+     */
+    virtual bool hasActiveLineClearEffect() const = 0;
+
+    /**
+     * @brief Lấy các dòng đang có hiệu ứng xóa
+     * @return Danh sách dòng đang có hiệu ứng
+     */
+    virtual std::vector<int> getActiveLinesToClear() const = 0;
+};
+
+#endif // IEFFECT_MANAGER_H
