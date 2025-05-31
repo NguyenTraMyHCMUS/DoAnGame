@@ -224,12 +224,14 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 ### 🚀 **6. Các chủ đề nâng cao (15%)**
 
 **Mô tả đánh giá:**
-
-* **Combo điểm + cấp độ tự tăng** (Khả Như – Tuần 5): Cơ chế phức tạp, tính theo nhiều dòng liên tục.
-* **Hiển thị khối kế tiếp (1–3 khối)**: Giúp người chơi có chiến thuật – Trà My phụ trách.
-* **Hướng dẫn chơi riêng biệt (InstructionsState)** – tự mở rộng từ mẫu.
-* **Hình ảnh động**, **chuyển trạng thái mềm mại** – Tuyết Ngân triển khai.
-
+* **Có thêm điểm số, level, chơi lại khi game over, nhập tên người chơi**
+* **Combo điểm khi xóa x dòng + cấp độ tự tăng tương ứng**
+* **Hiển thị khối kế tiếp (1–3 khối)**: Giúp người chơi có chiến thuật
+* **Xây dựng 4 trạng thái giao diện**
+* **Hướng dẫn chơi riêng biệt (InstructionsState) trong MainMenu**
+* **Hiệu ứng khi xóa dòng, combo x dòng**
+* **Số liệu tổng kết: điểm cao nhất, điểm vòng hiện tại, tên người chơi**
+  
 ## Thư viện: Tải thư viện SFML 
 ## 🔹 Video demo
 
