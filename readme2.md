@@ -75,13 +75,14 @@
 ---
 ## Tuần 6
 ### Thành viên 1: Khả Như
-
+- Thêm trạng thái nhập tên người dùng
+- 
 ### Thành viên 2: Tuyết Ngân
 - Áp dụng S, L, I trong SOLID cho tetromino. Tách các hành vi trong Terminal thành các class riêng xử lí 1 nhiêm vụ và class interface tương ứng. các type Tetromino có thể thay thế cho class cha Tetromino
 - Áp dụng S, L, I trong SOLID cho hành vi xoay: Tách class hành vi xoay thành 3 class cho mỗi công việc xoay ngang-dọc (I), xoay theo kim đồng hồ (S, T, Z), ngược chiều kim đồng hồ (J, L). Và O không xoay. Có interface chung cho 3 class. Các rotator có thể thay thế cho nhau. Áp dụng **Factory Pattern** cho rotator.
 - Áp dụng **Abstract Factory Pattern** cho ITetrominoComponentFactory 
 ### Thành viên 3: Trà My
- 
+ - Áp dụng S, I cho Game
 ---
 ## Tuần 7
 ### Thành viên 1: Khả Như
@@ -90,6 +91,7 @@
 - Áp dụng O trong SOLID cho class xoay: **Registry Pattern** để quản lí và tạo các đối tượng rotators. **Strategy Pattern** cho ITetrominoRotator để xử lí các hành vi xoay khác nhau cho từng loại Tetromino. **Singleton Pattern** trong RotatorFactoryRegistry. **Auto registration** - tự động đăng ký rotator khi khởi động trong RotatorFactoryInitialized => dễ dàng thêm rotator mới
 - Áp dụng D trong SOLID cho class xoay và tetromino: tetromino phụ thuộc vào interface ITetrominoRotator. Factory trả về interface. High-level modules (VD: ITetromino) không phụ thuộc low-level (IRotator)
 ### Thành viên 3: Trà My
+- Áp dụng L, O, D cho Game
 ---
 ## Tuần 8
 ### Thành viên 1: Khả Như
@@ -102,7 +104,7 @@
 - Áp dụng D trong SOLID cho tetromino: tetromino phụ thuộc vào interface. Factory trả về interface. High-level modules không phụ thuộc low-level
 - Hỗ trợ viết file readme.md
 ### Thành viên 3: Trà My
-
+- Tổng hợp lại cách viết file
 - Thêm hiệu ứng khi xóa dòng, x dòng
 - Vẽ diagram
 - Quay video demo
