@@ -17,60 +17,60 @@ public:
 
 // InputManager tests
 TEST_CASE("InputManager default values", "[InputManager]") {
-    InputManager im;
-    REQUIRE(im.getDx() == 0);
-    REQUIRE(im.getRotate() == false);
+    InputManager input_manager;
+    REQUIRE(input_manager.getDx() == 0);
+    REQUIRE(input_manager.getRotate() == false);
 }
 
 TEST_CASE("InputManager set/get dx and rotate", "[InputManager]") {
-    InputManager im;
-    im.setDx(2);
-    im.setRotate(true);
-    REQUIRE(im.getDx() == 2);
-    REQUIRE(im.getRotate() == true);
+    InputManager input_manager;
+    input_manager.setDx(2);
+    input_manager.setRotate(true);
+    REQUIRE(input_manager.getDx() == 2);
+    REQUIRE(input_manager.getRotate() == true);
 }
 
 TEST_CASE("InputManager reset", "[InputManager]") {
-    InputManager im;
-    im.setDx(5);
-    im.setRotate(true);
-    im.reset();
-    REQUIRE(im.getDx() == 0);
-    REQUIRE(im.getRotate() == false);
+    InputManager input_manager;
+    input_manager.setDx(5);
+    input_manager.setRotate(true);
+    input_manager.reset();
+    REQUIRE(input_manager.getDx() == 0);
+    REQUIRE(input_manager.getRotate() == false);
 }
 
 // Có thể test processInput nếu muốn (ví dụ với sự kiện giả lập)
 // TEST_CASE("InputManager processInput", "[InputManager]") {
-//     InputManager im;
+//     InputManager input_manager;
 //     sf::Event event;
 //     event.type = sf::Event::KeyPressed;
 //     event.key.code = sf::Keyboard::Left;
-//     im.processInput(event);
+//     input_manager.processInput(event);
 //     // Kiểm tra dx thay đổi nếu bạn implement logic
 // }
 
 // InputHandler tests (nếu là class riêng biệt)
 TEST_CASE("InputHandler default values", "[InputHandler]") {
-    DummyInputHandler ih;
-    REQUIRE(ih.getDx() == 0);
-    REQUIRE(ih.getRotate() == false);
+    DummyInputHandler input_handler;
+    REQUIRE(input_handler.getDx() == 0);
+    REQUIRE(input_handler.getRotate() == false);
 }
 
 TEST_CASE("InputHandler set/get dx and rotate", "[InputHandler]") {
-    DummyInputHandler ih;
-    ih.setDx(-1);
-    ih.setRotate(true);
-    REQUIRE(ih.getDx() == -1);
-    REQUIRE(ih.getRotate() == true);
+    DummyInputHandler input_handler;
+    input_handler.setDx(-1);
+    input_handler.setRotate(true);
+    REQUIRE(input_handler.getDx() == -1);
+    REQUIRE(input_handler.getRotate() == true);
 }
 
 TEST_CASE("InputHandler reset", "[InputHandler]") {
-    DummyInputHandler ih;
-    ih.setDx(3);
-    ih.setRotate(true);
-    ih.reset();
-    REQUIRE(ih.getDx() == 0);
-    REQUIRE(ih.getRotate() == false);
+    DummyInputHandler input_handler;
+    input_handler.setDx(3);
+    input_handler.setRotate(true);
+    input_handler.reset();
+    REQUIRE(input_handler.getDx() == 0);
+    REQUIRE(input_handler.getRotate() == false);
 }
 
 // PlayerNameInput chỉ test được constructor
