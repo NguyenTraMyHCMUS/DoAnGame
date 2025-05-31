@@ -379,7 +379,7 @@ Tetromino(
 ## Thư viện: Tải thư viện SFML 
 ## 🔹 Video demo
 
-- Link: https://www.youtube.com/watch?v=TfmBUhhInyo
+- Link: [https://www.youtube.com/watch?v=TfmBUhhInyo](https://www.youtube.com/watch?v=DL3vBhwOEOY)
 
 ---
 
