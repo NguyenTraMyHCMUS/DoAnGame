@@ -19,12 +19,12 @@ public:
 class DummyPreview : public NextTetrominoPreview {
 public:
     DummyPreview() : NextTetrominoPreview() {}
-    void generateNext() {}
+    void generateNext() { }
     std::unique_ptr<Tetromino> getNext() { return std::make_unique<DummyTetromino>(); }
     std::unique_ptr<Tetromino> cloneNext() const { return std::make_unique<DummyTetromino>(); }
-    void draw(sf::RenderWindow&, sf::Sprite&) {}
+    void draw(sf::RenderWindow&, sf::Sprite&) { }
     const Tetromino* getNextTetromino() const { return nullptr; }
-    void reset() {}
+    void reset() { }
 };
 
 TEST_CASE("ScoreManager hoạt động đúng", "[ScoreManager]") {
@@ -41,6 +41,10 @@ TEST_CASE("ScoreManager hoạt động đúng", "[ScoreManager]") {
 
     sm.reset();
     REQUIRE(sm.getScore() == 0);
+
+    // Test getTopScores trả về vector có size <= 3
+    auto topScores = sm.getTopScores(3);
+    REQUIRE(topScores.size() <= 3);
 }
 
 TEST_CASE("LevelManager hoạt động đúng", "[LevelManager]") {
