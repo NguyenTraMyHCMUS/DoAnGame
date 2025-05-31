@@ -1,4 +1,5 @@
 # 🎮 Đồ Án Game Tetris – Hướng Đối Tượng & Cải Tiến
+# Cần tải thêm thư viện SFML
 
 ## 👩‍💻 Thành viên nhóm
 
