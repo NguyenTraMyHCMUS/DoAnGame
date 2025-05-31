@@ -1,11 +1,12 @@
 #include "catch.hpp"
 #include "../Core/Game.h"
-#include "../States/GameState.h"
+#include "../States/IGameState.h"
+#include "../States/GameStateManager.h"
 
 // Dummy GameState để test setState
 class DummyState : public GameState {
 public:
-    DummyState() : GameState() {}
+    DummyState() = default;
     void handleInput(Game&) override {}
     void draw(Game&) override {}
     void update(Game&) override {}
@@ -49,10 +50,10 @@ TEST_CASE("Game::setPlayerName and getPlayerName", "[Game]") {
     REQUIRE(game.getPlayerName() == "TestName");
 }
 
-// Nếu bạn có hàm setState trong Game, hãy test như sau (nếu không có thì bỏ qua)
-TEST_CASE("Game can set state with DummyState", "[Game]") {
-    Game game;
-    // Nếu Game có hàm setState, hãy mở comment dòng dưới:
-    // auto dummy = std::make_unique<DummyState>();
-    // REQUIRE_NOTHROW(game.setState(std::move(dummy)));
+// Test GameStateManager setState/getStatePtr với DummyState
+TEST_CASE("GameStateManager setState and getStatePtr", "[GameStateManager]") {
+    GameStateManager manager;
+    auto dummy_state = std::make_unique<DummyState>();
+    REQUIRE_NOTHROW(manager.setState(std::move(dummy_state)));
+    REQUIRE(manager.getStatePtr() != nullptr);
 }
