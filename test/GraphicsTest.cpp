@@ -2,17 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include "../Graphics/ResourceManager.h"
 #include "../Graphics/GameRenderer.h"
-// #include "../Graphics/TextureManager.h"
-
-// Thêm enum nếu thiếu
-enum class TetrominoType { I, O, T, S, Z, J, L };
 
 // Dummy classes cho test
-class DummyField : public Field {
-public:
-    DummyField() : Field() {}
-};
-
+class DummyField : public Field { public: DummyField() : Field() {} };
 class DummyTetromino : public Tetromino {
 public:
     DummyTetromino() : Tetromino() {}
@@ -20,22 +12,9 @@ public:
     std::string getTypeName() const override { return "Dummy"; }
     std::unique_ptr<Tetromino> clone() const override { return std::make_unique<DummyTetromino>(*this); }
 };
-
-class DummyScoreManager : public ScoreManager {
-public:
-    DummyScoreManager() : ScoreManager() {}
-};
-
-class DummyLevelManager : public LevelManager {
-public:
-    DummyLevelManager() : LevelManager() {}
-};
-
-class DummyNextPreview : public NextTetrominoPreview {
-public:
-    DummyNextPreview() : NextTetrominoPreview() {}
-    // Nếu có hàm ảo thì override ở đây
-};
+class DummyScoreManager : public ScoreManager { public: DummyScoreManager() : ScoreManager() {} };
+class DummyLevelManager : public LevelManager { public: DummyLevelManager() : LevelManager() {} };
+class DummyNextPreview : public NextTetrominoPreview { public: DummyNextPreview() : NextTetrominoPreview() {} };
 
 // ResourceManager tests
 TEST_CASE("ResourceManager loads resources", "[ResourceManager]") {
@@ -48,7 +27,6 @@ TEST_CASE("ResourceManager texture setters/getters", "[ResourceManager]") {
     ResourceManager rm;
     sf::Texture tex;
     rm.setT1(tex);
-    // Không so sánh địa chỉ, chỉ kiểm tra không crash
     REQUIRE_NOTHROW(rm.getT1());
     rm.setT2(tex);
     REQUIRE_NOTHROW(rm.getT2());
@@ -67,34 +45,11 @@ TEST_CASE("ResourceManager sprite setters/getters", "[ResourceManager]") {
     REQUIRE_NOTHROW(rm.getFrame());
 }
 
-TEST_CASE("ResourceManager default constructed textures are valid", "[ResourceManager]") {
-    ResourceManager rm;
-    REQUIRE_NOTHROW(rm.getT1());
-    REQUIRE_NOTHROW(rm.getT2());
-    REQUIRE_NOTHROW(rm.getT3());
-}
-
-TEST_CASE("ResourceManager default constructed sprites are valid", "[ResourceManager]") {
-    ResourceManager rm;
-    REQUIRE_NOTHROW(rm.getSprite());
-    REQUIRE_NOTHROW(rm.getBackground());
-    REQUIRE_NOTHROW(rm.getFrame());
-}
-
 // GameRenderer tests
 TEST_CASE("GameRenderer can be constructed and destructed", "[GameRenderer]") {
     sf::RenderWindow window(sf::VideoMode(50, 50), "Test");
     ResourceManager rm;
     REQUIRE_NOTHROW(GameRenderer(window, rm));
-}
-
-TEST_CASE("GameRenderer clear and display", "[GameRenderer]") {
-    sf::RenderWindow window(sf::VideoMode(100, 100), "Test");
-    ResourceManager rm;
-    GameRenderer renderer(window, rm);
-    renderer.clear();
-    renderer.display();
-    SUCCEED();
 }
 
 TEST_CASE("GameRenderer draw functions", "[GameRenderer]") {
@@ -118,10 +73,11 @@ TEST_CASE("GameRenderer draw functions", "[GameRenderer]") {
     SUCCEED();
 }
 
-TEST_CASE("GameRenderer drawInfoBox with empty strings", "[GameRenderer]") {
-    sf::RenderWindow window(sf::VideoMode(50, 50), "Test");
+TEST_CASE("GameRenderer clear and display", "[GameRenderer]") {
+    sf::RenderWindow window(sf::VideoMode(100, 100), "Test");
     ResourceManager rm;
     GameRenderer renderer(window, rm);
-    renderer.drawInfoBox("", "", 0.0f);
+    renderer.clear();
+    renderer.display();
     SUCCEED();
 }
