@@ -189,7 +189,133 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 
 
 * Áp dụng **nguyên lý SOLID** toàn bộ trong cách chia class, interface, dependency injection.
+## 1. S - Single Responsibility Principle (Nguyên lý trách nhiệm đơn)
 
+Mỗi lớp trong dự án đảm nhiệm một nhiệm vụ duy nhất và rõ ràng:
+
+### 🧱 **Entities**
+- `Point`: Quản lý tọa độ 2D.
+- `Field`: Quản lý lưới trò chơi (_field 2 chiều), kiểm tra và xóa các dòng hoàn chỉnh.
+- `TetrominoConstants`: Lưu trữ các hằng số (constant) liên quan đến Tetromino.
+
+### 🔧 **Tách biệt hành vi (Components folder)**  
+- `TetrominoValidator`: Kiểm tra tính hợp lệ của vị trí Tetromino.  
+- `TetrominoMovement`: Xử lý di chuyển ngang và rơi xuống.  
+- `TetrominoRenderer`: Xử lý logic hiển thị và vẽ lên màn hình.  
+- `TetrominoState`: Quản lý backup và restore trạng thái của khối.  
+- `TetrominoLocker`: Cố định Tetromino vào lưới.  
+
+#### 🔄 Logic xoay:
+- `StandarRotator`: Xoay theo chiều kim đồng hồ.  
+- `CounterclockwiseRotator`: Xoay ngược chiều kim đồng hồ.  
+- `IRotator`: Xử lý xoay ngang/dọc dành riêng cho khối I.
+
+### 🏭 **Tách biệt logic khởi tạo (Factories folder)**
+- `TetrominoFactory`: Tạo đối tượng Tetromino.
+- `RotatorFactory`: Tạo các đối tượng xoay tương ứng cho từng loại Tetromino.
+- `DefaultTetrominoComponentFactory`: Tạo các components cho Tetromino.
+
+### 🖼 **Graphics**
+- `ResourceManager`: Quản lý tài nguyên đồ họa.
+- `GameRenderer`: Vẽ các thành phần của game.
+- `FlashLineEffect`: Hiệu ứng nhấp nháy khi xóa hàng.
+
+### 🎮 **Input**
+- `InputManager`: Quản lý và xử lý đầu vào từ người dùng.
+- `InputPlayerName`: Xử lý nhập tên người chơi.
+
+### 🧠 **Game Logic**
+- `GameLogic`: Logic chính của trò chơi.
+- `ScoreManager`: Quản lý điểm số.
+- `LevelManager`: Quản lý level và tăng tốc độ trò chơi.
+
+### 🎭 **States**
+- `MainMenuState`: Trạng thái menu chính.
+- `InstructionsState`: Trạng thái hiển thị hướng dẫn chơi.
+- `PlayerNameState`: Trạng thái nhập tên người chơi.
+- `PlayingState`: Trạng thái chơi game.
+- `PausedState`: Trạng thái tạm dừng.
+- `GameOverState`: Trạng thái game over và xử lý chơi lại.
+
+### ⏱ **Time**
+- `GameTime`: Quản lý thời gian cập nhật khung hình/game.
+
+---
+
+## 2. O - Open/Closed Principle (Nguyên lý mở rộng mà không sửa đổi)
+
+### ✅ Registry Pattern cho mở rộng:
+- `TetrominoFactoryRegistry`: Cho phép đăng ký factory mới mà không sửa code registry.
+- `RotatorFactoryRegistry`: Cho phép thêm các chiến lược xoay mới mà không cần thay đổi code hiện tại.
+
+### ⚙️ Hệ thống Auto-registration:
+- `Register_Tetromino` macro: Chỉ cần 1 dòng để thêm loại Tetromino mới.
+- `TetrominoAutoRegistrar` (template): Tự động đăng ký khối Tetromino khi compile.
+
+### 🧩 Strategy Pattern:
+- `ITetrominoRotator`: Có thể mở rộng nhiều kiểu xoay khác nhau (Standar, I, CounterClockwise).
+- `IRenderingStrategy`: Dễ dàng thêm các chiến lược hiển thị mới mà không sửa interface hiện tại.
+
+---
+
+## 3. L - Liskov Substitution Principle (Nguyên lý thay thế Liskov)
+### ✅ Các Tetromino có thể thay thế cho nhau 
+#### Examples:
+```cpp
+std::unique_ptr<Tetromino> tetromino;
+tetromino = std::make_unique<LTetromino>();
+tetromino = std::make_unique<ZTetromino>();
+```
+### ✅ Các Component Interface có thể thay thế được bởi các class con kế thừa tương ứng
+#### Examples:
+```cpp
+std::unique_ptr<ITetrominoMovement> movement;
+movement = std::make_unique<TetrominoMovement>();
+movement->move(dx);
+
+std::unique_ptr<ITetrominoRotator> rotator;
+rotator = std::make_unique<IRotator>();
+rotator->rotate(_blocks);
+rotator = std::make_unique<StandardRotator>();
+rotator->rotate(_blocks);
+```
+### ✅ Các State có thể thay thế cho nhau 
+#### Examples:
+```cpp
+std::unique_ptr<IGameState> state;
+state = std::make_unique<MainMenuState>(game);
+state = std::make_unique<GameOverState>(game);
+```
+
+## 4. I - Interface Segregation Principle (Nguyên lý phân tách interface)
+
+- Các interface được chia nhỏ tương ứng với từng hành vi cụ thể, giúp các lớp chỉ cần implement những gì chúng thực sự sử dụng.
+- Tất cả các interface đều được đặt trong thư mục `Interface`, ví dụ:
+  - `ITetrominoMovement`: chỉ định nghĩa hành vi di chuyển.
+  - `ITetrominoRotator`: chỉ định nghĩa hành vi xoay khối.
+  - `ITetrominoRenderer`: chỉ định nghĩa hành vi vẽ.
+  - `ITetrominoState`: định nghĩa hành vi lưu/khôi phục trạng thái.
+  - `ITetrominoLocker`: định nghĩa hành vi cố định khối.
+
+➡️ Điều này giúp code dễ bảo trì, tránh "interface béo" (fat interface) và tăng tính linh hoạt khi mở rộng.
+
+---
+
+## 5. D - Dependency Inversion Principle (Nguyên lý đảo ngược phụ thuộc)
+
+- Lớp `Tetromino` không phụ thuộc vào các lớp cụ thể (concrete class) mà phụ thuộc vào **interface** (lớp trừu tượng).
+- Sử dụng **Dependency Injection** qua constructor để truyền các thành phần cần thiết.
+  
+### 🔁 Áp dụng Dependency Injection:
+```cpp
+Tetromino(
+    std::unique_ptr<ITetrominoMovement> movement,
+    std::unique_ptr<ITetrominoRotator> rotator,
+    std::unique_ptr<ITetrominoRenderer> renderer,
+    std::unique_ptr<ITetrominoState> state,
+    std::unique_ptr<ITetrominoLocker> locker
+);
+```
 ---
 
 ### ✅ **4. Đảm bảo chất lượng (20%)**
