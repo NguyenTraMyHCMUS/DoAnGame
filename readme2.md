@@ -119,7 +119,6 @@
 ---
 
 ## 🔹 Tỉ lệ điểm : Chia đều cho mỗi thành viên
-
 ---
 
 ## 🔹 Mô tả các yêu cầu trong cách thức đánh giá
@@ -146,6 +145,8 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 * **Nhóm trưởng (Trà My)** có vai trò dẫn dắt, khởi tạo repo, gộp code, hỗ trợ kết hợp các thành phần và Doxygen tài liệu hóa kiến trúc.
 ![image](https://github.com/user-attachments/assets/750ee903-c14a-424c-9e94-a6cfc54c3fbb)
 
+**Biên bản họp nhóm :** 
+[https://docs.google.com/document/d/16QWD5q1xgFbGz7bTHGD4i1FU7sXh8Xf_/edit?usp=sharing&ouid=118214889220815317219&rtpof=true&sd=true](https://docs.google.com/document/d/16QWD5q1xgFbGz7bTHGD4i1FU7sXh8Xf_/edit?usp=sharing&ouid=118214889220815317219&rtpof=true&sd=true)
 
 ---
 
