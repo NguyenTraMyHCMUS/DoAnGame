@@ -100,12 +100,13 @@
 - Hoàn tất nguyên lí **SOLID**, **design pattern** cho tetromino. Component Substitutability, Rotator Substitutability, Tetromino Substitutability
 - Áp dụng O trong SOLID cho tetromino : **Registry Pattern** để quản lí quản lý các factory của Tetromino. **Singleton Pattern** trong TetrominoFactoryRegistry. **Auto registration** - tự động đăng ký các loại tetromino khi compile => dễ dàng thêm tetromino mới
 - Áp dụng D trong SOLID cho tetromino: tetromino phụ thuộc vào interface. Factory trả về interface. High-level modules không phụ thuộc low-level
-- Viết file readme.md
+- Hỗ trợ viết file readme.md
 ### Thành viên 3: Trà My
 
 - Thêm hiệu ứng khi xóa dòng, x dòng
 - Vẽ diagram
-- Quay video deme
+- Quay video demo
+- Viết file readme.md
 ---
 ## 🔹 Tỉ lệ đóng góp vào dự án
 | Thành viên       | Tỉ lệ đóng góp |
@@ -197,6 +198,7 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 
 
 * Áp dụng **nguyên lý SOLID** toàn bộ trong cách chia class, interface, dependency injection.
+  
 ## 1. S - Single Responsibility Principle (Nguyên lý trách nhiệm đơn)
 
 Mỗi lớp trong dự án đảm nhiệm một nhiệm vụ duy nhất và rõ ràng:
@@ -295,6 +297,7 @@ state = std::make_unique<MainMenuState>(game);
 state = std::make_unique<GameOverState>(game);
 ```
 
+---
 ## 4. I - Interface Segregation Principle (Nguyên lý phân tách interface)
 
 - Các interface được chia nhỏ tương ứng với từng hành vi cụ thể, giúp các lớp chỉ cần implement những gì chúng thực sự sử dụng.
