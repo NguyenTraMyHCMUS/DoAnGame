@@ -40,9 +40,9 @@ TEST_CASE("TetrominoState backup and restore", "[TetrominoState]") {
 
 TEST_CASE("TetrominoMovement move and fall", "[TetrominoMovement]") {
     Point blocks[4] = { {0,0}, {1,0}, {2,0}, {3,0} };
-    TetrominoMovement move(blocks);
-    move.move(2);
-    move.fall();
+    TetrominoMovement movement(blocks);
+    movement.move(2);
+    movement.fall();
     // Không kiểm tra giá trị cụ thể vì logic có thể thay đổi
     SUCCEED();
 }
