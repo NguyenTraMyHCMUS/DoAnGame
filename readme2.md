@@ -179,10 +179,14 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
   * Mỗi lớp phụ trách một nhiệm vụ rõ ràng, đúng nguyên tắc **SRP** (Single Responsibility).
 
 * **Design Pattern áp dụng**:
+  * `Factory Pattern`: `TetrominoFactory` để quản lý tạo các loại Tetromino, `RotatorFactory` quản lý tạo các loại rotator
+  * `Abstract Factory Pattern`: `ITetrominoComponentFactory` factory chung cho tất cả component (rotator có nhiều kiểu xoay), thuận tiện cho các component phát triển sau này
+  * `Registry Pattern`: `TetrominoFactoryRegistry` quản lý đăng ký cho Tetromino Factory, `RotatorFactoryRegistry` quản lý đăng ký cho Rotator Factory
+  * `Singleton Pattern`: `CongifgurationManager` quản lý cấu hình game, `ColorMapper` quản lý màu sắc cho Tetromino
+  * `Strategy Pattern`: `ITetrominoRotator`, `StandardRotator`,.. quản lý cách xoay khác nhau của khối Tetromino. `IRenderingStrategy`,.. quản lý vẽ khối hiện tại, khối tiếp theo lên lưới. 
+  * `State Pattern`: `IGameState`, `MainMenuState`, `PlayingState`, `PausedState`, `GameOverState`,... quản lý, tạo và chuyển đổi trạng thái dễ dàng hơn
+  * `Observer Pattern`: `TetrominoEventManager`,.. quản lý và thông báo các sự kiện liên quan Tetromino trong game
 
-  * `Factory Pattern`: `TetrominoFactory` tạo khối từ tên loại (do Tuyết Ngân triển khai – Tuần 5).
-  * `State Pattern`: `GameState`, `MainMenuState`, `PlayingState`, `PausedState`, `GameOverState` – rõ ràng trong source.
-  * Interface `ITetromino` đóng vai trò chuẩn hóa đa hình các khối.
 
 * Áp dụng **nguyên lý SOLID** toàn bộ trong cách chia class, interface, dependency injection.
 
