@@ -179,7 +179,7 @@ Dựa trên tiến trình nhóm bạn đã cung cấp, cùng với cấu trúc f
 
 **Mô tả đánh giá:**
 
-* Thiết kế theo **Layered Architecture**:
+* Thiết kế theo **Layered Architecture**: Coi trong cụ thể trong diagram
 
   * Logic xử lý (`Field`, `Tetromino`, `Game`, `ScoreManager`,...) tách khỏi giao diện (`State`).
   * Mỗi lớp phụ trách một nhiệm vụ rõ ràng, đúng nguyên tắc **SRP** (Single Responsibility).
