@@ -8,71 +8,71 @@
 #include "../../Entities/Types/ZTetromino.h"
 
 TEST_CASE("ITetromino basic functionality", "[ITetromino]") {
-    ITetromino i;
-    REQUIRE_NOTHROW(i.initializeShape());
-    REQUIRE_NOTHROW(i.rotate());
-    auto clone = i.clone();
+    ITetromino tetromino;
+    REQUIRE_NOTHROW(tetromino.initializeShape());
+    REQUIRE_NOTHROW(tetromino.rotate());
+    auto clone = tetromino.clone();
     REQUIRE(clone != nullptr);
-    REQUIRE(clone->getTypeName() == i.getTypeName());
-    REQUIRE(i.getTypeName() == "I");
+    REQUIRE(clone->getTypeName() == tetromino.getTypeName());
+    REQUIRE(tetromino.getTypeName() == "I");
 }
 
 TEST_CASE("JTetromino basic functionality", "[JTetromino]") {
-    JTetromino j;
-    REQUIRE_NOTHROW(j.initializeShape());
-    REQUIRE_NOTHROW(j.rotate());
-    auto clone = j.clone();
+    JTetromino tetromino;
+    REQUIRE_NOTHROW(tetromino.initializeShape());
+    REQUIRE_NOTHROW(tetromino.rotate());
+    auto clone = tetromino.clone();
     REQUIRE(clone != nullptr);
-    REQUIRE(clone->getTypeName() == j.getTypeName());
-    REQUIRE(j.getTypeName() == "J");
+    REQUIRE(clone->getTypeName() == tetromino.getTypeName());
+    REQUIRE(tetromino.getTypeName() == "J");
 }
 
 TEST_CASE("LTetromino basic functionality", "[LTetromino]") {
-    LTetromino l;
-    REQUIRE_NOTHROW(l.initializeShape());
-    REQUIRE_NOTHROW(l.rotate());
-    auto clone = l.clone();
+    LTetromino tetromino;
+    REQUIRE_NOTHROW(tetromino.initializeShape());
+    REQUIRE_NOTHROW(tetromino.rotate());
+    auto clone = tetromino.clone();
     REQUIRE(clone != nullptr);
-    REQUIRE(clone->getTypeName() == l.getTypeName());
-    REQUIRE(l.getTypeName() == "L");
+    REQUIRE(clone->getTypeName() == tetromino.getTypeName());
+    REQUIRE(tetromino.getTypeName() == "L");
 }
 
 TEST_CASE("OTetromino basic functionality", "[OTetromino]") {
-    OTetromino o;
-    REQUIRE_NOTHROW(o.initializeShape());
-    REQUIRE_NOTHROW(o.rotate());
-    auto clone = o.clone();
+    OTetromino tetromino;
+    REQUIRE_NOTHROW(tetromino.initializeShape());
+    REQUIRE_NOTHROW(tetromino.rotate());
+    auto clone = tetromino.clone();
     REQUIRE(clone != nullptr);
-    REQUIRE(clone->getTypeName() == o.getTypeName());
-    REQUIRE(o.getTypeName() == "O");
+    REQUIRE(clone->getTypeName() == tetromino.getTypeName());
+    REQUIRE(tetromino.getTypeName() == "O");
 }
 
 TEST_CASE("STetromino basic functionality", "[STetromino]") {
-    STetromino s;
-    REQUIRE_NOTHROW(s.initializeShape());
-    REQUIRE_NOTHROW(s.rotate());
-    auto clone = s.clone();
+    STetromino tetromino;
+    REQUIRE_NOTHROW(tetromino.initializeShape());
+    REQUIRE_NOTHROW(tetromino.rotate());
+    auto clone = tetromino.clone();
     REQUIRE(clone != nullptr);
-    REQUIRE(clone->getTypeName() == s.getTypeName());
-    REQUIRE(s.getTypeName() == "S");
+    REQUIRE(clone->getTypeName() == tetromino.getTypeName());
+    REQUIRE(tetromino.getTypeName() == "S");
 }
 
 TEST_CASE("TTetromino basic functionality", "[TTetromino]") {
-    TTetromino t;
-    REQUIRE_NOTHROW(t.initializeShape());
-    REQUIRE_NOTHROW(t.rotate());
-    auto clone = t.clone();
+    TTetromino tetromino;
+    REQUIRE_NOTHROW(tetromino.initializeShape());
+    REQUIRE_NOTHROW(tetromino.rotate());
+    auto clone = tetromino.clone();
     REQUIRE(clone != nullptr);
-    REQUIRE(clone->getTypeName() == t.getTypeName());
-    REQUIRE(t.getTypeName() == "T");
+    REQUIRE(clone->getTypeName() == tetromino.getTypeName());
+    REQUIRE(tetromino.getTypeName() == "T");
 }
 
 TEST_CASE("ZTetromino basic functionality", "[ZTetromino]") {
-    ZTetromino z;
-    REQUIRE_NOTHROW(z.initializeShape());
-    REQUIRE_NOTHROW(z.rotate());
-    auto clone = z.clone();
+    ZTetromino tetromino;
+    REQUIRE_NOTHROW(tetromino.initializeShape());
+    REQUIRE_NOTHROW(tetromino.rotate());
+    auto clone = tetromino.clone();
     REQUIRE(clone != nullptr);
-    REQUIRE(clone->getTypeName() == z.getTypeName());
-    REQUIRE(z.getTypeName() == "Z");
+    REQUIRE(clone->getTypeName() == tetromino.getTypeName());
+    REQUIRE(tetromino.getTypeName() == "Z");
 }
