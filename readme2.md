@@ -94,7 +94,6 @@
 ---
 ## Tuần 8
 ### Thành viên 1: Khả Như
-
 - Tạo file doxygen
 - Viết unitest
 ### Thành viên 2: Tuyết Ngân
