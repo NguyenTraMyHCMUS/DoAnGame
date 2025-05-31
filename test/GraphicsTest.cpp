@@ -18,65 +18,65 @@ class DummyNextPreview : public NextTetrominoPreview { public: DummyNextPreview(
 
 // ResourceManager tests
 TEST_CASE("ResourceManager loads resources", "[ResourceManager]") {
-    ResourceManager rm;
+    ResourceManager resource_manager;
     // Nếu loadResources() chưa implement, có thể bỏ qua hoặc sửa lại test này
-    REQUIRE(rm.loadResources() == true);
+    REQUIRE(resource_manager.loadResources() == true);
 }
 
 TEST_CASE("ResourceManager texture setters/getters", "[ResourceManager]") {
-    ResourceManager rm;
-    sf::Texture tex;
-    rm.setT1(tex);
-    REQUIRE_NOTHROW(rm.getT1());
-    rm.setT2(tex);
-    REQUIRE_NOTHROW(rm.getT2());
-    rm.setT3(tex);
-    REQUIRE_NOTHROW(rm.getT3());
+    ResourceManager resource_manager;
+    sf::Texture texture;
+    resource_manager.setT1(texture);
+    REQUIRE_NOTHROW(resource_manager.getT1());
+    resource_manager.setT2(texture);
+    REQUIRE_NOTHROW(resource_manager.getT2());
+    resource_manager.setT3(texture);
+    REQUIRE_NOTHROW(resource_manager.getT3());
 }
 
 TEST_CASE("ResourceManager sprite setters/getters", "[ResourceManager]") {
-    ResourceManager rm;
+    ResourceManager resource_manager;
     sf::Sprite sprite;
-    rm.setSprite(sprite);
-    REQUIRE_NOTHROW(rm.getSprite());
-    rm.setBackground(sprite);
-    REQUIRE_NOTHROW(rm.getBackground());
-    rm.setFrame(sprite);
-    REQUIRE_NOTHROW(rm.getFrame());
+    resource_manager.setSprite(sprite);
+    REQUIRE_NOTHROW(resource_manager.getSprite());
+    resource_manager.setBackground(sprite);
+    REQUIRE_NOTHROW(resource_manager.getBackground());
+    resource_manager.setFrame(sprite);
+    REQUIRE_NOTHROW(resource_manager.getFrame());
 }
 
 // GameRenderer tests
 TEST_CASE("GameRenderer can be constructed and destructed", "[GameRenderer]") {
     sf::RenderWindow window(sf::VideoMode(50, 50), "Test");
-    ResourceManager rm;
-    REQUIRE_NOTHROW(GameRenderer(window, rm));
+    ResourceManager resource_manager;
+    REQUIRE_NOTHROW(GameRenderer(window, resource_manager));
 }
 
 TEST_CASE("GameRenderer draw functions", "[GameRenderer]") {
     sf::RenderWindow window(sf::VideoMode(100, 100), "Test");
-    ResourceManager rm;
-    GameRenderer renderer(window, rm);
+    ResourceManager resource_manager;
+    GameRenderer renderer(window, resource_manager);
 
     DummyField field;
     DummyTetromino tetromino;
     DummyNextPreview preview;
-    DummyScoreManager score;
-    DummyLevelManager level;
+    DummyScoreManager score_manager;
+    DummyLevelManager level_manager;
 
     renderer.drawBackground();
     renderer.drawField(field);
     renderer.drawTetromino(&tetromino);
     renderer.drawInfoBox("Score", "1000", 10.0f);
     renderer.drawNextPreview(preview);
-    renderer.drawStats(score, level);
+    renderer.drawStats(score_manager, level_manager);
     renderer.drawFrame();
     SUCCEED();
 }
 
 TEST_CASE("GameRenderer clear and display", "[GameRenderer]") {
     sf::RenderWindow window(sf::VideoMode(100, 100), "Test");
-    ResourceManager rm;
-    GameRenderer renderer(window, rm);
+    ResourceManager resource_manager;
+    GameRenderer renderer(window, resource_manager);
     renderer.clear();
     renderer.display();
     SUCCEED();
