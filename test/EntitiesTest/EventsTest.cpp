@@ -5,13 +5,13 @@
 // Dummy Listener kế thừa đúng interface
 class DummyListener : public ITetrominoEventListener {
 public:
-    bool created = false, moved = false, rotated = false, fell = false, locked = false, destroyed = false;
-    void onTetrominoCreated(const Tetromino&) override { created = true; }
-    void onTetrominoMoved(const Tetromino&, int) override { moved = true; }
-    void onTetrominoRotated(const Tetromino&) override { rotated = true; }
-    void onTetrominoFell(const Tetromino&) override { fell = true; }
-    void onTetrominoLocked(const Tetromino&) override { locked = true; }
-    void onTetrominoDestroyed(const Tetromino&) override { destroyed = true; }
+    bool _created = false, _moved = false, _rotated = false, _fell = false, _locked = false, _destroyed = false;
+    void onTetrominoCreated(const Tetromino&) override { _created = true; }
+    void onTetrominoMoved(const Tetromino&, int) override { _moved = true; }
+    void onTetrominoRotated(const Tetromino&) override { _rotated = true; }
+    void onTetrominoFell(const Tetromino&) override { _fell = true; }
+    void onTetrominoLocked(const Tetromino&) override { _locked = true; }
+    void onTetrominoDestroyed(const Tetromino&) override { _destroyed = true; }
 };
 
 // Dummy Tetromino kế thừa đúng kiểu
@@ -38,12 +38,12 @@ TEST_CASE("TetrominoEventManager singleton and listener", "[TetrominoEventManage
     manager.notifyLocked(tetromino);
     manager.notifyDestroyed(tetromino);
 
-    REQUIRE(listener->created);
-    REQUIRE(listener->moved);
-    REQUIRE(listener->rotated);
-    REQUIRE(listener->fell);
-    REQUIRE(listener->locked);
-    REQUIRE(listener->destroyed);
+    REQUIRE(listener->_created);
+    REQUIRE(listener->_moved);
+    REQUIRE(listener->_rotated);
+    REQUIRE(listener->_fell);
+    REQUIRE(listener->_locked);
+    REQUIRE(listener->_destroyed);
 
     // Test removeExpiredListeners không crash
     listener.reset();
