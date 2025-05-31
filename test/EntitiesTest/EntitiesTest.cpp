@@ -21,18 +21,18 @@ TEST_CASE("TetrominoConstants values are correct", "[TetrominoConstants]") {
 
 // Test Point
 TEST_CASE("Point basic functionality", "[Point]") {
-    Point p1;
-    REQUIRE(p1.getX() == 0);
-    REQUIRE(p1.getY() == 0);
+    Point point1;
+    REQUIRE(point1.getX() == 0);
+    REQUIRE(point1.getY() == 0);
 
-    Point p2(5, 7);
-    REQUIRE(p2.getX() == 5);
-    REQUIRE(p2.getY() == 7);
+    Point point2(5, 7);
+    REQUIRE(point2.getX() == 5);
+    REQUIRE(point2.getY() == 7);
 
-    p2.setX(10);
-    p2.setY(20);
-    REQUIRE(p2.getX() == 10);
-    REQUIRE(p2.getY() == 20);
+    point2.setX(10);
+    point2.setY(20);
+    REQUIRE(point2.getX() == 10);
+    REQUIRE(point2.getY() == 20);
 }
 
 // Test Field
@@ -75,20 +75,20 @@ public:
 };
 
 TEST_CASE("Tetromino base class interface", "[Tetromino]") {
-    DummyTetromino tet;
-    tet.setCellSize(20);
-    REQUIRE(tet.getColor() == 0);
-    tet.setColor(5);
-    REQUIRE(tet.getColor() == 5);
+    DummyTetromino tetromino;
+    tetromino.setCellSize(20);
+    REQUIRE(tetromino.getColor() == 0);
+    tetromino.setColor(5);
+    REQUIRE(tetromino.getColor() == 5);
 
     // Test getBlocks, getX, getY
-    const Point* blocks = tet.getBlocks();
+    const Point* blocks = tetromino.getBlocks();
     for (int i = 0; i < 4; ++i) {
-        REQUIRE(blocks[i].getX() == tet.getX(i));
-        REQUIRE(blocks[i].getY() == tet.getY(i));
+        REQUIRE(blocks[i].getX() == tetromino.getX(i));
+        REQUIRE(blocks[i].getY() == tetromino.getY(i));
     }
 
     // Test backup/restore state
-    tet.backupState();
-    tet.restoreState();
+    tetromino.backupState();
+    tetromino.restoreState();
 }
