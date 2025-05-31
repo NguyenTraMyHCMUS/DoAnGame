@@ -4,7 +4,7 @@
 #include "../Logic/GameLogic.h"
 #include "../Entities/Field.h"
 #include "../Entities/Tetromino.h"
-#include "../States/NextTetrominoPreview.h"
+#include "../Entities/NextTetrominoPreview.h"
 
 // Dummy Tetromino: override all pure virtual functions
 class DummyTetromino : public Tetromino {
@@ -28,54 +28,54 @@ public:
 };
 
 TEST_CASE("ScoreManager hoạt động đúng", "[ScoreManager]") {
-    ScoreManager sm;
-    REQUIRE(sm.getScore() == 0);
+    ScoreManager score_manager;
+    REQUIRE(score_manager.getScore() == 0);
 
-    sm.addScore(100);
-    REQUIRE(sm.getScore() == 100);
+    score_manager.addScore(100);
+    REQUIRE(score_manager.getScore() == 100);
 
-    int oldHigh = sm.getHighScore();
-    sm.addScore(1000);
-    sm.submitScore("TestUser");
-    REQUIRE(sm.getHighScore() >= oldHigh);
+    int old_high = score_manager.getHighScore();
+    score_manager.addScore(1000);
+    score_manager.submitScore("TestUser");
+    REQUIRE(score_manager.getHighScore() >= old_high);
 
-    sm.reset();
-    REQUIRE(sm.getScore() == 0);
+    score_manager.reset();
+    REQUIRE(score_manager.getScore() == 0);
 
     // Test getTopScores trả về vector có size <= 3
-    auto topScores = sm.getTopScores(3);
-    REQUIRE(topScores.size() <= 3);
+    auto top_scores = score_manager.getTopScores(3);
+    REQUIRE(top_scores.size() <= 3);
 }
 
 TEST_CASE("LevelManager hoạt động đúng", "[LevelManager]") {
-    LevelManager lm;
-    REQUIRE(lm.getLevel() == 1);
-    REQUIRE(lm.getLinesCleared() == 0);
+    LevelManager level_manager;
+    REQUIRE(level_manager.getLevel() == 1);
+    REQUIRE(level_manager.getLinesCleared() == 0);
 
-    lm.addClearedLines(5);
-    REQUIRE(lm.getLinesCleared() == 5);
+    level_manager.addClearedLines(5);
+    REQUIRE(level_manager.getLinesCleared() == 5);
 
-    lm.increaseLevel();
-    REQUIRE(lm.getLevel() == 2);
+    level_manager.increaseLevel();
+    REQUIRE(level_manager.getLevel() == 2);
 
-    lm.reset();
-    REQUIRE(lm.getLevel() == 1);
-    REQUIRE(lm.getLinesCleared() == 0);
+    level_manager.reset();
+    REQUIRE(level_manager.getLevel() == 1);
+    REQUIRE(level_manager.getLinesCleared() == 0);
 
-    lm.addClearedLines(10);
-    lm.resetLinesCleared();
-    REQUIRE(lm.getLinesCleared() == 0);
+    level_manager.addClearedLines(10);
+    level_manager.resetLinesCleared();
+    REQUIRE(level_manager.getLinesCleared() == 0);
 }
 
 TEST_CASE("GameLogic khởi tạo và reset", "[GameLogic]") {
     Field field;
     std::unique_ptr<Tetromino> tetromino = std::make_unique<DummyTetromino>();
     DummyPreview preview;
-    ScoreManager scoreManager;
-    LevelManager levelManager;
+    ScoreManager score_manager;
+    LevelManager level_manager;
     float delay = 0.5f;
 
-    GameLogic logic(field, tetromino, preview, scoreManager, levelManager, delay);
+    GameLogic logic(field, tetromino, preview, score_manager, level_manager, delay);
 
     // Test resetGame không gây lỗi
     logic.resetGame();
@@ -85,11 +85,11 @@ TEST_CASE("GameLogic update di chuyển ngang", "[GameLogic]") {
     Field field;
     std::unique_ptr<Tetromino> tetromino = std::make_unique<DummyTetromino>();
     DummyPreview preview;
-    ScoreManager scoreManager;
-    LevelManager levelManager;
+    ScoreManager score_manager;
+    LevelManager level_manager;
     float delay = 0.5f;
 
-    GameLogic logic(field, tetromino, preview, scoreManager, levelManager, delay);
+    GameLogic logic(field, tetromino, preview, score_manager, level_manager, delay);
 
     // Di chuyển sang phải
     bool result = logic.moveTetrominoHorizontally(1);
@@ -104,11 +104,11 @@ TEST_CASE("GameLogic update xoay khối", "[GameLogic]") {
     Field field;
     std::unique_ptr<Tetromino> tetromino = std::make_unique<DummyTetromino>();
     DummyPreview preview;
-    ScoreManager scoreManager;
-    LevelManager levelManager;
+    ScoreManager score_manager;
+    LevelManager level_manager;
     float delay = 0.5f;
 
-    GameLogic logic(field, tetromino, preview, scoreManager, levelManager, delay);
+    GameLogic logic(field, tetromino, preview, score_manager, level_manager, delay);
 
     // Xoay khối
     bool result = logic.rotateTetrominoIfPossible(true);
