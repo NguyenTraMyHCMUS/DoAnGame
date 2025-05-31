@@ -372,13 +372,11 @@ Tetromino(
 ### 🚀 **6. Các chủ đề nâng cao (15%)**
 
 **Mô tả đánh giá:**
-* **Có thêm điểm số, level, chơi lại khi game over, nhập tên người chơi**
-* **Combo điểm khi xóa x dòng + cấp độ tự tăng tương ứng**
-* **Hiển thị khối kế tiếp (1–3 khối)**: Giúp người chơi có chiến thuật
-* **Xây dựng 4 trạng thái giao diện**
-* **Hướng dẫn chơi riêng biệt (InstructionsState) trong MainMenu**
-* **Hiệu ứng khi xóa dòng, combo x dòng**
-* **Số liệu tổng kết: điểm cao nhất, điểm vòng hiện tại, tên người chơi**
+* **Registry Pattern**
+* **State Pattern**
+* **Abstract Factory Pattern**
+* **Observer Pattern**
+* **Auto registration** - tự động đăng ký các loại tetromino khi compile
   
 ## Thư viện: Tải thư viện SFML 
 ## 🔹 Video demo
